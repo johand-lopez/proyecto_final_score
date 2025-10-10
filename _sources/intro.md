@@ -81,3 +81,6 @@ En esta sección brindaremos un diccionario de las variables con las que contamo
 ### 1.3 Objetivo
 
 El objetivo de este proyecto es la implementación de distintos modelos clásicos de Machine Learning con el fin de encontrar el que mejores clasificaciones de puntuación crediticia entregue para ofrecerlo a la empresa.
+
+```{tableofcontents}
+```

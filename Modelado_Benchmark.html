@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Modelado_Benchmark';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Metodos de Balanceo" href="Metodos_de_Balanceo.html" />
     <link rel="prev" title="2. Análisis Exploratorio de Datos (EDA)" href="eda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,15 +182,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="eda.html">2. Análisis Exploratorio de Datos (EDA)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Modelado Benchmark</a></li>
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Metodos_de_Balanceo.html">4. Metodos de Balanceo</a></li>
 </ul>
 
     </div>
@@ -385,65 +378,61 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. Modelado Benchmark</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-y-objetivo">Contexto y Objetivo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-tecnica">Descripción Técnica</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-resultados">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Interpretación de Resultados</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Interpretación de Resultados</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-resultados-benchmark">Tabla comparativa de resultados (Benchmark)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general-modelado-benchmark"><strong>Conclusión General – Modelado Benchmark</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Interpretación de Resultados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-resultados-benchmark">Tabla comparativa de resultados (Benchmark)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general-modelado-benchmark"><strong>Conclusión General – Modelado Benchmark</strong></a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -454,7 +443,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="modelado-benchmark">
+  <section class="tex2jax_ignore mathjax_ignore" id="modelado-benchmark">
 <h1>3. Modelado Benchmark<a class="headerlink" href="#modelado-benchmark" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -532,9 +521,8 @@ Columnas: [&#39;age&#39;, &#39;monthly_inhand_salary&#39;, &#39;num_bank_account
 <h2>Interpretación de Resultados<a class="headerlink" href="#interpretacion-de-resultados" title="Link to this heading">#</a></h2>
 <p>La salida confirma que el dataset fue cargado exitosamente y que posee una estructura adecuada para el análisis. Las primeras filas muestran variables financieras y demográficas como la edad (<code class="docutils literal notranslate"><span class="pre">age</span></code>), salario mensual (<code class="docutils literal notranslate"><span class="pre">monthly_inhand_salary</span></code>), número de cuentas bancarias (<code class="docutils literal notranslate"><span class="pre">num_bank_accounts</span></code>), historial de pagos (<code class="docutils literal notranslate"><span class="pre">delay_from_due_date</span></code>, <code class="docutils literal notranslate"><span class="pre">num_of_delayed_payment</span></code>) y diversas categorías de préstamos (<code class="docutils literal notranslate"><span class="pre">personal_loan</span></code>, <code class="docutils literal notranslate"><span class="pre">auto_loan</span></code>, <code class="docutils literal notranslate"><span class="pre">home_equity_loan</span></code>, entre otras). La variable objetivo <code class="docutils literal notranslate"><span class="pre">credit_score</span></code> toma valores como “Good”, indicando que se trata de un problema de clasificación multiclase enfocado en la evaluación del comportamiento crediticio. Este paso permite garantizar la consistencia y completitud del dataset, sentando las bases para el análisis exploratorio, la detección de patrones y la posterior construcción de modelos predictivos.</p>
 </section>
-</section>
 <section id="k-nearest-neighbors-knn-classifier">
-<h1>K-Nearest Neighbors (KNN) Classifier<a class="headerlink" href="#k-nearest-neighbors-knn-classifier" title="Link to this heading">#</a></h1>
+<h2>K-Nearest Neighbors (KNN) Classifier<a class="headerlink" href="#k-nearest-neighbors-knn-classifier" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -775,11 +763,11 @@ weighted avg       0.75      0.75      0.75     30000
 </div>
 </div>
 <section id="id1">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>En esta etapa se desarrolla el modelo <strong>K-Nearest Neighbors (KNN)</strong> como primer algoritmo dentro del conjunto de modelos de <em>benchmarks</em>. Su propósito es evaluar el desempeño de un clasificador basado en similitudes entre observaciones, sirviendo como punto de comparación inicial frente a otros métodos supervisados más complejos. Este modelo es particularmente útil para establecer una línea base del comportamiento del dataset, ya que su simplicidad permite medir la capacidad predictiva sin suposiciones paramétricas sobre la distribución de los datos.</p>
 </section>
 <section id="id2">
-<h2>Descripción Técnica<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Se parte de la carga del conjunto de datos depurado y la separación entre las variables predictoras y la variable objetivo (<code class="docutils literal notranslate"><span class="pre">credit_score</span></code>). Posteriormente, se realiza una división estratificada en proporciones de 70% para entrenamiento y 30% para prueba, manteniendo el equilibrio entre las tres categorías de puntaje crediticio.
 El preprocesamiento combina dos estrategias:</p>
 <ul class="simple">
@@ -789,7 +777,7 @@ El preprocesamiento combina dos estrategias:</p>
 <p>El modelo <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> se configuró con <strong>k = 5 vecinos</strong> y procesamiento paralelo, optimizando la velocidad de cómputo. Tras el entrenamiento, se calcularon métricas globales (accuracy, precision, recall y f1-score) y se aplicó validación cruzada de cinco particiones (CV=5) para evaluar la estabilidad del rendimiento. Los resultados fueron almacenados con <code class="docutils literal notranslate"><span class="pre">joblib</span></code> para su posterior comparación con los demás modelos.</p>
 </section>
 <section id="id3">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>El modelo alcanzó un <strong>accuracy del 74.85%</strong> y un <strong>f1-score macro de 0.7311</strong>, lo que indica un desempeño moderadamente alto considerando la naturaleza no paramétrica del algoritmo. La validación cruzada reportó una media de 0.7150 con una desviación estándar de 0.0046, evidenciando estabilidad y consistencia en diferentes subconjuntos del entrenamiento.</p>
 <p>A nivel de clases, el modelo distinguió mejor los registros de tipo <strong>“Standard”</strong> (<em>f1-score = 0.78</em>), seguido por <strong>“Poor”</strong> (<em>f1-score = 0.75</em>), mientras que <strong>“Good”</strong> obtuvo un rendimiento inferior (<em>f1-score = 0.66</em>). Esta diferencia sugiere que las clases con menor representación o características menos distintivas resultan más difíciles de identificar.</p>
 <p>La <strong>matriz de confusión</strong> muestra que las predicciones más precisas se concentran en la diagonal principal, especialmente en la categoría “Standard” (12,139 aciertos). Sin embargo, se observa una confusión notable entre “Good” y “Standard”, lo cual podría deberse a similitudes en variables financieras o hábitos de pago que el modelo no logra diferenciar con claridad.</p>
@@ -797,7 +785,7 @@ El preprocesamiento combina dos estrategias:</p>
 </section>
 </section>
 <section id="naive-bayes">
-<h1>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h1>
+<h2>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -1039,16 +1027,16 @@ weighted avg       0.70      0.64      0.64     30000
 </div>
 </div>
 <section id="id4">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>En esta etapa se implementa el modelo <strong>Naive Bayes</strong> como parte del <em>benchmark</em> comparativo de algoritmos supervisados. El objetivo de este experimento es evaluar el desempeño de un clasificador probabilístico que asume independencia entre las variables predictoras. Su simplicidad y rapidez de entrenamiento lo convierten en una referencia útil para contrastar la capacidad predictiva de modelos más complejos. En el contexto del proyecto, busca determinar la probabilidad de pertenencia de cada individuo a una categoría de puntaje crediticio (“Good”, “Poor” o “Standard”) a partir de sus características financieras y demográficas.</p>
 </section>
 <section id="id5">
-<h2>Descripción Técnica<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Se inicia con la carga y separación del conjunto de datos entre variables explicativas (<code class="docutils literal notranslate"><span class="pre">X</span></code>) y la variable objetivo (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Se realiza una partición estratificada del 70% para entrenamiento y 30% para prueba, preservando la distribución de clases. Las variables numéricas se escalan con <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>, mientras que las categóricas se codifican mediante <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> para transformar la información no numérica en valores binarios adecuados para el modelo.</p>
 <p>El clasificador utilizado es <strong><code class="docutils literal notranslate"><span class="pre">GaussianNB</span></code></strong>, una variante de Naive Bayes que asume una distribución normal en los predictores continuos. Tras el entrenamiento, se obtienen las métricas de desempeño —<em>accuracy</em>, <em>precision</em>, <em>recall</em> y <em>f1-score</em>— junto con un proceso de validación cruzada de 5 particiones para verificar la estabilidad del modelo. Finalmente, se genera una matriz de confusión que permite visualizar los aciertos y errores por clase, y los resultados son almacenados para comparación posterior.</p>
 </section>
 <section id="id6">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>El modelo alcanzó un <strong>accuracy global del 63.63%</strong> y un <strong>f1-score macro de 0.6324</strong>, con un resultado de validación cruzada promedio de 0.6330 ± 0.0108, lo que indica un desempeño consistente pero limitado frente al modelo KNN. Estos valores reflejan que, aunque el clasificador logra capturar relaciones probabilísticas generales, su suposición de independencia entre variables reduce su capacidad de discriminación en datos con alta correlación entre atributos financieros.</p>
 <p>El reporte por clase muestra que <strong>la categoría “Good” presenta un alto <em>recall</em> (0.84)</strong>, lo que indica buena sensibilidad para identificar clientes con buen puntaje crediticio, aunque con baja precisión (0.46), lo que implica un número significativo de falsos positivos. La clase <strong>“Standard”</strong>, por el contrario, presenta el <em>f1-score</em> más equilibrado (0.65), pero su <em>recall</em> (0.53) evidencia dificultades para reconocer todos los casos pertenecientes a esta categoría.</p>
 <p>La <strong>matriz de confusión</strong> confirma estas observaciones: el modelo clasifica correctamente a 4,491 observaciones “Good” y 6,178 “Poor”, pero tiende a confundir una proporción importante de “Standard” con las otras clases, especialmente hacia “Good” (3,773 casos) y “Poor” (3,758 casos).</p>
@@ -1056,7 +1044,7 @@ weighted avg       0.70      0.64      0.64     30000
 </section>
 </section>
 <section id="regresion-logistica-con-regularizacion-l1-y-l2">
-<h1>Regresión Logística (con regularización L1 y L2)<a class="headerlink" href="#regresion-logistica-con-regularizacion-l1-y-l2" title="Link to this heading">#</a></h1>
+<h2>Regresión Logística (con regularización L1 y L2)<a class="headerlink" href="#regresion-logistica-con-regularizacion-l1-y-l2" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># REGRESIÓN LOGÍSTICA - MODELO BENCHMARK</span>
@@ -1371,17 +1359,17 @@ Top 10 características más importantes por clase:
 </div>
 </div>
 <section id="id7">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>El modelo de <strong>Regresión Logística Multiclase</strong> se implementa dentro del conjunto de modelos <em>benchmark</em> para evaluar su desempeño en la predicción del <strong>puntaje crediticio</strong> (“Good”, “Poor” o “Standard”) a partir de variables financieras y de comportamiento. Su propósito es establecer una línea base interpretable que permita comprender cómo influyen las características del cliente en la probabilidad de pertenecer a cada categoría de crédito.</p>
 </section>
 <section id="id8">
-<h2>Descripción Técnica<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>Se realiza una división del conjunto de datos en 70% para entrenamiento y 30% para prueba, asegurando la proporción de clases mediante muestreo estratificado.
 Las variables numéricas fueron <strong>escaladas</strong> con <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> y las categóricas <strong>codificadas</strong> mediante <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> para garantizar que todas las entradas fueran numéricas y comparables en magnitud.</p>
 <p>El modelo se entrenó con la clase <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> de <em>scikit-learn</em> utilizando <strong>regularización L2</strong> (<code class="docutils literal notranslate"><span class="pre">C=1.0</span></code>) y un máximo de 1000 iteraciones. Se calculan las métricas <em>accuracy</em>, <em>precision</em>, <em>recall</em> y <em>f1-score</em>, complementadas con una <strong>validación cruzada de 5 particiones</strong>, y se examinan los <strong>coeficientes del modelo</strong> para identificar las variables más influyentes por clase. Finalmente, se genera una matriz de confusión para analizar los patrones de error.</p>
 </section>
 <section id="id9">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>El modelo alcanzó un <strong>accuracy de 64.92%</strong> y un <strong>f1-score macro de 0.6186</strong>, con una validación cruzada promedio de <strong>0.6207 ± 0.0063</strong>, lo que indica un rendimiento <strong>moderado y estable</strong>. Estas métricas reflejan que la regresión logística logra capturar relaciones lineales entre las variables financieras y el puntaje crediticio, aunque con limitaciones al modelar interacciones no lineales o efectos complejos.</p>
 <p>El análisis por clase revela que el modelo <strong>predice con mayor precisión la categoría “Standard”</strong>, con un <em>f1-score</em> de <strong>0.71</strong>, mientras que las clases <strong>“Good” (0.56)</strong> y <strong>“Poor” (0.59)</strong> presentan menor desempeño. Esto sugiere que el modelo tiende a favorecer la clase mayoritaria (“Standard”) y confunde con frecuencia los individuos de crédito “Good” o “Poor”.</p>
 <p>La <strong>matriz de confusión</strong> confirma esta tendencia: de los 15,952 casos “Standard”, el modelo clasifica correctamente 11,805, pero confunde 1,874 como “Good” y 2,273 como “Poor”. Asimismo, muchos clientes “Good” (2,198) son predichos erróneamente como “Standard”, evidenciando solapamiento entre ambas categorías.</p>
@@ -1390,7 +1378,7 @@ Las variables numéricas fueron <strong>escaladas</strong> con <code class="docu
 </section>
 </section>
 <section id="ridge">
-<h1>Ridge<a class="headerlink" href="#ridge" title="Link to this heading">#</a></h1>
+<h2>Ridge<a class="headerlink" href="#ridge" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -1636,17 +1624,17 @@ weighted avg       0.65      0.64      0.64     30000
 </div>
 </div>
 <section id="id10">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>El modelo <strong>Ridge Classifier</strong> se incorpora dentro del conjunto de modelos <em>benchmark</em> para evaluar el desempeño de una técnica lineal regularizada en la predicción del <strong>puntaje crediticio</strong> de los individuos. Su objetivo es mitigar los problemas de multicolinealidad entre las variables predictoras y evitar el sobreajuste, introduciendo una penalización cuadrática (<em>L2</em>) sobre los coeficientes del modelo.</p>
 </section>
 <section id="id11">
-<h2>Descripción Técnica<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>El proceso inicia con la carga del conjunto de datos preprocesado, dividiéndose en 70% para entrenamiento y 30% para prueba, garantizando la preservación de las proporciones de las clases mediante muestreo estratificado.
 Las variables numéricas se <strong>escalan</strong> con <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> para homogeneizar su rango, mientras que las categóricas se <strong>codifican</strong> mediante <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>. Posteriormente, se entrena un modelo <strong>RidgeClassifier</strong> con un valor de regularización <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">1.0</span></code> y un máximo de 1000 iteraciones, buscando un equilibrio entre sesgo y varianza.</p>
 <p>El modelo se evalúa a través de métricas globales (<em>accuracy</em>, <em>precision</em>, <em>recall</em>, <em>f1-score</em>) y mediante una <strong>validación cruzada de 5 particiones</strong>. Además, se genera la matriz de confusión para analizar los patrones de clasificación entre las tres categorías: <em>Good</em>, <em>Poor</em> y <em>Standard</em>.</p>
 </section>
 <section id="id12">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>El modelo obtuvo un <strong>accuracy de 64.04%</strong> y un <strong>f1-score macro promedio de 0.6140</strong>, con una validación cruzada media de <strong>0.6132 ± 0.0040</strong>, lo que indica un desempeño <strong>moderado y consistente</strong>. Estas métricas reflejan que la regularización contribuyó a estabilizar el modelo, reduciendo la varianza respecto a la regresión logística convencional, aunque con una ligera pérdida en precisión global.</p>
 <p>A nivel de clases, el modelo predice con mayor efectividad los casos <strong>“Standard”</strong>, alcanzando un <em>f1-score</em> de <strong>0.70</strong>, mientras que las categorías <strong>“Poor”</strong> (<em>0.59</em>) y <strong>“Good”</strong> (<em>0.55</em>) muestran un rendimiento inferior. Esto evidencia una tendencia del modelo a favorecer la clase mayoritaria, manteniendo dificultades para diferenciar correctamente entre los grupos de menor frecuencia.</p>
 <p>La <strong>matriz de confusión</strong> refuerza esta observación: el modelo clasifica correctamente 11,176 registros “Standard”, pero confunde 2,392 de ellos con “Good” y 2,384 con “Poor”. Asimismo, de los 5,349 casos “Good”, 1,900 fueron etiquetados erróneamente como “Standard”, mientras que entre los 8,699 “Poor”, casi 3,000 se asignaron a la misma clase.</p>
@@ -1654,7 +1642,7 @@ Las variables numéricas se <strong>escalan</strong> con <code class="docutils l
 </section>
 </section>
 <section id="lasso">
-<h1>Lasso<a class="headerlink" href="#lasso" title="Link to this heading">#</a></h1>
+<h2>Lasso<a class="headerlink" href="#lasso" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -1664,7 +1652,7 @@ Las variables numéricas se <strong>escalan</strong> con <code class="docutils l
 </div>
 </section>
 <section id="arbol-de-decision">
-<h1>Árbol de Decisión<a class="headerlink" href="#arbol-de-decision" title="Link to this heading">#</a></h1>
+<h2>Árbol de Decisión<a class="headerlink" href="#arbol-de-decision" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ÁRBOL DE DECISIÓN - MODELO BENCHMARK</span>
@@ -1952,16 +1940,16 @@ Top 10 características más importantes:
 </div>
 </div>
 <section id="id13">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>El modelo de <strong>Árbol de Decisión</strong> se incluye en la fase de <em>modelado benchmark</em> con el propósito de explorar una alternativa <strong>no lineal</strong> capaz de capturar relaciones complejas y jerárquicas entre las variables predictoras y el puntaje crediticio de los individuos. A diferencia de los modelos lineales anteriores, este enfoque permite identificar reglas de decisión interpretables que separan las categorías “Good”, “Poor” y “Standard” con base en umbrales específicos de las características financieras.</p>
 </section>
 <section id="id14">
-<h2>Descripción Técnica<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>El proceso inicia con la división del conjunto de datos en 70% para entrenamiento y 30% para prueba, manteniendo la proporción original de las clases mediante estratificación. Las variables numéricas fueron <strong>escaladas</strong> con <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> y las categóricas <strong>codificadas</strong> con <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>. Posteriormente, se entrenó un <strong>DecisionTreeClassifier</strong> con una profundidad máxima de 5 (<code class="docutils literal notranslate"><span class="pre">max_depth=5</span></code>) y semilla aleatoria fija para garantizar reproducibilidad.</p>
 <p>El modelo fue evaluado con métricas de <em>accuracy</em>, <em>precision</em>, <em>recall</em> y <em>f1-score</em> en promedio macro, complementadas con validación cruzada de cinco particiones (<em>5-fold CV</em>). Además, se generó un análisis de <strong>importancia de características</strong>, identificando las variables con mayor peso en las decisiones del modelo.</p>
 </section>
 <section id="id15">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>El modelo alcanzó un <strong>accuracy del 67.21%</strong> y un <strong>f1-score macro de 0.6556</strong>, con una validación cruzada promedio de <strong>0.6578 ± 0.0072</strong>, lo cual representa un <strong>rendimiento superior a los modelos lineales</strong> (Ridge y Regresión Logística). Esto confirma la capacidad del árbol para capturar interacciones no lineales entre las variables.</p>
 <p>Por clase, la categoría <strong>“Standard”</strong> mantiene el mejor desempeño (<em>f1-score ≈ 0.71</em>), seguida por <strong>“Poor”</strong> (<em>0.65</em>) y <strong>“Good”</strong> (<em>0.60</em>). Esto indica que el árbol distingue con mayor claridad los perfiles de crédito medio y estándar, mientras que persiste cierta confusión entre los grupos extremos.</p>
 <p>La <strong>matriz de confusión</strong> muestra que el modelo clasifica correctamente 11,015 registros “Standard”, pero confunde 3,139 como “Good” y 1,798 como “Poor”. En cambio, de los 5,349 “Good”, alrededor de 1,271 fueron mal clasificados como “Standard”. Esta distribución refleja la existencia de solapamientos entre las características de los diferentes grupos crediticios.</p>
@@ -1970,7 +1958,7 @@ Top 10 características más importantes:
 </section>
 </section>
 <section id="random-forest">
-<h1>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -2251,17 +2239,17 @@ Top 10 características más importantes:
 </div>
 </div>
 <section id="id16">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>El modelo <strong>Random Forest</strong> se implementa como parte del conjunto de modelos <em>benchmark</em> con el propósito de evaluar una técnica de <strong>ensamble basada en múltiples árboles de decisión</strong>, que busca mejorar la estabilidad y precisión del modelo al reducir la varianza inherente de un árbol individual. Esta metodología combina el voto de numerosos árboles entrenados sobre subconjuntos aleatorios de datos y características, logrando una mayor capacidad de generalización en la predicción del <strong>puntaje crediticio</strong> (“Good”, “Poor”, “Standard”).</p>
 </section>
 <section id="id17">
-<h2>Descripción Técnica<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>El conjunto de datos fue dividido en un 70% para entrenamiento y un 30% para prueba, manteniendo la proporción de clases mediante estratificación. Las variables numéricas fueron <strong>estandarizadas</strong> con <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> y las categóricas <strong>codificadas</strong> con <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>.
 El modelo entrenado corresponde a un <strong>RandomForestClassifier</strong> con <strong>100 árboles (<code class="docutils literal notranslate"><span class="pre">n_estimators=100</span></code>)</strong>, ejecutado de manera paralela (<code class="docutils literal notranslate"><span class="pre">n_jobs=-1</span></code>) para optimizar el rendimiento computacional.</p>
 <p>La evaluación del desempeño se llevó a cabo mediante métricas de clasificación globales —<em>accuracy</em>, <em>precision</em>, <em>recall</em> y <em>f1-score</em> promedio macro— y una <strong>validación cruzada de 5 particiones</strong>, lo que permitió verificar la estabilidad del modelo. Además, se calculó la <strong>importancia de las características</strong>, identificando las variables más influyentes en la toma de decisiones del bosque.</p>
 </section>
 <section id="id18">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>El modelo logró un <strong>accuracy de 78.27%</strong> y un <strong>f1-score macro promedio de 0.7690</strong>, con una validación cruzada media de <strong>0.7580 ± 0.0090</strong>, superando el desempeño obtenido por los modelos lineales y el árbol de decisión individual. Esto demuestra que la agregación de múltiples árboles contribuye a capturar relaciones no lineales y reduce la sobreajuste local.</p>
 <p>Por clase, la categoría <strong>“Standard”</strong> mantiene el mejor desempeño (<em>f1-score = 0.80</em>), seguida de <strong>“Poor” (0.78)</strong> y <strong>“Good” (0.72)</strong>. La matriz de confusión evidencia una correcta clasificación de la mayoría de los registros, aunque persisten confusiones entre las clases vecinas: por ejemplo, 1,462 casos “Good” fueron clasificados como “Standard”, mientras que 1,623 “Poor” se confundieron con la misma categoría. Estas desviaciones se deben a la similitud en los perfiles crediticios intermedios.</p>
 <p>En cuanto a la <strong>importancia de las características</strong>, el modelo destaca la fuerte influencia de las variables financieras directas:</p>
@@ -2274,7 +2262,7 @@ todas relacionadas con la capacidad de pago, historial y puntualidad. Otras vari
 </section>
 </section>
 <section id="xgboost-con-interpretabilidad-usando-lime">
-<h1>XGBoost (con interpretabilidad usando LIME)<a class="headerlink" href="#xgboost-con-interpretabilidad-usando-lime" title="Link to this heading">#</a></h1>
+<h2>XGBoost (con interpretabilidad usando LIME)<a class="headerlink" href="#xgboost-con-interpretabilidad-usando-lime" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>xgboost<span class="w"> </span>lime
@@ -114008,17 +113996,17 @@ Clase predicha: Good
 </div>
 </div>
 <section id="id19">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>El modelo <strong>XGBoost (Extreme Gradient Boosting)</strong> se emplea en esta etapa del <em>benchmark</em> para evaluar un algoritmo de <strong>ensamble basado en boosting secuencial</strong>, que combina múltiples árboles de decisión débiles con el fin de minimizar de manera iterativa el error residual. Su objetivo principal es mejorar la capacidad predictiva respecto a los modelos previos, optimizando tanto la <strong>precisión global</strong> como la <strong>robustez general del modelo</strong> en la clasificación del puntaje crediticio.</p>
 </section>
 <section id="id20">
-<h2>Descripción Técnica<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>El modelo fue entrenado con una división de los datos del 70% para entrenamiento y 30% para prueba, preservando la proporción de las clases mediante estratificación. Las variables numéricas fueron <strong>escaladas</strong> y las categóricas <strong>codificadas</strong> mediante <em>OneHotEncoder</em>.
 Se implementó un <strong>XGBClassifier</strong> con <strong>100 árboles</strong>, métrica de evaluación <em>mlogloss</em>, y procesamiento paralelo para optimizar tiempos de cómputo.</p>
 <p>La evaluación se realizó utilizando métricas globales (<em>accuracy</em>, <em>precision</em>, <em>recall</em>, <em>f1-score</em>) y una <strong>validación cruzada de cinco particiones</strong>, además de un análisis de <strong>importancia de características</strong> y una explicación local de predicciones individuales mediante <strong>LIME (Local Interpretable Model-agnostic Explanations)</strong> para reforzar la interpretabilidad.</p>
 </section>
 <section id="id21">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p>El modelo obtuvo un <strong>accuracy de 75.15%</strong> y un <strong>f1-score macro promedio de 0.7344</strong>, con una validación cruzada media de <strong>0.7304 ± 0.0083</strong>, lo que representa un desempeño sólido y competitivo dentro de los modelos comparados. Aunque su rendimiento es ligeramente inferior al de Random Forest, XGBoost muestra una <strong>mayor estabilidad</strong> y una mejor gestión del sesgo, gracias al ajuste iterativo de los errores residuales.</p>
 <p>En el análisis por clase, se observa que <strong>“Standard”</strong> presenta el mejor comportamiento (<em>f1-score ≈ 0.78</em>), seguido por <strong>“Poor” (0.74)</strong> y <strong>“Good” (0.68)</strong>. La <strong>matriz de confusión</strong> evidencia que los mayores errores se concentran entre las clases “Good” y “Standard”, donde 1,580 casos del primer grupo fueron clasificados como “Standard”. Este patrón confirma la existencia de similitudes entre los perfiles crediticios limítrofes.</p>
 <p>En cuanto a la <strong>importancia de características</strong>, destacan las variables relacionadas con la <strong>historia de pagos y manejo del crédito</strong>:</p>
@@ -114033,7 +114021,7 @@ Se implementó un <strong>XGBClassifier</strong> con <strong>100 árboles</stron
 </section>
 </section>
 <section id="maquina-de-soporte-vectorial">
-<h1>Máquina de Soporte Vectorial<a class="headerlink" href="#maquina-de-soporte-vectorial" title="Link to this heading">#</a></h1>
+<h2>Máquina de Soporte Vectorial<a class="headerlink" href="#maquina-de-soporte-vectorial" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
@@ -114274,17 +114262,17 @@ weighted avg       0.72      0.71      0.71     30000
 </div>
 </div>
 <section id="id22">
-<h2>Contexto y Objetivo<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<h3>Contexto y Objetivo<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <p>El modelo de <strong>Máquinas de Soporte Vectorial (SVM)</strong> se incorpora dentro del conjunto <em>benchmark</em> con el propósito de evaluar un enfoque <strong>basado en maximización de márgenes</strong>, que busca encontrar el hiperplano óptimo que separe las clases con la mayor distancia posible. En el contexto del puntaje crediticio, este algoritmo permite identificar fronteras precisas entre los distintos perfiles (“Good”, “Poor” y “Standard”), siendo especialmente útil en escenarios donde las clases pueden solaparse parcialmente.</p>
 </section>
 <section id="id23">
-<h2>Descripción Técnica<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<h3>Descripción Técnica<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <p>El modelo fue entrenado a partir del mismo esquema de preprocesamiento utilizado en los demás modelos:
 las variables numéricas fueron <strong>escaladas</strong> mediante <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>, y las categóricas <strong>codificadas</strong> con <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code>. La base de datos se dividió en un <strong>70% para entrenamiento</strong> y un <strong>30% para prueba</strong>, manteniendo la proporción de clases a través de estratificación.</p>
 <p>El clasificador <strong>SVC</strong> se entrenó con los parámetros por defecto (kernel radial), considerando todas las variables transformadas, y se evaluó con métricas de desempeño global (<em>accuracy</em>, <em>precision</em>, <em>recall</em> y <em>f1-score</em>), así como mediante <strong>validación cruzada con 5 particiones</strong> (<em>5-fold CV</em>) para garantizar consistencia en los resultados.</p>
 </section>
 <section id="id24">
-<h2>Interpretación de Resultados<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<h3>Interpretación de Resultados<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <p>El modelo obtuvo un <strong>accuracy de 71.22%</strong> y un <strong>f1-score macro promedio de 0.6897</strong>, con una validación cruzada media de <strong>0.6869 ± 0.0076</strong>. Aunque su rendimiento es inferior al de los modelos de ensamble (Random Forest y XGBoost), el SVM muestra una <strong>capacidad de generalización aceptable</strong>, especialmente considerando que no se aplicó optimización de hiperparámetros.</p>
 <p>Por clase, se observa que la categoría <strong>“Standard”</strong> presenta el mejor desempeño (<em>f1-score = 0.75</em>), seguida por <strong>“Poor” (0.69)</strong> y <strong>“Good” (0.62)</strong>. Este comportamiento indica que el modelo tiende a clasificar con mayor precisión los perfiles intermedios, mientras que los extremos presentan mayor confusión, probablemente por similitudes en sus patrones de comportamiento financiero.</p>
 <p>La <strong>matriz de confusión</strong> confirma esta tendencia:</p>
@@ -114297,7 +114285,7 @@ las variables numéricas fueron <strong>escaladas</strong> mediante <code class=
 <p>En conjunto, el <strong>SVM</strong> demuestra una <strong>buena capacidad de discriminación y robustez teórica</strong>, aunque su eficiencia práctica es limitada frente a los modelos de ensamble. Su inclusión en el <em>benchmark</em> permite contrastar un enfoque de frontera óptima con métodos basados en árboles, evidenciando el equilibrio entre precisión, costo computacional e interpretabilidad en la predicción del puntaje crediticio.</p>
 </section>
 <section id="tabla-comparativa-de-resultados-benchmark">
-<h2>Tabla comparativa de resultados (Benchmark)<a class="headerlink" href="#tabla-comparativa-de-resultados-benchmark" title="Link to this heading">#</a></h2>
+<h3>Tabla comparativa de resultados (Benchmark)<a class="headerlink" href="#tabla-comparativa-de-resultados-benchmark" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Modelo</p></th>
@@ -114388,13 +114376,14 @@ las variables numéricas fueron <strong>escaladas</strong> mediante <code class=
 </div>
 </section>
 <section id="conclusion-general-modelado-benchmark">
-<h2><strong>Conclusión General – Modelado Benchmark</strong><a class="headerlink" href="#conclusion-general-modelado-benchmark" title="Link to this heading">#</a></h2>
+<h3><strong>Conclusión General – Modelado Benchmark</strong><a class="headerlink" href="#conclusion-general-modelado-benchmark" title="Link to this heading">#</a></h3>
 <p>El conjunto de modelos <em>benchmark</em> implementado permitió comparar distintos enfoques de aprendizaje supervisado para la <strong>predicción del puntaje crediticio</strong>, evaluando su precisión, estabilidad, interpretabilidad y eficiencia computacional. Cada modelo aportó una perspectiva complementaria sobre la naturaleza del problema y las relaciones entre las variables financieras, demográficas y de comportamiento.</p>
 <p>En términos de desempeño global, los resultados evidencian que los <strong>modelos de ensamble (Random Forest y XGBoost)</strong> superan de manera consistente a los métodos lineales y tradicionales. El <strong>Random Forest</strong> alcanzó el mejor rendimiento general con un <strong>f1-score macro de 0.7690</strong> y una <strong>exactitud del 78.27%</strong>, mostrando una excelente capacidad para capturar relaciones no lineales y manejar la variabilidad de los datos. El modelo <strong>XGBoost</strong>, aunque ligeramente inferior en desempeño (<em>f1-score = 0.7344</em>), demostró mayor <strong>eficiencia y estabilidad</strong> en sus resultados, consolidándose como una alternativa sólida para la implementación práctica.</p>
 <p>Por su parte, la <strong>Regresión Logística</strong> y el <strong>Ridge Classifier</strong> ofrecieron resultados más moderados (f1-scores entre 0.61 y 0.62), destacándose por su <strong>simplicidad e interpretabilidad</strong>, lo que los convierte en modelos base útiles para comparación o para contextos donde la explicación del modelo es prioritaria.
 El <strong>Árbol de Decisión</strong> mostró un equilibrio razonable entre interpretabilidad y rendimiento (<em>f1-score = 0.6556</em>), permitiendo visualizar la estructura de decisión y la relevancia de las variables, mientras que la <strong>Máquina de Soporte Vectorial (SVM)</strong> alcanzó una precisión competitiva (<em>f1-score = 0.6897</em>), aunque con un alto costo computacional debido al tamaño del dataset.</p>
 <p>A lo largo de los experimentos, variables como <strong><code class="docutils literal notranslate"><span class="pre">outstanding_debt</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">delay_from_due_date</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">changed_credit_limit</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">interest_rate</span></code></strong> y <strong><code class="docutils literal notranslate"><span class="pre">credit_history_age</span></code></strong> emergieron de forma consistente como las más influyentes, confirmando que los factores relacionados con <strong>historial de pagos, endeudamiento y gestión crediticia</strong> son los principales determinantes del puntaje crediticio.</p>
 <p>En conclusión, el análisis comparativo permitió identificar que los modelos basados en árboles y <em>boosting</em> son los más adecuados para abordar problemas complejos y no lineales como la clasificación del puntaje crediticio, ofreciendo <strong>mejor balance entre desempeño predictivo, robustez e interpretabilidad</strong>. Además, este ejercicio evidenció la importancia del preprocesamiento, la selección de variables y la evaluación sistemática para garantizar modelos confiables y útiles en contextos reales de análisis financiero.</p>
+</section>
 </section>
 </section>
 
@@ -114437,6 +114426,15 @@ El <strong>Árbol de Decisión</strong> mostró un equilibrio razonable entre in
         <p class="prev-next-title">2. Análisis Exploratorio de Datos (EDA)</p>
       </div>
     </a>
+    <a class="right-next"
+       href="Metodos_de_Balanceo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4. Metodos de Balanceo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -114453,65 +114451,61 @@ El <strong>Árbol de Decisión</strong> mostró un equilibrio razonable entre in
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. Modelado Benchmark</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-y-objetivo">Contexto y Objetivo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-tecnica">Descripción Técnica</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-resultados">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Interpretación de Resultados</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Interpretación de Resultados</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Interpretación de Resultados</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Contexto y Objetivo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Descripción Técnica</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Interpretación de Resultados</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-resultados-benchmark">Tabla comparativa de resultados (Benchmark)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general-modelado-benchmark"><strong>Conclusión General – Modelado Benchmark</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Contexto y Objetivo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Descripción Técnica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Interpretación de Resultados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-resultados-benchmark">Tabla comparativa de resultados (Benchmark)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-general-modelado-benchmark"><strong>Conclusión General – Modelado Benchmark</strong></a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
