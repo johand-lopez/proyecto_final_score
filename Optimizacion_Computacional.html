@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🚀 Optimización de Múltiples Modelos de ML - Introducción &#8212; My sample book</title>
+    <title>5. Optimización de Múltiples Modelos de ML &#8212; My sample book</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Optimizacion_Computacional';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="4. Metodos de Balanceo" href="Metodos_de_Balanceo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,28 +178,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="eda.html">2. Análisis Exploratorio de Datos (EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelado_Benchmark.html">3. Modelado Benchmark</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="Metodos_de_Balanceo.html">4. Metodos de Balanceo</a></li>
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Optimización de Múltiples Modelos de ML</a></li>
 </ul>
 
     </div>
@@ -386,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🚀 Optimización de Múltiples Modelos de ML - Introducción</h1>
+    <h1>5. Optimización de Múltiples Modelos de ML</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,8 +378,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-proyecto">📋 Contexto del Proyecto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-y-tecnicas-de-optimizacion-implementadas">🎯 Modelos y Técnicas de Optimización Implementadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-proyecto">Contexto del Proyecto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-y-tecnicas-de-optimizacion-implementadas">Modelos y Técnicas de Optimización Implementadas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">1. <strong>K-Nearest Neighbors (KNN)</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-avanzada">2. <strong>Regresión Logística con Regularización Avanzada</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-escalable">3. <strong>Naive Bayes Escalable</strong></a></li>
@@ -406,24 +388,121 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-optimizado">6. <strong>Random Forest Optimizado</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beneficios-de-las-optimizaciones-implementadas">🔧 Beneficios de las Optimizaciones Implementadas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendimiento-computacional">⚡ <strong>Rendimiento Computacional</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escalabilidad">📈 <strong>Escalabilidad</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-modelos">🎯 <strong>Calidad de Modelos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eficiencia-de-recursos">💾 <strong>Eficiencia de Recursos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beneficios-de-las-optimizaciones-implementadas">Beneficios de las Optimizaciones Implementadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendimiento-computacional"><strong>Rendimiento Computacional</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escalabilidad"><strong>Escalabilidad</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-modelos"><strong>Calidad de Modelos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eficiencia-de-recursos"><strong>Eficiencia de Recursos</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujo-del-pipeline">🏗️ Flujo del Pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">📊 Métricas de Evaluación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujo-del-pipeline">Flujo del Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">Métricas de Evaluación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-knn"><strong>4.1 Optimización Computacional del Modelo KNN</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-general"><strong>4.1.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-globales"><strong>4.1.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-algoritmo"><strong>4.1.3 Selección del Mejor Algoritmo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-por-clase"><strong>4.1.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><strong>4.1.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-global"><strong>4.1.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>4.1.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-naive-bayes"><strong>4.2 Optimización Computacional del Modelo Naive Bayes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>4.2.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>4.2.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-metodo"><strong>4.2.3 Selección del Mejor Método</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>4.2.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>4.2.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4.2.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-de-regresion-logistica"><strong>4.3 Optimización Computacional del Modelo de Regresión Logística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.3.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.3.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-modelo"><strong>4.3.3 Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-del-modelo-optimizado"><strong>4.3.4 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-coeficientes"><strong>4.3.5 Interpretación de Coeficientes</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>4.3.6 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>4.3.7 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>4.3.8 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>4.3.9 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-classification-modelo-benchmark"><strong>4.4 Ridge Classification – Modelo Benchmark</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>4.4.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>4.4.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>4.4.3 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>4.4.4 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>4.4.5 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>4.4.6 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision-modelo-benchmark"><strong>4.5 Árbol de Decisión – Modelo Benchmark</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><strong>4.5.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>4.5.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>4.5.3 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"><strong>4.5.4 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-de-caracteristicas"><strong>4.5.5 Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23"><strong>4.5.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id24"><strong>4.5.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-optimizado-tecnicas-avanzadas"><strong>4.6 Random Forest Optimizado – Técnicas Avanzadas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25"><strong>4.6.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-comparativos-de-configuraciones"><strong>4.6.2 Resultados Comparativos de Configuraciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-global-del-modelo-optimizado"><strong>4.6.3 Evaluación Global del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"><strong>4.6.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"><strong>4.6.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-importancia-de-caracteristicas"><strong>4.6.6 Análisis de Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-estabilidad"><strong>4.6.7 Análisis de Estabilidad</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-comparativa"><strong>4.6.8 Evaluación Comparativa</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28"><strong>4.6.9 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-optimizado-gpu-y-early-stopping"><strong>4.7 XGBoost Optimizado – GPU y Early Stopping</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29"><strong>4.7.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-configuraciones-cpu-vs-gpu"><strong>4.7.2 Comparación de Configuraciones: CPU vs GPU</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30"><strong>4.7.3 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31"><strong>4.7.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id32"><strong>4.7.5 Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id33"><strong>4.7.6 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-optimizado-linearsvc"><strong>4.8 SVM Optimizado – LinearSVC</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id34"><strong>4.8.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-implementaciones"><strong>4.8.2 Comparación de Implementaciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-de-hiperparametros"><strong>4.8.3 Optimización de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id35"><strong>4.8.4 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36"><strong>4.8.5 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id37"><strong>4.8.6 Comparación de Implementaciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id38"><strong>4.8.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -435,14 +514,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="optimizacion-de-multiples-modelos-de-ml-introduccion">
-<h1>🚀 Optimización de Múltiples Modelos de ML - Introducción<a class="headerlink" href="#optimizacion-de-multiples-modelos-de-ml-introduccion" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="optimizacion-de-multiples-modelos-de-ml">
+<h1>5. Optimización de Múltiples Modelos de ML<a class="headerlink" href="#optimizacion-de-multiples-modelos-de-ml" title="Link to this heading">#</a></h1>
 <section id="contexto-del-proyecto">
-<h2>📋 Contexto del Proyecto<a class="headerlink" href="#contexto-del-proyecto" title="Link to this heading">#</a></h2>
+<h2>Contexto del Proyecto<a class="headerlink" href="#contexto-del-proyecto" title="Link to this heading">#</a></h2>
 <p>Este notebook implementa una <strong>suite completa de modelos de machine learning</strong> con técnicas de optimización avanzadas para mejorar rendimiento, escalabilidad y eficiencia computacional en problemas de clasificación.</p>
 </section>
 <section id="modelos-y-tecnicas-de-optimizacion-implementadas">
-<h2>🎯 Modelos y Técnicas de Optimización Implementadas<a class="headerlink" href="#modelos-y-tecnicas-de-optimizacion-implementadas" title="Link to this heading">#</a></h2>
+<h2>Modelos y Técnicas de Optimización Implementadas<a class="headerlink" href="#modelos-y-tecnicas-de-optimizacion-implementadas" title="Link to this heading">#</a></h2>
 <section id="k-nearest-neighbors-knn">
 <h3>1. <strong>K-Nearest Neighbors (KNN)</strong><a class="headerlink" href="#k-nearest-neighbors-knn" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -506,9 +585,9 @@ document.write(`
 </section>
 </section>
 <section id="beneficios-de-las-optimizaciones-implementadas">
-<h2>🔧 Beneficios de las Optimizaciones Implementadas<a class="headerlink" href="#beneficios-de-las-optimizaciones-implementadas" title="Link to this heading">#</a></h2>
+<h2>Beneficios de las Optimizaciones Implementadas<a class="headerlink" href="#beneficios-de-las-optimizaciones-implementadas" title="Link to this heading">#</a></h2>
 <section id="rendimiento-computacional">
-<h3>⚡ <strong>Rendimiento Computacional</strong><a class="headerlink" href="#rendimiento-computacional" title="Link to this heading">#</a></h3>
+<h3><strong>Rendimiento Computacional</strong><a class="headerlink" href="#rendimiento-computacional" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Reducción significativa de tiempos de entrenamiento</p></li>
 <li><p>Manejo eficiente de memoria</p></li>
@@ -516,7 +595,7 @@ document.write(`
 </ul>
 </section>
 <section id="escalabilidad">
-<h3>📈 <strong>Escalabilidad</strong><a class="headerlink" href="#escalabilidad" title="Link to this heading">#</a></h3>
+<h3><strong>Escalabilidad</strong><a class="headerlink" href="#escalabilidad" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Capacidad para datasets grandes</p></li>
 <li><p>Procesamiento por lotes</p></li>
@@ -524,7 +603,7 @@ document.write(`
 </ul>
 </section>
 <section id="calidad-de-modelos">
-<h3>🎯 <strong>Calidad de Modelos</strong><a class="headerlink" href="#calidad-de-modelos" title="Link to this heading">#</a></h3>
+<h3><strong>Calidad de Modelos</strong><a class="headerlink" href="#calidad-de-modelos" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Prevención de overfitting</p></li>
 <li><p>Selección automática de características</p></li>
@@ -532,7 +611,7 @@ document.write(`
 </ul>
 </section>
 <section id="eficiencia-de-recursos">
-<h3>💾 <strong>Eficiencia de Recursos</strong><a class="headerlink" href="#eficiencia-de-recursos" title="Link to this heading">#</a></h3>
+<h3><strong>Eficiencia de Recursos</strong><a class="headerlink" href="#eficiencia-de-recursos" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Uso óptimo de CPU/RAM</p></li>
 <li><p>Algoritmos adaptados al tamaño de datos</p></li>
@@ -541,7 +620,7 @@ document.write(`
 </section>
 </section>
 <section id="flujo-del-pipeline">
-<h2>🏗️ Flujo del Pipeline<a class="headerlink" href="#flujo-del-pipeline" title="Link to this heading">#</a></h2>
+<h2>Flujo del Pipeline<a class="headerlink" href="#flujo-del-pipeline" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Preprocesamiento Optimizado</strong> - Estandarización y codificación eficiente</p></li>
 <li><p><strong>Entrenamiento Paralelizado</strong> - Uso de múltiples cores</p></li>
@@ -551,14 +630,13 @@ document.write(`
 </ol>
 </section>
 <section id="metricas-de-evaluacion">
-<h2>📊 Métricas de Evaluación<a class="headerlink" href="#metricas-de-evaluacion" title="Link to this heading">#</a></h2>
+<h2>Métricas de Evaluación<a class="headerlink" href="#metricas-de-evaluacion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Precisión</strong>: Accuracy, Precision, Recall, F1-Score</p></li>
 <li><p><strong>Rendimiento</strong>: Tiempos de entrenamiento/predicción</p></li>
 <li><p><strong>Escalabilidad</strong>: Uso de memoria y escalado con datos</p></li>
 <li><p><strong>Robustez</strong>: Consistencia en validación cruzada</p></li>
 </ul>
-<p>Este enfoque integral permite seleccionar la técnica óptima para cada escenario, balanceando complejidad, rendimiento y requisitos de la entrega.</p>
 </section>
 <section id="k-nearest-neighbors-knn-classifier">
 <h2>K-Nearest Neighbors (KNN) Classifier<a class="headerlink" href="#k-nearest-neighbors-knn-classifier" title="Link to this heading">#</a></h2>
@@ -912,22 +990,22 @@ document.write(`
 🎯 Probando Auto...
   ✅ F1-Score: 0.7311
   ✅ CV F1-Score: 0.7150
-  ✅ Tiempo predicción: 5.6704s
+  ✅ Tiempo predicción: 2.2014s
 
 🎯 Probando KD-Tree...
   ✅ F1-Score: 0.7311
   ✅ CV F1-Score: 0.7150
-  ✅ Tiempo predicción: 58.5019s
+  ✅ Tiempo predicción: 30.4900s
 
 🎯 Probando Ball-Tree...
   ✅ F1-Score: 0.7311
   ✅ CV F1-Score: 0.7150
-  ✅ Tiempo predicción: 106.9099s
+  ✅ Tiempo predicción: 33.8781s
 
 🎯 Probando Brute-Force...
   ✅ F1-Score: 0.7311
   ✅ CV F1-Score: 0.7150
-  ✅ Tiempo predicción: 5.1383s
+  ✅ Tiempo predicción: 2.7938s
 
 🏆 MEJOR ALGORITMO: Auto
 📊 F1-Score: 0.7311
@@ -941,7 +1019,7 @@ Recall (macro avg): 0.7383
 F1-Score (macro avg): 0.7311
 CV Mean F1-score: 0.7150
 CV Std F1-score: 0.0023
-Tiempo predicción: 5.6704s
+Tiempo predicción: 2.2014s
 
 📊 TABLA DE MÉTRICAS POR CLASE:
 ============================================================
@@ -957,24 +1035,24 @@ accuracy                                      120000.0
 ============================================================
 </pre></div>
 </div>
-<img alt="_images/9e1de3ebc220bb5a8c5f5c0ec13e1541c4b346bcf5c0941c10b62106d0915b48.png" src="_images/9e1de3ebc220bb5a8c5f5c0ec13e1541c4b346bcf5c0941c10b62106d0915b48.png" />
-<img alt="_images/e9031dff8404ac6e2771148ed4d0adeba373adee2ef4668a1886aeb8b4a70acc.png" src="_images/e9031dff8404ac6e2771148ed4d0adeba373adee2ef4668a1886aeb8b4a70acc.png" />
+<img alt="_images/ec3fcf99854c3327afda76a013d2c800f11d8ef89c4fc01e60fe3289d9f38e36.png" src="_images/ec3fcf99854c3327afda76a013d2c800f11d8ef89c4fc01e60fe3289d9f38e36.png" />
+<img alt="_images/6953a7c069b418158347541c9652ce724f882f5668cc9281faa33f56a772d36c.png" src="_images/6953a7c069b418158347541c9652ce724f882f5668cc9281faa33f56a772d36c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
 🎯 RESUMEN FINAL - KNN OPTIMIZADO CON ALGORITMOS AVANZADOS
 ======================================================================
-⏱️  Tiempo total ejecución: 621.75s
+⏱️  Tiempo total ejecución: 329.81s
 🏆 Mejor algoritmo: Auto
 📈 F1-Score: 0.7311 (73.11%)
 🎯 Validación Cruzada: 0.7150 ± 0.0046
-⚡ Tiempo predicción: 5.6704s
+⚡ Tiempo predicción: 2.2014s
 
 📊 COMPARACIÓN ENTRE ALGORITMOS:
 Algoritmo    F1-Score   CV F1      Pred Time(s)
 --------------------------------------------------
-Auto         0.7311     0.7150     5.6704      
-KD-Tree      0.7311     0.7150     58.5019     
-Ball-Tree    0.7311     0.7150     106.9099    
-Brute-Force  0.7311     0.7150     5.1383      
+Auto         0.7311     0.7150     2.2014      
+KD-Tree      0.7311     0.7150     30.4900     
+Ball-Tree    0.7311     0.7150     33.8781     
+Brute-Force  0.7311     0.7150     2.7938      
 
 📋 REPORTE CLASIFICACIÓN (Auto):
               precision    recall  f1-score   support
@@ -994,6 +1072,141 @@ weighted avg       0.75      0.75      0.75     30000
 </div>
 </div>
 </div>
+<section id="optimizacion-computacional-del-modelo-knn">
+<h3><strong>4.1 Optimización Computacional del Modelo KNN</strong><a class="headerlink" href="#optimizacion-computacional-del-modelo-knn" title="Link to this heading">#</a></h3>
+<section id="descripcion-general">
+<h4><strong>4.1.1 Descripción General</strong><a class="headerlink" href="#descripcion-general" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>K-Nearest Neighbors (KNN)</strong> fue optimizado evaluando distintas configuraciones de algoritmos internos para la búsqueda de vecinos más cercanos: <strong>auto</strong>, <strong>kd_tree</strong>, <strong>ball_tree</strong> y <strong>brute_force</strong>.
+El objetivo fue <strong>acelerar el tiempo de predicción sin perder capacidad predictiva</strong>, manteniendo la estabilidad de las métricas principales (F1-score y validación cruzada).</p>
+</section>
+<hr class="docutils" />
+<section id="resultados-globales">
+<h4><strong>4.1.2 Resultados Globales</strong><a class="headerlink" href="#resultados-globales" title="Link to this heading">#</a></h4>
+<p>En la comparación de algoritmos, los resultados fueron <strong>consistentes en desempeño predictivo</strong>, manteniendo un <strong>F1-Score de 0.7311</strong> y una <strong>validación cruzada media de 0.7150 ± 0.0046</strong> en todos los casos.
+La diferencia se observó principalmente en los <strong>tiempos de predicción</strong>, donde el algoritmo <em>Auto</em> fue el más eficiente.</p>
+<p><strong>Tabla comparativa de resultados:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Algoritmo</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>CV F1-Score</p></th>
+<th class="head text-center"><p>Tiempo de Predicción (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Auto</p></td>
+<td class="text-center"><p><strong>0.7311</strong></p></td>
+<td class="text-center"><p><strong>0.7150</strong></p></td>
+<td class="text-center"><p><strong>2.20</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>KD-Tree</p></td>
+<td class="text-center"><p>0.7311</p></td>
+<td class="text-center"><p>0.7150</p></td>
+<td class="text-center"><p>30.49</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Ball-Tree</p></td>
+<td class="text-center"><p>0.7311</p></td>
+<td class="text-center"><p>0.7150</p></td>
+<td class="text-center"><p>33.88</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Brute-Force</p></td>
+<td class="text-center"><p>0.7311</p></td>
+<td class="text-center"><p>0.7150</p></td>
+<td class="text-center"><p>2.79</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="seleccion-del-mejor-algoritmo">
+<h4><strong>4.1.3 Selección del Mejor Algoritmo</strong><a class="headerlink" href="#seleccion-del-mejor-algoritmo" title="Link to this heading">#</a></h4>
+<p>El algoritmo <strong>Auto</strong> fue seleccionado como el más adecuado, ya que:</p>
+<ul class="simple">
+<li><p>Mantiene un <strong>rendimiento predictivo equivalente</strong> al resto de configuraciones.</p></li>
+<li><p>Reduce el <strong>tiempo de predicción en más de un 90 %</strong> respecto a KD-Tree y Ball-Tree.</p></li>
+<li><p>Ofrece un equilibrio óptimo entre velocidad y estabilidad, siendo ideal para grandes volúmenes de datos.</p></li>
+</ul>
+<p>El tiempo total de ejecución del proceso fue de <strong>329.81 s</strong>, confirmando una <strong>eficiencia computacional notable</strong> frente a las versiones no optimizadas.</p>
+</section>
+<hr class="docutils" />
+<section id="desempeno-por-clase">
+<h4><strong>4.1.4 Desempeño por Clase</strong><a class="headerlink" href="#desempeno-por-clase" title="Link to this heading">#</a></h4>
+<p>El análisis de métricas por clase muestra un comportamiento equilibrado, aunque con un leve sesgo hacia la clase mayoritaria <em>Standard</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.63</p></td>
+<td class="text-center"><p>0.70</p></td>
+<td class="text-center"><p>0.66</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.75</p></td>
+<td class="text-center"><p>0.76</p></td>
+<td class="text-center"><p>0.75</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p>0.79</p></td>
+<td class="text-center"><p>0.76</p></td>
+<td class="text-center"><p>0.78</p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Promedio Macro</strong></p></td>
+<td class="text-center"><p>0.73</p></td>
+<td class="text-center"><p>0.74</p></td>
+<td class="text-center"><p>0.73</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El modelo mantiene <strong>una precisión global del 74.85 %</strong>, destacándose en la clase <em>Standard</em>, aunque la categoría <em>Good</em> sigue siendo la más desafiante de identificar.</p>
+</section>
+<hr class="docutils" />
+<section id="matriz-de-confusion">
+<h4><strong>4.1.5 Matriz de Confusión</strong><a class="headerlink" href="#matriz-de-confusion" title="Link to this heading">#</a></h4>
+<p>La matriz evidencia un patrón de predicción consistente:</p>
+<ul class="simple">
+<li><p>Las clases <em>Poor</em> y <em>Standard</em> presentan los mayores aciertos (6 590 y 12 139 respectivamente).</p></li>
+<li><p>Se observan confusiones moderadas entre <em>Good</em> y <em>Standard</em>, propias de la similitud en sus patrones de comportamiento crediticio.</p></li>
+</ul>
+<p>Esto indica que el modelo, aunque eficiente, <strong>mantiene una ligera tendencia a sobreclasificar hacia la clase estándar</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="evaluacion-global">
+<h4><strong>4.1.6 Evaluación Global</strong><a class="headerlink" href="#evaluacion-global" title="Link to this heading">#</a></h4>
+<p>El modelo optimizado logra:</p>
+<ul class="simple">
+<li><p><strong>Accuracy general:</strong> 0.7485</p></li>
+<li><p><strong>F1-score macro:</strong> 0.7311</p></li>
+<li><p><strong>Validación cruzada:</strong> 0.7150 ± 0.0046</p></li>
+<li><p><strong>Tiempo de predicción:</strong> 2.20 s</p></li>
+</ul>
+<p>Estos valores confirman una <strong>mejor relación entre rendimiento y costo computacional</strong>, cumpliendo con el objetivo de la optimización.</p>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h4><strong>4.1.7 Conclusión</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h4>
+<p>La implementación del <strong>KNN optimizado con algoritmo Auto</strong> resultó ser la alternativa <strong>más eficiente y estable</strong>, logrando reducir drásticamente los tiempos de ejecución sin comprometer la capacidad predictiva.</p>
+<p>En resumen:</p>
+<ul class="simple">
+<li><p>La precisión global del modelo se mantuvo constante (≈ 0.73 F1).</p></li>
+<li><p>El tiempo de predicción disminuyó de más de 30 s a tan solo 2 s.</p></li>
+<li><p>El modelo conserva una excelente generalización bajo validación cruzada.</p></li>
+</ul>
+<p>Por tanto, se concluye que el <strong>uso de <code class="docutils literal notranslate"><span class="pre">algorithm='auto'</span></code> es la configuración óptima</strong> para este conjunto de datos, al ofrecer un <strong>balance ideal entre velocidad, robustez y desempeño</strong>.</p>
+</section>
+</section>
 </section>
 <section id="naive-bayes">
 <h2>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h2>
@@ -1424,18 +1637,18 @@ weighted avg       0.75      0.75      0.75     30000
 
 🎯 Entrenamiento NORMAL (batch completo)...
   ✅ F1-Score: 0.6324
-  ✅ Tiempo entrenamiento: 0.2289s
+  ✅ Tiempo entrenamiento: 0.1314s
 
 🎯 Entrenamiento POR LOTES (partial_fit)...
   🔍 Probando batch_size=500...
     ✅ F1-Score: 0.6324
-    ✅ Tiempo entrenamiento: 0.5487s
+    ✅ Tiempo entrenamiento: 0.1619s
   🔍 Probando batch_size=1000...
     ✅ F1-Score: 0.6324
-    ✅ Tiempo entrenamiento: 0.1710s
+    ✅ Tiempo entrenamiento: 0.1176s
   🔍 Probando batch_size=2000...
     ✅ F1-Score: 0.6324
-    ✅ Tiempo entrenamiento: 0.1760s
+    ✅ Tiempo entrenamiento: 0.0945s
 
 🏆 MEJOR BATCH SIZE: 500
 📊 F1-Score: 0.6324
@@ -1466,12 +1679,12 @@ accuracy                                      120000.0
 ============================================================
 </pre></div>
 </div>
-<img alt="_images/1d19480ce7f1a589487811bb7f4cb33cd9170bac34f5d8b75ae8ca3383f4b385.png" src="_images/1d19480ce7f1a589487811bb7f4cb33cd9170bac34f5d8b75ae8ca3383f4b385.png" />
-<img alt="_images/5338b577e22db6dad6c0ccf1d484e982ef453c8a1b29054126beaf57e5e2e8e4.png" src="_images/5338b577e22db6dad6c0ccf1d484e982ef453c8a1b29054126beaf57e5e2e8e4.png" />
+<img alt="_images/878f43a4e586f40677dfd5170029e9336bd417ce82e4360fce5880797e5cdc68.png" src="_images/878f43a4e586f40677dfd5170029e9336bd417ce82e4360fce5880797e5cdc68.png" />
+<img alt="_images/221787a51a4a1f3c335ccccb20b1b222c4c1509d2abf87d6e7b16f3f85f2e992.png" src="_images/221787a51a4a1f3c335ccccb20b1b222c4c1509d2abf87d6e7b16f3f85f2e992.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
 🎯 RESUMEN FINAL - NAIVE BAYES OPTIMIZADO
 ======================================================================
-⏱️  Tiempo total ejecución: 3.58s
+⏱️  Tiempo total ejecución: 3.81s
 🏆 Mejor método: NORMAL
 📈 F1-Score: 0.6324 (63.24%)
 🎯 Validación Cruzada: 0.6330 ± 0.0108
@@ -1479,8 +1692,8 @@ accuracy                                      120000.0
 📊 COMPARACIÓN ENTRE MÉTODOS:
 Método     F1-Score   CV F1      Tiempo(s)   
 ---------------------------------------------
-NORMAL     0.6324     0.6330     0.2289      
-BATCH      0.6324     0.6330     0.5487      
+NORMAL     0.6324     0.6330     0.1314      
+BATCH      0.6324     0.6330     0.1619      
 
 📋 REPORTE CLASIFICACIÓN (NORMAL):
               precision    recall  f1-score   support
@@ -1500,6 +1713,137 @@ weighted avg       0.70      0.64      0.64     30000
 </div>
 </div>
 </div>
+<section id="optimizacion-computacional-del-modelo-naive-bayes">
+<h3><strong>4.2 Optimización Computacional del Modelo Naive Bayes</strong><a class="headerlink" href="#optimizacion-computacional-del-modelo-naive-bayes" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4><strong>4.2.1 Descripción General</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>Naive Bayes</strong> fue optimizado implementando dos estrategias de entrenamiento:</p>
+<ul class="simple">
+<li><p><strong>Entrenamiento completo (Normal)</strong>: el modelo se ajusta con todo el conjunto de entrenamiento.</p></li>
+<li><p><strong>Entrenamiento incremental por lotes (<code class="docutils literal notranslate"><span class="pre">partial_fit</span></code>)</strong>: el modelo se actualiza progresivamente con subconjuntos del conjunto de datos (<em>batch sizes</em> de 500, 1000 y 2000).</p></li>
+</ul>
+<p>El objetivo fue <strong>evaluar la eficiencia del entrenamiento por lotes</strong> en términos de tiempo de cómputo y estabilidad de las métricas, sin comprometer el rendimiento predictivo.</p>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h4><strong>4.2.2 Resultados Globales</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Ambos métodos lograron un desempeño <strong>idéntico en términos de F1-Score (0.6324)</strong> y <strong>validación cruzada (0.6330 ± 0.0108)</strong>, lo que indica que el entrenamiento incremental <strong>no afecta la capacidad predictiva del modelo</strong>.
+La diferencia principal radica en el <strong>tiempo de ejecución</strong>, donde el método normal fue ligeramente más eficiente (0.13 s vs. 0.16 s).</p>
+<p><strong>Tabla comparativa de resultados:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Método</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>CV F1-Score</p></th>
+<th class="head text-center"><p>Tiempo Entrenamiento (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Normal</p></td>
+<td class="text-center"><p><strong>0.6324</strong></p></td>
+<td class="text-center"><p><strong>0.6330</strong></p></td>
+<td class="text-center"><p><strong>0.1314</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Batch</p></td>
+<td class="text-center"><p>0.6324</p></td>
+<td class="text-center"><p>0.6330</p></td>
+<td class="text-center"><p>0.1619</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="seleccion-del-mejor-metodo">
+<h4><strong>4.2.3 Selección del Mejor Método</strong><a class="headerlink" href="#seleccion-del-mejor-metodo" title="Link to this heading">#</a></h4>
+<p>El <strong>entrenamiento normal</strong> fue seleccionado como la mejor opción al presentar:</p>
+<ul class="simple">
+<li><p><strong>Menor tiempo total de cómputo</strong>, con un ahorro aproximado del <strong>19 %</strong> respecto al mejor escenario por lotes.</p></li>
+<li><p><strong>Métricas idénticas</strong> a las obtenidas mediante entrenamiento incremental, demostrando que no existe pérdida de rendimiento.</p></li>
+</ul>
+<p>El método por lotes resultó útil para confirmar la estabilidad del modelo, mostrando resultados consistentes incluso con diferentes tamaños de <em>batch</em> (500, 1000 y 2000 muestras).</p>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h4><strong>4.2.4 Desempeño por Clase</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>El análisis de métricas por clase evidencia un comportamiento <strong>heterogéneo</strong> en el modelo, influenciado por las diferencias de distribución de las etiquetas:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.46</p></td>
+<td class="text-center"><p><strong>0.84</strong></p></td>
+<td class="text-center"><p>0.59</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.61</p></td>
+<td class="text-center"><p>0.71</p></td>
+<td class="text-center"><p>0.66</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.83</strong></p></td>
+<td class="text-center"><p>0.53</p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Promedio Macro</strong></p></td>
+<td class="text-center"><p>0.63</p></td>
+<td class="text-center"><p>0.69</p></td>
+<td class="text-center"><p>0.63</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Se observa que el modelo tiende a <strong>favorecer la clase “Good” en recall</strong>, clasificando correctamente la mayoría de sus casos, aunque con menor precisión.
+En contraste, la clase “Standard” presenta un <strong>mayor nivel de precisión</strong>, pero con pérdidas notables en sensibilidad (recall).</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h4><strong>4.2.5 Matriz de Confusión</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>La matriz muestra un patrón de clasificación razonablemente equilibrado:</p>
+<ul class="simple">
+<li><p>Las categorías <em>Good</em> (4 491 aciertos) y <em>Poor</em> (6 178 aciertos) son correctamente identificadas en su mayoría.</p></li>
+<li><p>La clase <em>Standard</em> concentra la mayor cantidad de errores cruzados, siendo confundida tanto con <em>Good</em> como con <em>Poor</em>, lo que evidencia una <strong>mayor superposición de atributos</strong> entre estas categorías.</p></li>
+</ul>
+<p>En general, el modelo mantiene <strong>una tasa de aciertos aceptable del 63.6 %</strong>, confirmando un desempeño estable bajo supuestos de independencia condicional.</p>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h4><strong>4.2.6 Evaluación Global</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>Los resultados del modelo final de Naive Bayes fueron:</p>
+<ul class="simple">
+<li><p><strong>Accuracy general:</strong> 0.6363</p></li>
+<li><p><strong>Precision (macro promedio):</strong> 0.6342</p></li>
+<li><p><strong>Recall (macro promedio):</strong> 0.6926</p></li>
+<li><p><strong>F1-Score (macro promedio):</strong> 0.6324</p></li>
+<li><p><strong>Validación cruzada:</strong> 0.6330 ± 0.0108</p></li>
+<li><p><strong>Tiempo total de ejecución:</strong> 3.81 s</p></li>
+</ul>
+<p>Estos valores reflejan <strong>un modelo eficiente, rápido y estable</strong>, cumpliendo con el objetivo de optimización computacional sin degradar el rendimiento.</p>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h4><strong>4.2.7 Conclusión</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>La optimización computacional mediante <strong>entrenamiento por lotes (<code class="docutils literal notranslate"><span class="pre">partial_fit</span></code>)</strong> mostró que el modelo <strong>mantiene resultados idénticos</strong> al entrenamiento completo, lo que lo convierte en una alternativa viable para escenarios de <strong>aprendizaje incremental o en flujo de datos</strong>.</p>
+<p>En este caso, el <strong>método normal se mantiene como la mejor opción</strong>, al combinar la <strong>máxima eficiencia temporal (0.13 s)</strong> con la <strong>misma precisión predictiva (F1 = 0.63)</strong>.</p>
+<p>En síntesis:</p>
+<ul class="simple">
+<li><p>Naive Bayes confirma su <strong>alto rendimiento computacional</strong> con un tiempo de entrenamiento inferior a un segundo.</p></li>
+<li><p>El método <em>batch</em> demuestra robustez para aplicaciones escalables, sin pérdida de generalización.</p></li>
+<li><p>El desempeño final es <strong>aceptable y consistente</strong>, aunque se evidencia margen de mejora en la separación entre clases <em>Poor</em> y <em>Standard</em>.</p></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="regresion-logistica-con-regularizacion-l1-y-l2">
 <h2>Regresión Logística (con regularización L1 y L2)<a class="headerlink" href="#regresion-logistica-con-regularizacion-l1-y-l2" title="Link to this heading">#</a></h2>
@@ -2021,26 +2365,26 @@ weighted avg       0.70      0.64      0.64     30000
 
 🎯 Probando l1_saga...
   ✅ F1-Score: 0.6188
-  ✅ Tiempo entrenamiento: 3.09s
+  ✅ Tiempo entrenamiento: 4.02s
   ✅ Sparsity: 34.03% (95/144 coeficientes no cero)
 
 🎯 Probando l2_saga...
   ✅ F1-Score: 0.6187
-  ✅ Tiempo entrenamiento: 2.61s
+  ✅ Tiempo entrenamiento: 1.73s
 
 🎯 Probando elasticnet_saga...
   ✅ F1-Score: 0.6187
-  ✅ Tiempo entrenamiento: 27.00s
+  ✅ Tiempo entrenamiento: 15.56s
   ✅ Sparsity: 33.33% (96/144 coeficientes no cero)
 
 🏆 MEJOR CONFIGURACIÓN: &#39;l1_saga&#39;
 📊 F1-Score: 0.6188
-⚡ Tiempo entrenamiento: 3.09s
+⚡ Tiempo entrenamiento: 4.02s
 🔍 Sparsity: 34.03%
 
 🔍 OPTIMIZANDO HIPERPARÁMETROS PARA L1_SAGA...
 Fitting 3 folds for each of 3 candidates, totalling 9 fits
-✅ Búsqueda completada en 68.51s
+✅ Búsqueda completada en 27.80s
 🎯 Mejores parámetros: {&#39;C&#39;: 1.0}
 📈 Mejor score: 0.6211
 
@@ -2056,9 +2400,9 @@ Configuración: &#39;l1_saga&#39;
 Parámetros optimizados: {&#39;C&#39;: 1.0}
 
 🔍 COMPARACIÓN CON MODELO BASE:
-F1-Score Base: 0.6186
+F1-Score Base: 0.6185
 F1-Score Optimizado: 0.6188
-Mejora: +0.0002
+Mejora: +0.0003
 
 🔍 ANÁLISIS DE COEFICIENTES (OPTIMIZADO):
 Top 10 características más importantes por clase:
@@ -2121,15 +2465,15 @@ accuracy                                      120000.0
 ============================================================
 </pre></div>
 </div>
-<img alt="_images/725457c1dfaba76968d14525778b981f3202c49181e5e066a9d9ef2d3b651556.png" src="_images/725457c1dfaba76968d14525778b981f3202c49181e5e066a9d9ef2d3b651556.png" />
-<img alt="_images/403764fd5bfad58165109b54a2773df7c758070f98f614ab25d5f981c6e8d28b.png" src="_images/403764fd5bfad58165109b54a2773df7c758070f98f614ab25d5f981c6e8d28b.png" />
+<img alt="_images/6aaa9745df79eb6e78d87c09821bdf2ee0409a225701c75e63081e7f97b4bf3a.png" src="_images/6aaa9745df79eb6e78d87c09821bdf2ee0409a225701c75e63081e7f97b4bf3a.png" />
+<img alt="_images/93d64a3b369f7848ce1678d85dd04af137e27151b9bdcd75f946bd7fbec111db.png" src="_images/93d64a3b369f7848ce1678d85dd04af137e27151b9bdcd75f946bd7fbec111db.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
 🎯 RESUMEN FINAL - REGRESIÓN LOGÍSTICA OPTIMIZADA CON SAGA
 ======================================================================
-⏱️  Tiempo total ejecución: 183.05s
+⏱️  Tiempo total ejecución: 85.84s
 🏆 Mejor configuración: &#39;l1_saga&#39;
 📈 F1-Score optimizado: 0.6188 (61.88%)
-📊 Mejora vs base: +0.0002
+📊 Mejora vs base: +0.0003
 🎯 Validación Cruzada: 0.6207 ± 0.0063
 🔝 Característica más importante: payment_of_min_amount_Yes
 📊 Sparsity: 34.03% (95/144 coeficientes no cero)
@@ -2152,6 +2496,184 @@ weighted avg       0.65      0.65      0.65     30000
 </div>
 </div>
 </div>
+<section id="optimizacion-computacional-del-modelo-de-regresion-logistica">
+<h3><strong>4.3 Optimización Computacional del Modelo de Regresión Logística</strong><a class="headerlink" href="#optimizacion-computacional-del-modelo-de-regresion-logistica" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h4><strong>4.3.1 Descripción General</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>El modelo de <strong>Regresión Logística Multiclase</strong> se optimizó mediante el <strong>solver SAGA</strong>, que permite implementar tanto regularización <strong>L1 (Lasso)</strong> como <strong>L2 (Ridge)</strong> y <strong>ElasticNet</strong>.
+El objetivo fue <strong>identificar la mejor regularización</strong> para maximizar el rendimiento predictivo (F1-Score) minimizando el costo computacional, así como analizar la <strong>sparsidad</strong> (proporción de coeficientes nulos) para favorecer modelos más interpretables.</p>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h4><strong>4.3.2 Resultados Globales</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>Los tres esquemas de regularización mostraron <strong>rendimientos equivalentes en F1-Score (≈ 0.619)</strong> y <strong>estabilidad en validación cruzada (0.6207 ± 0.0063)</strong>.
+No obstante, se evidenciaron <strong>diferencias significativas en tiempo de entrenamiento y sparsidad</strong>, factores determinantes en la eficiencia y la interpretabilidad del modelo.</p>
+<p><strong>Resumen comparativo:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Configuración</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>CV F1</p></th>
+<th class="head text-center"><p>Tiempo (s)</p></th>
+<th class="head text-center"><p>Sparsity (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>L1 – saga</strong></p></td>
+<td class="text-center"><p><strong>0.6188</strong></p></td>
+<td class="text-center"><p><strong>0.6207</strong></p></td>
+<td class="text-center"><p>4.02</p></td>
+<td class="text-center"><p><strong>34.03</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>L2 – saga</p></td>
+<td class="text-center"><p>0.6187</p></td>
+<td class="text-center"><p>0.6207</p></td>
+<td class="text-center"><p><strong>1.73</strong></p></td>
+<td class="text-center"><p>0.00</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>ElasticNet – saga</p></td>
+<td class="text-center"><p>0.6187</p></td>
+<td class="text-center"><p>0.6207</p></td>
+<td class="text-center"><p>15.56</p></td>
+<td class="text-center"><p>33.33</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="seleccion-del-mejor-modelo">
+<h4><strong>4.3.3 Selección del Mejor Modelo</strong><a class="headerlink" href="#seleccion-del-mejor-modelo" title="Link to this heading">#</a></h4>
+<p>El modelo con <strong>regularización L1 y solver SAGA</strong> fue seleccionado como la mejor configuración debido a que:</p>
+<ul class="simple">
+<li><p>Mantiene <strong>idéntico rendimiento predictivo</strong> frente a L2 y ElasticNet.</p></li>
+<li><p>Presenta un nivel de <strong>sparsidad del 34 %</strong>, eliminando coeficientes irrelevantes y simplificando la interpretación.</p></li>
+<li><p>Logra un <strong>equilibrio adecuado entre precisión y eficiencia</strong>, con tiempos de entrenamiento razonables (4.02 s frente a 15.56 s de ElasticNet).</p></li>
+</ul>
+<p>Esta configuración fue, además, <strong>robusta en validación cruzada</strong> y permitió identificar las variables con mayor contribución a la predicción del <em>credit score</em>.</p>
+</section>
+<hr class="docutils" />
+<section id="desempeno-del-modelo-optimizado">
+<h4><strong>4.3.4 Desempeño del Modelo Optimizado</strong><a class="headerlink" href="#desempeno-del-modelo-optimizado" title="Link to this heading">#</a></h4>
+<p>Las métricas globales del modelo optimizado (L1-SAGA) fueron:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.6494</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro)</strong></p></td>
+<td class="text-center"><p>0.6295</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro)</strong></p></td>
+<td class="text-center"><p>0.6136</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro)</strong></p></td>
+<td class="text-center"><p>0.6188</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Validación Cruzada (Media ± Std)</strong></p></td>
+<td class="text-center"><p>0.6207 ± 0.0032</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Comparado con el modelo base (sin regularización optimizada), el desempeño se mantuvo estable, con una <strong>ligera mejora de +0.0003 en F1</strong>, confirmando la solidez de la configuración seleccionada.</p>
+</section>
+<hr class="docutils" />
+<section id="interpretacion-de-coeficientes">
+<h4><strong>4.3.5 Interpretación de Coeficientes</strong><a class="headerlink" href="#interpretacion-de-coeficientes" title="Link to this heading">#</a></h4>
+<p>El análisis de los coeficientes revela que la <strong>variable más influyente</strong> fue
+➡️ <code class="docutils literal notranslate"><span class="pre">payment_of_min_amount_Yes</span></code>, con un coeficiente negativo destacado (-0.6871) para la clase <em>Good</em>, lo que indica que <strong>no pagar el monto mínimo se asocia con un menor puntaje crediticio</strong>.</p>
+<p>Entre las principales variables relevantes se encuentran:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">credit_mix_Standard</span></code> y <code class="docutils literal notranslate"><span class="pre">credit_mix_Good</span></code>, relacionadas con la composición del crédito.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interest_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">num_credit_card</span></code> y <code class="docutils literal notranslate"><span class="pre">delay_from_due_date</span></code>, que reflejan comportamientos financieros y de pago.</p></li>
+<li><p>Variables categóricas como <code class="docutils literal notranslate"><span class="pre">payment_behaviour_Low_spent_*</span></code>, que aportan granularidad al análisis del comportamiento crediticio.</p></li>
+</ul>
+<p>El modelo mantiene <strong>95 coeficientes no nulos de un total de 144</strong>, confirmando un nivel de <strong>sparsidad del 34 %</strong>, lo que mejora la interpretabilidad sin afectar la capacidad predictiva.</p>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h4><strong>4.3.6 Desempeño por Clase</strong><a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>El comportamiento del modelo es relativamente equilibrado entre las tres categorías:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.55</p></td>
+<td class="text-center"><p>0.57</p></td>
+<td class="text-center"><p>0.56</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.66</p></td>
+<td class="text-center"><p>0.53</p></td>
+<td class="text-center"><p>0.59</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p>0.68</p></td>
+<td class="text-center"><p><strong>0.74</strong></p></td>
+<td class="text-center"><p><strong>0.71</strong></p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Macro promedio</strong></p></td>
+<td class="text-center"><p>0.63</p></td>
+<td class="text-center"><p>0.61</p></td>
+<td class="text-center"><p>0.62</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Se observa que la clase <em>Standard</em> es la mejor predicha, mientras que la categoría <em>Poor</em> presenta confusiones con las otras dos, producto de la cercanía en los patrones de comportamiento financiero.</p>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h4><strong>4.3.7 Matriz de Confusión</strong><a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<p>La matriz de confusión confirma que:</p>
+<ul class="simple">
+<li><p>Las clases <em>Good</em> y <em>Standard</em> son las mejor clasificadas (3 034 y 11 806 aciertos respectivamente).</p></li>
+<li><p>Se presentan confusiones entre <em>Poor</em> y <em>Standard</em>, lo que sugiere <strong>solapamiento de atributos crediticios intermedios</strong>.</p></li>
+<li><p>No se observan sesgos extremos en el modelo, manteniendo una distribución de errores coherente con el equilibrio de clases.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h4><strong>4.3.8 Evaluación Global</strong><a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
+<p>El tiempo total de ejecución fue de <strong>85.84 s</strong>, incluyendo la búsqueda de hiperparámetros.
+La configuración <strong>L1-SAGA con C = 1.0</strong> ofreció:</p>
+<ul class="simple">
+<li><p>Alta eficiencia computacional.</p></li>
+<li><p>Sparsidad óptima.</p></li>
+<li><p>Consistencia en validación cruzada.</p></li>
+</ul>
+<p>Por tanto, este modelo constituye una <strong>versión final estable y generalizable</strong> del clasificador logístico optimizado.</p>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h4><strong>4.3.9 Conclusión</strong><a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<p>El proceso de optimización con <strong>solver SAGA y penalización L1</strong> logró <strong>mejorar la eficiencia y la interpretabilidad</strong> del modelo sin comprometer su precisión.
+El modelo final muestra:</p>
+<ul class="simple">
+<li><p>F1 ≈ 0.62 con validación cruzada estable.</p></li>
+<li><p>34 % de sparsidad en coeficientes.</p></li>
+<li><p>Mayor claridad en la contribución de variables conductuales.</p></li>
+</ul>
+<p>En conjunto, la regresión logística optimizada con SAGA se consolida como un <strong>modelo computacionalmente eficiente y explicable</strong>, ideal para entornos donde la interpretabilidad y el tiempo de respuesta son tan importantes como la precisión predictiva.</p>
+</section>
+</section>
 </section>
 <section id="ridge">
 <h2>Ridge<a class="headerlink" href="#ridge" title="Link to this heading">#</a></h2>
@@ -2386,11 +2908,11 @@ CV Std f1-score (macro avg): 0.0020
 weighted avg       0.65      0.64      0.64     30000
 </pre></div>
 </div>
-<img alt="_images/14db9858081b9c5dbafc5b7c6254e1d7e3fe54c5ce4366fc7a1bb21e79a6934b.png" src="_images/14db9858081b9c5dbafc5b7c6254e1d7e3fe54c5ce4366fc7a1bb21e79a6934b.png" />
+<img alt="_images/33b83bf353a180356b99291fd4fcaeb0dcdb005bcd92c16d5ae46d1aced7b510.png" src="_images/33b83bf353a180356b99291fd4fcaeb0dcdb005bcd92c16d5ae46d1aced7b510.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
 🎯 RESUMEN FINAL - RIDGE CLASSIFICATION
 ============================================================
-⏱️  Tiempo ejecución: 0.69s
+⏱️  Tiempo ejecución: 1.09s
 📈 f1-score (macro avg): 0.6140 (61.40%)
 🎯 Validación Cruzada: 0.6132 ± 0.0040
 💾 Resultados guardados: &#39;ridge_benchmark_results.pkl&#39;
@@ -2399,16 +2921,127 @@ weighted avg       0.65      0.64      0.64     30000
 </div>
 </div>
 </div>
+<section id="ridge-classification-modelo-benchmark">
+<h3><strong>4.4 Ridge Classification – Modelo Benchmark</strong><a class="headerlink" href="#ridge-classification-modelo-benchmark" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h4><strong>4.4.1 Descripción General</strong><a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>Ridge Classifier</strong> fue utilizado como punto de referencia (<em>benchmark</em>) dentro del proceso de optimización computacional.
+Su objetivo principal fue <strong>evaluar la capacidad de generalización y la estabilidad base</strong> del conjunto de datos antes de aplicar métodos más complejos o costosos computacionalmente.</p>
+<p>La técnica Ridge impone una <strong>regularización L2</strong>, que penaliza la magnitud de los coeficientes sin forzarlos a cero, reduciendo la varianza y previniendo el sobreajuste en presencia de colinealidad entre variables.</p>
 </section>
-<section id="lasso">
-<h2>Lasso<a class="headerlink" href="#lasso" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
-</pre></div>
+<hr class="docutils" />
+<section id="id14">
+<h4><strong>4.4.2 Resultados Globales</strong><a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<p>El modelo presentó un <strong>desempeño estable y competitivo</strong>, alcanzando un <strong>F1-score macro promedio de 0.6140</strong>, con una <strong>validación cruzada media de 0.6132 ± 0.0040</strong>.
+Su tiempo total de ejecución fue de apenas <strong>1.09 segundos</strong>, destacando por su <strong>alta eficiencia computacional</strong>.</p>
+<p><strong>Resumen de métricas principales:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.6404</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6150</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6224</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6140</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>CV F1-Score (Mean ± Std)</strong></p></td>
+<td class="text-center"><p>0.6132 ± 0.0040</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Tiempo total de ejecución</strong></p></td>
+<td class="text-center"><p>1.09 s</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h4><strong>4.4.3 Desempeño por Clase</strong><a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<p>El modelo muestra un comportamiento equilibrado entre las clases, con <strong>mayor desempeño en la categoría <em>Standard</em></strong>, que representa la mayoría de los casos del conjunto de datos.
+Sin embargo, las clases <em>Good</em> y <em>Poor</em> presentan una leve disminución en recall, lo que sugiere que el modelo tiende a <strong>subclasificar instancias minoritarias</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.49</p></td>
+<td class="text-center"><p>0.63</p></td>
+<td class="text-center"><p>0.55</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>0.54</p></td>
+<td class="text-center"><p>0.59</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.70</strong></p></td>
+<td class="text-center"><p><strong>0.70</strong></p></td>
+<td class="text-center"><p><strong>0.70</strong></p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Promedio Macro</strong></p></td>
+<td class="text-center"><p>0.61</p></td>
+<td class="text-center"><p>0.62</p></td>
+<td class="text-center"><p>0.61</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
+<p>El promedio macro evidencia un <strong>equilibrio razonable entre precisión y sensibilidad</strong>, mientras que el promedio ponderado (0.64) confirma que el modelo conserva una buena capacidad predictiva incluso en presencia de clases desbalanceadas.</p>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h4><strong>4.4.4 Matriz de Confusión</strong><a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<p>La matriz de confusión muestra que:</p>
+<ul class="simple">
+<li><p>Las predicciones más precisas se concentran en la clase <em>Standard</em> (11 176 aciertos).</p></li>
+<li><p>La clase <em>Good</em> presenta 3 371 aciertos, con confusiones principalmente hacia <em>Standard</em> (1 900 casos).</p></li>
+<li><p>En <em>Poor</em>, el modelo acierta 4 665 instancias, aunque confunde una fracción considerable con <em>Standard</em> (2 975 casos).</p></li>
+</ul>
+<p>Este patrón indica una <strong>tendencia del modelo a agrupar ejemplos limítrofes en la categoría central “Standard”</strong>, lo que resulta consistente con la naturaleza regularizada de Ridge.</p>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h4><strong>4.4.5 Evaluación Global</strong><a class="headerlink" href="#id17" title="Link to this heading">#</a></h4>
+<p>El desempeño del Ridge Classifier se caracteriza por:</p>
+<ul class="simple">
+<li><p><strong>Estabilidad y rapidez</strong>, con tiempos de entrenamiento y predicción mínimos.</p></li>
+<li><p><strong>Consistencia entre métricas de validación y test</strong>, lo que demuestra un adecuado equilibrio sesgo-varianza.</p></li>
+<li><p><strong>Ausencia de sobreajuste</strong>, reflejada en la homogeneidad entre el F1-score medio y el obtenido en validación cruzada.</p></li>
+</ul>
+<p>Si bien su precisión no supera los modelos optimizados como SAGA o KNN, <strong>su tiempo de ejecución es el menor del conjunto</strong>, lo que lo convierte en una referencia sólida para evaluar mejoras posteriores.</p>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h4><strong>4.4.6 Conclusión</strong><a class="headerlink" href="#id18" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>Ridge Classification</strong> cumple un rol esencial como <strong>baseline comparativo</strong>:</p>
+<ul class="simple">
+<li><p>Ofrece una <strong>predicción estable (F1 ≈ 0.61)</strong> con <strong>mínimo costo computacional (1.09 s)</strong>.</p></li>
+<li><p>Presenta un <strong>rendimiento balanceado entre clases</strong>, con buen comportamiento en la categoría predominante.</p></li>
+<li><p>Su uso permite <strong>establecer un punto de partida confiable</strong> para cuantificar las mejoras introducidas por los modelos optimizados en las siguientes etapas del análisis.</p></li>
+</ul>
+<p>En síntesis, Ridge Classification se consolida como un <strong>modelo eficiente, estable y computacionalmente liviano</strong>, ideal para comparar rendimiento y tiempos frente a técnicas más avanzadas de optimización.</p>
+</section>
+</section>
 </section>
 <section id="arbol-de-decision">
 <h2>Árbol de Decisión<a class="headerlink" href="#arbol-de-decision" title="Link to this heading">#</a></h2>
@@ -2682,11 +3315,11 @@ Top 10 características más importantes:
 11         credit_history_age      0.0025
 </pre></div>
 </div>
-<img alt="_images/9e60e3213ad6fdd7cedd0731fd6aa695b86a0a04928d5c7f7338eb9ec62cabbc.png" src="_images/9e60e3213ad6fdd7cedd0731fd6aa695b86a0a04928d5c7f7338eb9ec62cabbc.png" />
+<img alt="_images/c4948cc80372a39775c50216a524c2989a68cadd94645ea0cd833e8f66ea6d79.png" src="_images/c4948cc80372a39775c50216a524c2989a68cadd94645ea0cd833e8f66ea6d79.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
 🎯 RESUMEN FINAL - ÁRBOL DE DECISIÓN
 ============================================================
-⏱️  Tiempo ejecución: 3.12s
+⏱️  Tiempo ejecución: 3.13s
 📈 f1-score (macro avg): 0.6556 (65.56%)
 🎯 Validación Cruzada: 0.6578 ± 0.0072
 📊 Característica más importante: outstanding_debt
@@ -2698,6 +3331,186 @@ Top 10 características más importantes:
 </div>
 </div>
 </div>
+<section id="arbol-de-decision-modelo-benchmark">
+<h3><strong>4.5 Árbol de Decisión – Modelo Benchmark</strong><a class="headerlink" href="#arbol-de-decision-modelo-benchmark" title="Link to this heading">#</a></h3>
+<section id="id19">
+<h4><strong>4.5.1 Descripción General</strong><a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>Árbol de Decisión (Decision Tree Classifier)</strong> fue implementado como otro punto de referencia dentro del proceso de evaluación comparativa.
+Su objetivo fue <strong>identificar patrones jerárquicos</strong> en los datos crediticios y analizar la <strong>importancia relativa de las variables</strong> en la predicción del puntaje de crédito (<em>credit score</em>).</p>
+<p>Para garantizar interpretabilidad y evitar sobreajuste, se limitó la <strong>profundidad máxima del árbol a 5 niveles</strong>, priorizando la estabilidad del modelo sobre la precisión extrema.</p>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h4><strong>4.5.2 Resultados Globales</strong><a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<p>El árbol de decisión logró un <strong>F1-Score macro promedio de 0.6556</strong>, con un <strong>accuracy de 0.6721</strong> y una <strong>validación cruzada media de 0.6578 ± 0.0072</strong>, mostrando un rendimiento <strong>superior al de Ridge y Naive Bayes</strong> en términos de equilibrio entre precisión y recall.</p>
+<p>El tiempo total de ejecución fue de <strong>3.13 segundos</strong>, manteniendo un desempeño eficiente y reproducible.</p>
+<p><strong>Resumen de métricas principales:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.6721</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6570</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6777</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6556</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>CV F1-Score (Mean ± Std)</strong></p></td>
+<td class="text-center"><p>0.6578 ± 0.0072</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Tiempo de ejecución</strong></p></td>
+<td class="text-center"><p>3.13 s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h4><strong>4.5.3 Desempeño por Clase</strong><a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<p>El árbol presenta <strong>mejor desempeño en la clase “Standard”</strong>, que concentra la mayoría de los registros, y un <strong>recall elevado en la clase “Good”</strong>, lo que indica una capacidad adecuada para reconocer casos positivos.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.50</p></td>
+<td class="text-center"><p><strong>0.76</strong></p></td>
+<td class="text-center"><p>0.60</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p><strong>0.74</strong></p></td>
+<td class="text-center"><p>0.59</p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.74</strong></p></td>
+<td class="text-center"><p>0.69</p></td>
+<td class="text-center"><p><strong>0.71</strong></p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Promedio Macro</strong></p></td>
+<td class="text-center"><p>0.66</p></td>
+<td class="text-center"><p>0.68</p></td>
+<td class="text-center"><p>0.66</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La combinación de <strong>alto recall en “Good”</strong> y <strong>alta precisión en “Standard”</strong> evidencia que el árbol <strong>captura patrones relevantes en ambos extremos del espectro crediticio</strong>, aunque con cierta confusión intermedia en los casos “Poor”.</p>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h4><strong>4.5.4 Matriz de Confusión</strong><a class="headerlink" href="#id22" title="Link to this heading">#</a></h4>
+<p>La matriz refleja la distribución de aciertos y errores entre clases:</p>
+<ul class="simple">
+<li><p><strong>Good:</strong> 4 043 aciertos, con confusiones principalmente hacia <em>Standard</em> (1 271).</p></li>
+<li><p><strong>Poor:</strong> 5 104 aciertos, pero con errores dispersos hacia <em>Standard</em> (2 685).</p></li>
+<li><p><strong>Standard:</strong> 11 015 aciertos, aunque con algo de solapamiento con <em>Good</em> (3 139).</p></li>
+</ul>
+<p>El patrón confirma que el modelo tiende a <strong>clasificar erróneamente los límites entre “Poor” y “Standard”</strong>, una conducta esperable dada la cercanía semántica de ambas categorías.</p>
+</section>
+<hr class="docutils" />
+<section id="importancia-de-caracteristicas">
+<h4><strong>4.5.5 Importancia de Características</strong><a class="headerlink" href="#importancia-de-caracteristicas" title="Link to this heading">#</a></h4>
+<p>El árbol de decisión aporta <strong>gran valor interpretativo</strong>, ya que permite identificar las variables más influyentes en las decisiones de clasificación.</p>
+<p>Las <strong>10 características más importantes</strong> fueron:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Posición</p></th>
+<th class="head text-left"><p>Variable</p></th>
+<th class="head text-center"><p>Importancia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><strong>outstanding_debt</strong></p></td>
+<td class="text-center"><p><strong>0.4152</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p>credit_mix_Standard</p></td>
+<td class="text-center"><p>0.2429</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p>interest_rate</p></td>
+<td class="text-center"><p>0.0909</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p>payment_of_min_amount_Yes</p></td>
+<td class="text-center"><p>0.0725</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5</p></td>
+<td class="text-left"><p>changed_credit_limit</p></td>
+<td class="text-center"><p>0.0491</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6</p></td>
+<td class="text-left"><p>num_credit_card</p></td>
+<td class="text-center"><p>0.0451</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>7</p></td>
+<td class="text-left"><p>credit_mix_Not Specified</p></td>
+<td class="text-center"><p>0.0399</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>8</p></td>
+<td class="text-left"><p>delay_from_due_date</p></td>
+<td class="text-center"><p>0.0334</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9</p></td>
+<td class="text-left"><p>num_credit_inquiries</p></td>
+<td class="text-center"><p>0.0034</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>10</p></td>
+<td class="text-left"><p>credit_history_age</p></td>
+<td class="text-center"><p>0.0025</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estas variables reflejan un claro <strong>énfasis en la deuda pendiente, la mezcla crediticia y los hábitos de pago</strong>, los cuales son determinantes del puntaje crediticio real.</p>
+<p>El gráfico confirma la <strong>dominancia de <code class="docutils literal notranslate"><span class="pre">outstanding_debt</span></code></strong>, cuya importancia (0.41) es casi el doble de la segunda variable, evidenciando que <strong>el nivel de endeudamiento explica la mayor parte de la decisión del modelo</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h4><strong>4.5.6 Evaluación Global</strong><a class="headerlink" href="#id23" title="Link to this heading">#</a></h4>
+<p>El modelo se caracteriza por:</p>
+<ul class="simple">
+<li><p><strong>Buen equilibrio entre precisión y sensibilidad.</strong></p></li>
+<li><p><strong>Alta interpretabilidad</strong>, con una estructura de árbol simple (profundidad = 5, hojas = 32).</p></li>
+<li><p><strong>Tiempo de ejecución bajo (3.13 s)</strong>, adecuado para entornos de evaluación rápida o análisis preliminar.</p></li>
+</ul>
+<p>Su rendimiento lo posiciona como un <strong>modelo base robusto</strong>, útil para explicar patrones y validar las tendencias observadas en modelos más complejos como XGBoost o Random Forest.</p>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h4><strong>4.5.7 Conclusión</strong><a class="headerlink" href="#id24" title="Link to this heading">#</a></h4>
+<p>El <strong>Árbol de Decisión</strong> se consolida como un modelo <strong>intermedio entre simplicidad y capacidad predictiva</strong>, ofreciendo un desempeño superior al de los modelos lineales y Naive Bayes, con la ventaja de <strong>interpretabilidad explícita</strong>.</p>
+<p>En síntesis:</p>
+<ul class="simple">
+<li><p>Alcanzó <strong>F1 = 0.6556</strong> y <strong>accuracy = 0.6721</strong>.</p></li>
+<li><p>Destacó por su <strong>claridad en la explicación de las variables relevantes</strong>.</p></li>
+<li><p>Mantuvo <strong>eficiencia computacional y generalización estable</strong>.</p></li>
+</ul>
+<p>Por tanto, este modelo es ideal como <strong>benchmark explicativo</strong> dentro del conjunto de clasificadores, ya que equilibra rendimiento, interpretabilidad y costo computacional.</p>
+</section>
+</section>
 </section>
 <section id="random-forest">
 <h2>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h2>
@@ -3152,22 +3965,22 @@ Top 10 características más importantes:
 
 🎯 Probando configuración &#39;balanced&#39;...
   ✅ F1-Score: 0.7205
-  ✅ Tiempo entrenamiento: 13.96s
+  ✅ Tiempo entrenamiento: 2.96s
   ✅ CV F1-Score: 0.7276
 
 🎯 Probando configuración &#39;fast_training&#39;...
   ✅ F1-Score: 0.7164
-  ✅ Tiempo entrenamiento: 22.10s
+  ✅ Tiempo entrenamiento: 2.39s
   ✅ CV F1-Score: 0.7132
 
 🎯 Probando configuración &#39;high_accuracy&#39;...
   ✅ F1-Score: 0.7728
-  ✅ Tiempo entrenamiento: 13.36s
-  ✅ CV F1-Score: 0.7438
+  ✅ Tiempo entrenamiento: 5.90s
+  ✅ CV F1-Score: 0.7442
 
 🏆 MEJOR CONFIGURACIÓN: &#39;high_accuracy&#39;
 📊 F1-Score: 0.7728
-⚡ Tiempo entrenamiento: 13.36s
+⚡ Tiempo entrenamiento: 5.90s
 
 🎯 ENTRENANDO MODELO FINAL OPTIMIZADO...
 
@@ -3177,8 +3990,8 @@ Accuracy: 0.7860
 Precision (macro avg): 0.7724
 Recall (macro avg): 0.7731
 F1-Score (macro avg): 0.7728
-CV Mean F1-score: 0.7610
-CV Std F1-score: 0.0046
+CV Mean F1-score: 0.7609
+CV Std F1-score: 0.0047
 Configuración: &#39;high_accuracy&#39;
 Número de árboles: 200
 
@@ -3230,16 +4043,16 @@ accuracy                                      120000.0
 ============================================================
 </pre></div>
 </div>
-<img alt="_images/a62c78e39370ec151f6b459e82771787d69ad2e3b2da8664bdb70002f3002ce3.png" src="_images/a62c78e39370ec151f6b459e82771787d69ad2e3b2da8664bdb70002f3002ce3.png" />
-<img alt="_images/86899aee88ae7c5b23588b3906786e039a93a598e94da99d79906173e4eef719.png" src="_images/86899aee88ae7c5b23588b3906786e039a93a598e94da99d79906173e4eef719.png" />
+<img alt="_images/542d4dea7e8a64acfe2a44f737db7a728457f80a4862a4e74e10efe7a403d6cb.png" src="_images/542d4dea7e8a64acfe2a44f737db7a728457f80a4862a4e74e10efe7a403d6cb.png" />
+<img alt="_images/7683bf4188ebd1c55bb0173c7fd4e9a06003f81919e77e445ffd83412065b5f5.png" src="_images/7683bf4188ebd1c55bb0173c7fd4e9a06003f81919e77e445ffd83412065b5f5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
 🎯 RESUMEN FINAL - RANDOM FOREST OPTIMIZADO
 ======================================================================
-⏱️  Tiempo total ejecución: 181.48s
+⏱️  Tiempo total ejecución: 51.11s
 🏆 Mejor configuración: &#39;high_accuracy&#39;
 📈 F1-Score optimizado: 0.7728 (77.28%)
 📊 Mejora vs base: +0.0038
-🎯 Validación Cruzada: 0.7610 ± 0.0092
+🎯 Validación Cruzada: 0.7609 ± 0.0094
 🌳 Número de árboles: 200
 📊 Característica más importante: outstanding_debt
 📈 Característica más estable: occupation_Writer
@@ -3262,146 +4075,250 @@ weighted avg       0.79      0.79      0.79     30000
 </div>
 </div>
 </div>
+<section id="random-forest-optimizado-tecnicas-avanzadas">
+<h3><strong>4.6 Random Forest Optimizado – Técnicas Avanzadas</strong><a class="headerlink" href="#random-forest-optimizado-tecnicas-avanzadas" title="Link to this heading">#</a></h3>
+<section id="id25">
+<h4><strong>4.6.1 Descripción General</strong><a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>Random Forest</strong> fue optimizado aplicando <strong>técnicas avanzadas de configuración y evaluación</strong>, buscando equilibrar precisión, eficiencia y estabilidad en la predicción del <em>credit score</em>.
+Se exploraron tres configuraciones principales:</p>
+<ul class="simple">
+<li><p><strong>Balanced:</strong> prioriza la compensación de clases mediante <em>class_weight=’balanced’</em>.</p></li>
+<li><p><strong>Fast training:</strong> reduce complejidad y árboles para acelerar el entrenamiento.</p></li>
+<li><p><strong>High accuracy:</strong> maximiza la profundidad y el número de árboles, priorizando el rendimiento predictivo.</p></li>
+</ul>
+<p>Cada configuración se evaluó bajo criterios de <strong>F1-Score macro</strong>, <strong>tiempo de entrenamiento</strong> y <strong>estabilidad de importancia de variables</strong>, seleccionando finalmente la más robusta.</p>
+</section>
+<hr class="docutils" />
+<section id="resultados-comparativos-de-configuraciones">
+<h4><strong>4.6.2 Resultados Comparativos de Configuraciones</strong><a class="headerlink" href="#resultados-comparativos-de-configuraciones" title="Link to this heading">#</a></h4>
+<p>Los resultados mostraron un <strong>aumento consistente del F1-Score</strong> conforme se incrementaba la complejidad del modelo.
+La configuración <strong>“high_accuracy”</strong> logró el mejor equilibrio entre precisión y estabilidad, aunque con un costo computacional ligeramente superior.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Configuración</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>CV F1-Score</p></th>
+<th class="head text-center"><p>Tiempo (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Balanced</p></td>
+<td class="text-center"><p>0.7205</p></td>
+<td class="text-center"><p>0.7276</p></td>
+<td class="text-center"><p>2.96</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Fast Training</p></td>
+<td class="text-center"><p>0.7164</p></td>
+<td class="text-center"><p>0.7132</p></td>
+<td class="text-center"><p>2.39</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>High Accuracy</strong></p></td>
+<td class="text-center"><p><strong>0.7728</strong></p></td>
+<td class="text-center"><p><strong>0.7442</strong></p></td>
+<td class="text-center"><p><strong>5.90</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El gráfico comparativo muestra que, pese al aumento de tiempo de entrenamiento, la ganancia en rendimiento (≈ +5 % en F1) justifica plenamente el uso de la configuración <strong>high_accuracy</strong> para el modelo final.</p>
+</section>
+<hr class="docutils" />
+<section id="evaluacion-global-del-modelo-optimizado">
+<h4><strong>4.6.3 Evaluación Global del Modelo Optimizado</strong><a class="headerlink" href="#evaluacion-global-del-modelo-optimizado" title="Link to this heading">#</a></h4>
+<p>El modelo final entrenado bajo la configuración <strong>high_accuracy</strong> alcanzó un desempeño notablemente superior en todas las métricas.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.7860</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro avg)</strong></p></td>
+<td class="text-center"><p>0.7724</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro avg)</strong></p></td>
+<td class="text-center"><p>0.7731</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro avg)</strong></p></td>
+<td class="text-center"><p><strong>0.7728</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Validación Cruzada (5 folds)</strong></p></td>
+<td class="text-center"><p>0.7609 ± 0.0094</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Tiempo total de ejecución</strong></p></td>
+<td class="text-center"><p>51.11 s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Comparado con el modelo base, el rendimiento mejoró en <strong>+0.0038 en F1</strong>, reforzando la consistencia del modelo a pesar de una mayor complejidad estructural (200 árboles, profundidad ilimitada).</p>
+</section>
+<hr class="docutils" />
+<section id="id26">
+<h4><strong>4.6.4 Desempeño por Clase</strong><a class="headerlink" href="#id26" title="Link to this heading">#</a></h4>
+<p>El modelo mantuvo un <strong>balance adecuado entre clases</strong>, con ligeras ventajas en la predicción de categorías medias (<em>Standard</em> y <em>Poor</em>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Soporte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.73</p></td>
+<td class="text-center"><p>0.73</p></td>
+<td class="text-center"><p>0.73</p></td>
+<td class="text-center"><p>5 349</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.78</p></td>
+<td class="text-center"><p><strong>0.79</strong></p></td>
+<td class="text-center"><p>0.78</p></td>
+<td class="text-center"><p>8 699</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.81</strong></p></td>
+<td class="text-center"><p><strong>0.81</strong></p></td>
+<td class="text-center"><p><strong>0.81</strong></p></td>
+<td class="text-center"><p>15 952</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Macro promedio</strong></p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>30 000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La categoría <em>Standard</em> mostró el mejor rendimiento global, mientras que <em>Good</em> mantuvo valores equilibrados de precisión y recall, lo que sugiere un comportamiento estable en todas las clases.</p>
+</section>
+<hr class="docutils" />
+<section id="id27">
+<h4><strong>4.6.5 Matriz de Confusión</strong><a class="headerlink" href="#id27" title="Link to this heading">#</a></h4>
+<p>La matriz de confusión del modelo optimizado evidencia una correcta diferenciación entre las tres categorías de puntaje:</p>
+<ul class="simple">
+<li><p><strong>Good:</strong> 3 894 aciertos, con pocas confusiones hacia <em>Standard</em> (1 430).</p></li>
+<li><p><strong>Poor:</strong> 6 838 aciertos, mostrando alta precisión (≈ 79 %).</p></li>
+<li><p><strong>Standard:</strong> 12 847 aciertos, con el menor nivel de error relativo.</p></li>
+</ul>
+<p>El modelo demuestra una <strong>fuerte capacidad discriminativa</strong>, minimizando los solapamientos entre las categorías contiguas.</p>
+</section>
+<hr class="docutils" />
+<section id="analisis-de-importancia-de-caracteristicas">
+<h4><strong>4.6.6 Análisis de Importancia de Características</strong><a class="headerlink" href="#analisis-de-importancia-de-caracteristicas" title="Link to this heading">#</a></h4>
+<p>Las variables con mayor contribución al modelo confirman la relevancia de factores financieros y de comportamiento:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Posición</p></th>
+<th class="head text-left"><p>Variable</p></th>
+<th class="head text-center"><p>Importancia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><strong>outstanding_debt</strong></p></td>
+<td class="text-center"><p><strong>0.0995</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p>interest_rate</p></td>
+<td class="text-center"><p>0.0730</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p>credit_history_age</p></td>
+<td class="text-center"><p>0.0616</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p>delay_from_due_date</p></td>
+<td class="text-center"><p>0.0605</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5</p></td>
+<td class="text-left"><p>changed_credit_limit</p></td>
+<td class="text-center"><p>0.0541</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6</p></td>
+<td class="text-left"><p>monthly_balance</p></td>
+<td class="text-center"><p>0.0457</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>7</p></td>
+<td class="text-left"><p>num_credit_card</p></td>
+<td class="text-center"><p>0.0452</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>8</p></td>
+<td class="text-left"><p>monthly_inhand_salary</p></td>
+<td class="text-center"><p>0.0435</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9</p></td>
+<td class="text-left"><p>amount_invested_monthly</p></td>
+<td class="text-center"><p>0.0426</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>10</p></td>
+<td class="text-left"><p>credit_utilization_ratio</p></td>
+<td class="text-center"><p>0.0425</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El modelo muestra una clara dependencia de las <strong>variables cuantitativas ligadas al endeudamiento y la disciplina crediticia</strong>, siendo <em>outstanding_debt</em> la más influyente.</p>
+</section>
+<hr class="docutils" />
+<section id="analisis-de-estabilidad">
+<h4><strong>4.6.7 Análisis de Estabilidad</strong><a class="headerlink" href="#analisis-de-estabilidad" title="Link to this heading">#</a></h4>
+<p>El análisis de estabilidad comparó la variabilidad de la importancia de las variables entre configuraciones.
+Las <strong>ocupaciones profesionales</strong> mostraron la menor desviación estándar, evidenciando estabilidad en su contribución marginal.</p>
+<p><strong>Top 10 características más estables:</strong></p>
+<ol class="arabic simple">
+<li><p>occupation_Writer</p></li>
+<li><p>occupation_Entrepreneur</p></li>
+<li><p>occupation_Media_Manager</p></li>
+<li><p>occupation_Manager</p></li>
+<li><p>occupation_Architect</p></li>
+<li><p>occupation_Doctor</p></li>
+<li><p>occupation_Teacher</p></li>
+<li><p>occupation_Journalist</p></li>
+<li><p>occupation_Musician</p></li>
+<li><p>occupation_Developer</p></li>
+</ol>
+<p>Estas variables, aunque menos relevantes en importancia absoluta, <strong>mantienen consistencia estadística entre configuraciones</strong>, aportando robustez al modelo.</p>
+</section>
+<hr class="docutils" />
+<section id="evaluacion-comparativa">
+<h4><strong>4.6.8 Evaluación Comparativa</strong><a class="headerlink" href="#evaluacion-comparativa" title="Link to this heading">#</a></h4>
+<p>El modelo optimizado supera al baseline y otras variantes en todos los indicadores de desempeño.
+La siguiente síntesis visual destaca las diferencias clave:</p>
+<ul class="simple">
+<li><p><strong>F1-Score más alto (0.773) con configuración high_accuracy.</strong></p></li>
+<li><p><strong>Tiempo de entrenamiento moderado (5.9 s), dentro de límites aceptables.</strong></p></li>
+<li><p><strong>Mayor interpretabilidad y estabilidad de variables.</strong></p></li>
+</ul>
+<p>En conjunto, estas características demuestran que el modelo <strong>aprende de manera más generalizable y precisa</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id28">
+<h4><strong>4.6.9 Conclusión</strong><a class="headerlink" href="#id28" title="Link to this heading">#</a></h4>
+<p>El <strong>Random Forest Optimizado</strong> representa la <strong>mejor solución computacional</strong> del conjunto de modelos evaluados.
+Su diseño equilibrado entre rendimiento y robustez permitió alcanzar:</p>
+<ul class="simple">
+<li><p>F1 ≈ 0.773 (mejor global).</p></li>
+<li><p>Precisión y recall uniformes entre clases.</p></li>
+<li><p>Alto nivel de estabilidad en variables explicativas.</p></li>
+<li><p>Incremento significativo frente a modelos lineales y árboles simples.</p></li>
+</ul>
+<p>Por tanto, esta versión final de Random Forest se considera <strong>el modelo más completo y confiable para la predicción del credit score</strong>, combinando <strong>potencia predictiva, interpretabilidad y eficiencia operativa</strong>.</p>
+</section>
+</section>
 </section>
 <section id="xgboost-con-interpretabilidad-usando-lime">
 <h2>XGBoost (con interpretabilidad usando LIME)<a class="headerlink" href="#xgboost-con-interpretabilidad-usando-lime" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install xgboost lime</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting xgboost
-  Downloading xgboost-2.1.4-py3-none-win_amd64.whl.metadata (2.1 kB)
-Collecting lime
-  Downloading lime-0.2.0.1.tar.gz (275 kB)
-  Preparing metadata (setup.py): started
-  Preparing metadata (setup.py): finished with status &#39;done&#39;
-Requirement already satisfied: numpy in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from xgboost) (1.25.2)
-Requirement already satisfied: scipy in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from xgboost) (1.11.2)
-Requirement already satisfied: matplotlib in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from lime) (3.7.2)
-Requirement already satisfied: tqdm in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from lime) (4.66.1)
-Requirement already satisfied: scikit-learn&gt;=0.18 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from lime) (1.3.0)
-Requirement already satisfied: scikit-image&gt;=0.12 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from lime) (0.21.0)
-Requirement already satisfied: networkx&gt;=2.8 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (3.1)
-Requirement already satisfied: pillow&gt;=9.0.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (10.0.0)
-Requirement already satisfied: imageio&gt;=2.27 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (2.31.2)
-Requirement already satisfied: tifffile&gt;=2022.8.12 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (2023.8.30)
-Requirement already satisfied: PyWavelets&gt;=1.1.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (1.4.1)
-Requirement already satisfied: packaging&gt;=21 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (25.0)
-Requirement already satisfied: lazy_loader&gt;=0.2 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-image&gt;=0.12-&gt;lime) (0.3)
-Requirement already satisfied: joblib&gt;=1.1.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-learn&gt;=0.18-&gt;lime) (1.3.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-learn&gt;=0.18-&gt;lime) (3.2.0)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (1.1.0)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (0.11.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (4.42.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (1.4.5)
-Requirement already satisfied: pyparsing&lt;3.1,&gt;=2.3.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (2.9.0.post0)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from matplotlib-&gt;lime) (6.0.1)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;lime) (3.23.0)
-Requirement already satisfied: six&gt;=1.5 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;lime) (1.17.0)
-Requirement already satisfied: colorama in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from tqdm-&gt;lime) (0.4.6)
-Downloading xgboost-2.1.4-py3-none-win_amd64.whl (124.9 MB)
-   ---------------------------------------- 0.0/124.9 MB ? eta -:--:--
-   ---------------------------------------- 1.0/124.9 MB 6.3 MB/s eta 0:00:20
-    --------------------------------------- 2.4/124.9 MB 5.8 MB/s eta 0:00:21
-   - -------------------------------------- 3.7/124.9 MB 5.9 MB/s eta 0:00:21
-   - -------------------------------------- 5.0/124.9 MB 6.0 MB/s eta 0:00:20
-   -- ------------------------------------- 6.6/124.9 MB 6.2 MB/s eta 0:00:20
-   -- ------------------------------------- 7.9/124.9 MB 6.3 MB/s eta 0:00:19
-   -- ------------------------------------- 9.2/124.9 MB 6.3 MB/s eta 0:00:19
-   --- ------------------------------------ 10.7/124.9 MB 6.5 MB/s eta 0:00:18
-   --- ------------------------------------ 12.3/124.9 MB 6.5 MB/s eta 0:00:18
-   ---- ----------------------------------- 13.9/124.9 MB 6.6 MB/s eta 0:00:17
-   ---- ----------------------------------- 15.5/124.9 MB 6.7 MB/s eta 0:00:17
-   ----- ---------------------------------- 17.0/124.9 MB 6.8 MB/s eta 0:00:16
-   ----- ---------------------------------- 18.6/124.9 MB 6.8 MB/s eta 0:00:16
-   ------ --------------------------------- 19.9/124.9 MB 6.8 MB/s eta 0:00:16
-   ------ --------------------------------- 21.5/124.9 MB 6.9 MB/s eta 0:00:15
-   ------- -------------------------------- 23.1/124.9 MB 6.9 MB/s eta 0:00:15
-   ------- -------------------------------- 24.6/124.9 MB 7.0 MB/s eta 0:00:15
-   -------- ------------------------------- 26.2/124.9 MB 7.0 MB/s eta 0:00:15
-   -------- ------------------------------- 28.0/124.9 MB 7.0 MB/s eta 0:00:14
-   --------- ------------------------------ 29.6/124.9 MB 7.0 MB/s eta 0:00:14
-   --------- ------------------------------ 31.2/124.9 MB 7.0 MB/s eta 0:00:14
-   ---------- ----------------------------- 32.8/124.9 MB 7.1 MB/s eta 0:00:14
-   ----------- ---------------------------- 34.6/124.9 MB 7.1 MB/s eta 0:00:13
-   ----------- ---------------------------- 36.4/124.9 MB 7.2 MB/s eta 0:00:13
-   ------------ --------------------------- 38.3/124.9 MB 7.3 MB/s eta 0:00:12
-   ------------ --------------------------- 40.1/124.9 MB 7.3 MB/s eta 0:00:12
-   ------------- -------------------------- 41.9/124.9 MB 7.4 MB/s eta 0:00:12
-   -------------- ------------------------- 43.8/124.9 MB 7.4 MB/s eta 0:00:11
-   -------------- ------------------------- 45.6/124.9 MB 7.5 MB/s eta 0:00:11
-   --------------- ------------------------ 47.4/124.9 MB 7.5 MB/s eta 0:00:11
-   --------------- ------------------------ 49.5/124.9 MB 7.5 MB/s eta 0:00:10
-   ---------------- ----------------------- 51.4/124.9 MB 7.6 MB/s eta 0:00:10
-   ----------------- ---------------------- 53.5/124.9 MB 7.7 MB/s eta 0:00:10
-   ----------------- ---------------------- 55.3/124.9 MB 7.7 MB/s eta 0:00:10
-   ------------------ --------------------- 57.4/124.9 MB 7.8 MB/s eta 0:00:09
-   ------------------- -------------------- 59.5/124.9 MB 7.8 MB/s eta 0:00:09
-   ------------------- -------------------- 61.9/124.9 MB 7.9 MB/s eta 0:00:08
-   -------------------- ------------------- 64.0/124.9 MB 7.9 MB/s eta 0:00:08
-   --------------------- ------------------ 66.1/124.9 MB 8.0 MB/s eta 0:00:08
-   --------------------- ------------------ 68.4/124.9 MB 8.1 MB/s eta 0:00:07
-   ---------------------- ----------------- 70.3/124.9 MB 8.1 MB/s eta 0:00:07
-   ----------------------- ---------------- 72.6/124.9 MB 8.2 MB/s eta 0:00:07
-   ------------------------ --------------- 75.0/124.9 MB 8.2 MB/s eta 0:00:07
-   ------------------------ --------------- 77.3/124.9 MB 8.3 MB/s eta 0:00:06
-   ------------------------- -------------- 79.7/124.9 MB 8.4 MB/s eta 0:00:06
-   -------------------------- ------------- 82.3/124.9 MB 8.4 MB/s eta 0:00:06
-   --------------------------- ------------ 84.7/124.9 MB 8.5 MB/s eta 0:00:05
-   --------------------------- ------------ 87.0/124.9 MB 8.6 MB/s eta 0:00:05
-   ---------------------------- ----------- 89.4/124.9 MB 8.6 MB/s eta 0:00:05
-   ----------------------------- ---------- 92.0/124.9 MB 8.7 MB/s eta 0:00:04
-   ------------------------------ --------- 94.4/124.9 MB 8.7 MB/s eta 0:00:04
-   ------------------------------- -------- 97.0/124.9 MB 8.8 MB/s eta 0:00:04
-   ------------------------------- -------- 99.6/124.9 MB 8.9 MB/s eta 0:00:03
-   -------------------------------- ------- 102.2/124.9 MB 8.9 MB/s eta 0:00:03
-   --------------------------------- ------ 105.1/124.9 MB 9.0 MB/s eta 0:00:03
-   ---------------------------------- ----- 107.7/124.9 MB 9.1 MB/s eta 0:00:02
-   ----------------------------------- ---- 110.4/124.9 MB 9.1 MB/s eta 0:00:02
-   ------------------------------------ --- 113.0/124.9 MB 9.2 MB/s eta 0:00:02
-   ------------------------------------- -- 115.9/124.9 MB 9.2 MB/s eta 0:00:01
-   -------------------------------------- - 118.8/124.9 MB 9.3 MB/s eta 0:00:01
-   ---------------------------------------  121.9/124.9 MB 9.4 MB/s eta 0:00:01
-   ---------------------------------------  124.8/124.9 MB 9.5 MB/s eta 0:00:01
-   ---------------------------------------- 124.9/124.9 MB 9.4 MB/s  0:00:13
-Building wheels for collected packages: lime
-  Building wheel for lime (setup.py): started
-  Building wheel for lime (setup.py): finished with status &#39;done&#39;
-  Created wheel for lime: filename=lime-0.2.0.1-py3-none-any.whl size=283918 sha256=8dcf43d231567b8044bfd6e3976278362cc7df82fae3bfa5f9a8c1bdd5f2e2fe
-  Stored in directory: c:\users\luis d peñaranda\appdata\local\pip\cache\wheels\ed\d7\c9\5a0130d06d6310bc6cbe55220e6e72dcb8c4eff9a478717066
-Successfully built lime
-Installing collected packages: xgboost, lime
-
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   ---------------------------------------- 0/2 [xgboost]
-   -------------------- ------------------- 1/2 [lime]
-   -------------------- ------------------- 1/2 [lime]
-   ---------------------------------------- 2/2 [lime]
-
-Successfully installed lime-0.2.0.1 xgboost-2.1.4
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  DEPRECATION: Building &#39;lime&#39; using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of &#39;lime&#39;. Discussion can be found at https://github.com/pypa/pip/issues/6334
 </pre></div>
 </div>
 </div>
@@ -3904,13 +4821,13 @@ Successfully installed lime-0.2.0.1 xgboost-2.1.4
 🎯 Probando hist_cpu...
   ✅ F1-Score: 0.7503
   ✅ Mejor iteración: 746
-  ✅ Tiempo entrenamiento: 15.02s
+  ✅ Tiempo entrenamiento: 14.47s
   ✅ CV F1-Score: 0.7507
 
 🎯 Probando hist_gpu...
   ✅ F1-Score: 0.7485
   ✅ Mejor iteración: 710
-  ✅ Tiempo entrenamiento: 19.58s
+  ✅ Tiempo entrenamiento: 11.70s
   ✅ CV F1-Score: 0.7498
 
 🏆 MEJOR CONFIGURACIÓN: &#39;hist_cpu&#39;
@@ -3936,9 +4853,9 @@ F1-Score Optimizado: 0.7597
 Mejora: +0.0253
 
 ⚡ ANÁLISIS DE VELOCIDAD:
-Configuración más rápida: &#39;hist_cpu&#39; (15.02s)
-Configuración más lenta: &#39;hist_gpu&#39; (19.58s)
-Aceleración: 1.30x
+Configuración más rápida: &#39;hist_gpu&#39; (11.70s)
+Configuración más lenta: &#39;hist_cpu&#39; (14.47s)
+Aceleración: 1.24x
 
 📊 TABLA DE MÉTRICAS POR CLASE (OPTIMIZADO):
 ============================================================
@@ -3968,11 +4885,11 @@ Top 10 características más importantes:
 2          occupation_Doctor      0.0124
 </pre></div>
 </div>
-<img alt="_images/0b496d304af376de00454d353657780f471f4e16463f9c2f9c3ab5bc43895aae.png" src="_images/0b496d304af376de00454d353657780f471f4e16463f9c2f9c3ab5bc43895aae.png" />
+<img alt="_images/bd540cf8fc1ca92376952116a5843b8492daaa29968e28967a6c6b2543aa4d4b.png" src="_images/bd540cf8fc1ca92376952116a5843b8492daaa29968e28967a6c6b2543aa4d4b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
 🎯 RESUMEN FINAL - XGBOOST OPTIMIZADO CON GPU
 ======================================================================
-⏱️  Tiempo total ejecución: 187.46s
+⏱️  Tiempo total ejecución: 164.73s
 🏆 Mejor configuración: &#39;hist_cpu&#39;
 📈 F1-Score optimizado: 0.7597 (75.97%)
 📊 Mejora vs base: +0.0253
@@ -3999,6 +4916,198 @@ weighted avg       0.77      0.77      0.77     30000
 </div>
 </div>
 </div>
+<section id="xgboost-optimizado-gpu-y-early-stopping">
+<h3><strong>4.7 XGBoost Optimizado – GPU y Early Stopping</strong><a class="headerlink" href="#xgboost-optimizado-gpu-y-early-stopping" title="Link to this heading">#</a></h3>
+<section id="id29">
+<h4><strong>4.7.1 Descripción General</strong><a class="headerlink" href="#id29" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>XGBoost Optimizado</strong> incorporó estrategias avanzadas de aprendizaje para mejorar el rendimiento y la eficiencia del proceso de entrenamiento.
+Entre las mejoras implementadas destacan:</p>
+<ul class="simple">
+<li><p><strong>Tree Method = ‘hist’</strong>: acelera la construcción de árboles mediante histogramas.</p></li>
+<li><p><strong>Aceleración por GPU (‘gpu_hist’)</strong>: aprovecha la arquitectura CUDA de NVIDIA para cálculos paralelos.</p></li>
+<li><p><strong>Early Stopping</strong>: detiene el entrenamiento automáticamente cuando no hay mejora significativa en el conjunto de validación.</p></li>
+<li><p><strong>Validación Cruzada (5-fold)</strong> para medir estabilidad y generalización.</p></li>
+</ul>
+<p>Estas técnicas permitieron lograr una combinación sólida entre <strong>velocidad de cómputo y desempeño predictivo</strong>, conservando estabilidad entre clases.</p>
+</section>
+<hr class="docutils" />
+<section id="comparacion-de-configuraciones-cpu-vs-gpu">
+<h4><strong>4.7.2 Comparación de Configuraciones: CPU vs GPU</strong><a class="headerlink" href="#comparacion-de-configuraciones-cpu-vs-gpu" title="Link to this heading">#</a></h4>
+<p>Se evaluaron dos configuraciones principales:</p>
+<ul class="simple">
+<li><p><strong>hist_cpu</strong> → versión estándar sobre CPU.</p></li>
+<li><p><strong>hist_gpu</strong> → versión acelerada por GPU.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Configuración</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Mejor Iteración</p></th>
+<th class="head text-center"><p>Tiempo (s)</p></th>
+<th class="head text-center"><p>CV F1-Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>hist_cpu</p></td>
+<td class="text-center"><p><strong>0.7503</strong></p></td>
+<td class="text-center"><p>746</p></td>
+<td class="text-center"><p>14.47</p></td>
+<td class="text-center"><p><strong>0.7507</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>hist_gpu</p></td>
+<td class="text-center"><p>0.7485</p></td>
+<td class="text-center"><p>710</p></td>
+<td class="text-center"><p><strong>11.70</strong></p></td>
+<td class="text-center"><p>0.7498</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A pesar de que <strong>GPU</strong> redujo el tiempo en un <strong>24 %</strong>, la versión CPU obtuvo un F1-Score ligeramente superior, siendo seleccionada como la mejor configuración para el modelo final.</p>
+<div align="center">
+  <img src="2024840a-c30c-4bf9-bed8-a1c7bac5c944.png" width="95%">
+</div>
+</section>
+<hr class="docutils" />
+<section id="id30">
+<h4><strong>4.7.3 Desempeño del Modelo Optimizado</strong><a class="headerlink" href="#id30" title="Link to this heading">#</a></h4>
+<p>Tras el ajuste con <em>early stopping</em> y reentrenamiento completo, el modelo final alcanzó los siguientes resultados:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.7738</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro avg)</strong></p></td>
+<td class="text-center"><p>0.7603</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro avg)</strong></p></td>
+<td class="text-center"><p>0.7590</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro avg)</strong></p></td>
+<td class="text-center"><p><strong>0.7597</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>CV F1-Score (mean ± 2σ)</strong></p></td>
+<td class="text-center"><p>0.7518 ± 0.0093</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Árboles óptimos</strong></p></td>
+<td class="text-center"><p>746</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Tiempo total ejecución</strong></p></td>
+<td class="text-center"><p>164.73 s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Comparado con el modelo base (F1 = 0.7344), se observa una <strong>mejora del +0.0253</strong>, reflejando un avance significativo gracias a la optimización.</p>
+</section>
+<hr class="docutils" />
+<section id="id31">
+<h4><strong>4.7.4 Desempeño por Clase</strong><a class="headerlink" href="#id31" title="Link to this heading">#</a></h4>
+<p>El modelo mantuvo un comportamiento equilibrado entre las tres categorías:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.72</p></td>
+<td class="text-center"><p>0.71</p></td>
+<td class="text-center"><p>0.71</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.77</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.79</strong></p></td>
+<td class="text-center"><p><strong>0.80</strong></p></td>
+<td class="text-center"><p><strong>0.80</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El puntaje <em>Standard</em> presentó el mejor rendimiento, mientras que las clases <em>Good</em> y <em>Poor</em> conservaron valores homogéneos, garantizando estabilidad general del modelo.</p>
+</section>
+<hr class="docutils" />
+<section id="id32">
+<h4><strong>4.7.5 Importancia de Características</strong><a class="headerlink" href="#id32" title="Link to this heading">#</a></h4>
+<p>El análisis de importancia muestra que las variables más determinantes están asociadas a <strong>hábitos de pago</strong> y <strong>límites crediticios</strong>, reforzando la coherencia financiera del modelo.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Posición</p></th>
+<th class="head text-left"><p>Variable</p></th>
+<th class="head text-center"><p>Importancia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1</p></td>
+<td class="text-left"><p><strong>delay_from_due_date</strong></p></td>
+<td class="text-center"><p><strong>0.3024</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2</p></td>
+<td class="text-left"><p>changed_credit_limit</p></td>
+<td class="text-center"><p>0.1570</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3</p></td>
+<td class="text-left"><p>num_of_delayed_payment</p></td>
+<td class="text-center"><p>0.0576</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p>num_credit_inquiries</p></td>
+<td class="text-center"><p>0.0445</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5</p></td>
+<td class="text-left"><p>occupation_Media_Manager</p></td>
+<td class="text-center"><p>0.0370</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6</p></td>
+<td class="text-left"><p>outstanding_debt</p></td>
+<td class="text-center"><p>0.0275</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>7</p></td>
+<td class="text-left"><p>occupation_Entrepreneur</p></td>
+<td class="text-center"><p>0.0268</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>8</p></td>
+<td class="text-left"><p>occupation_Engineer</p></td>
+<td class="text-center"><p>0.0175</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9</p></td>
+<td class="text-left"><p>occupation_Journalist</p></td>
+<td class="text-center"><p>0.0125</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>10</p></td>
+<td class="text-left"><p>occupation_Doctor</p></td>
+<td class="text-center"><p>0.0124</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Estas características destacan la relevancia de la <strong>gestión de deuda y puntualidad de pago</strong> como principales indicadores del puntaje crediticio.</p>
+</section>
+<hr class="docutils" />
+<section id="id33">
+<h4><strong>4.7.6 Conclusión</strong><a class="headerlink" href="#id33" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>XGBoost Optimizado con Early Stopping y GPU</strong> constituye una de las soluciones más potentes del estudio.
+Presenta:</p>
+<ul class="simple">
+<li><p>Alto nivel de precisión (F1 ≈ 0.76).</p></li>
+<li><p>Entrenamiento eficiente con <strong>aceleración GPU × 1.24</strong>.</p></li>
+<li><p>Excelente capacidad de generalización (CV estable).</p></li>
+<li><p>Interpretabilidad clara mediante la jerarquía de importancia de variables.</p></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="maquina-de-soporte-vectorial">
 <h2>Máquina de Soporte Vectorial<a class="headerlink" href="#maquina-de-soporte-vectorial" title="Link to this heading">#</a></h2>
@@ -4021,6 +5130,7 @@ weighted avg       0.77      0.77      0.77     30000
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearSVC</span><span class="p">,</span> <span class="n">SVC</span>
 
 <span class="c1"># Configuración</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8&#39;</span><span class="p">)</span>
@@ -4429,46 +5539,275 @@ weighted avg       0.77      0.77      0.77     30000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚀 INICIANDO MAQUÍNA DE SOPORTE VECTORIAL - MODELO BENCHMARK...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚀 INICIANDO SVM OPTIMIZADO - LINEAR SVC PARA VELOCIDAD...
 ✅ Datos preparados: 70000 train, 30000 test
 
-🎯 ENTRENANDO MODELO 
+🔍 COMPARANDO IMPLEMENTACIONES DE SVM...
 
-📈 EVALUANDO MODELO SVM...
-📊 MÉTRICAS DEL MODELO SVM:
-Accuracy : 0.7122
-Precision (macro avg): 0.6903
-Recall (macro avg): 0.6928
-f1-Score (macro avg): 0.6897
-CV Mean f1-score (macro avg): 0.6869
-CV Std f1-score (macro avg): 0.0038
+🎯 Entrenando LinearSVC (optimizado)...
+  ✅ F1-Score: 0.6146
+  ✅ Tiempo entrenamiento: 2.63s
 
-📋 REPORTE DE CLASIFICACIÓN:
+🎯 Entrenando SVC estándar (kernel lineal)...
+  ✅ F1-Score: 0.2650
+  ✅ Tiempo entrenamiento: 24.96s
+
+🏆 MEJOR IMPLEMENTACIÓN: &#39;linear_svc&#39;
+📊 F1-Score: 0.6146
+⚡ Velocidad mejora: 9.50x más rápido
+
+🔍 OPTIMIZANDO PARÁMETROS PARA LINEAR_SVC...
+Fitting 3 folds for each of 6 candidates, totalling 18 fits
+✅ Búsqueda completada en 13.18s
+🎯 Mejores parámetros: {&#39;C&#39;: 0.1, &#39;dual&#39;: False, &#39;max_iter&#39;: 1000}
+📈 Mejor score: 0.6137
+
+📈 EVALUANDO MODELO SVM OPTIMIZADO...
+📊 MÉTRICAS DEL MODELO SVM OPTIMIZADO:
+Accuracy: 0.6422
+Precision (macro avg): 0.6166
+Recall (macro avg): 0.6194
+F1-Score (macro avg): 0.6147
+CV Mean F1-score: 0.6134
+CV Std F1-score: 0.0022
+Implementación: linear_svc
+Mejores parámetros: {&#39;C&#39;: 0.1, &#39;dual&#39;: False, &#39;max_iter&#39;: 1000}
+
+🔍 COMPARACIÓN CON MODELO BASE (SVC estándar):
+F1-Score Base: 0.6897
+F1-Score Optimizado: 0.6147
+Mejora: -0.0750
+
+📊 TABLA DE MÉTRICAS POR CLASE (OPTIMIZADO):
+============================================================
+             precision  recall     f1-score   support   
+------------------------------------------------------------
+Good         0.51       0.61       0.55       5349.0    
+Poor         0.65       0.54       0.59       8699.0    
+Standard     0.69       0.71       0.70       15952.0   
+macro avg    0.62       0.62       0.61       30000.0   
+weighted avg 0.65       0.64       0.64       60000.0   
+accuracy                                      120000.0  
+                                   0.64                 
+============================================================
+</pre></div>
+</div>
+<img alt="_images/34f2e3298af55e948b91c7dff23a796a65267ebeb23a16825e430d3bb28763a6.png" src="_images/34f2e3298af55e948b91c7dff23a796a65267ebeb23a16825e430d3bb28763a6.png" />
+<img alt="_images/2b9be61fec059106270a4511e56da12b23e54074b1450dfb2d865290632b4328.png" src="_images/2b9be61fec059106270a4511e56da12b23e54074b1450dfb2d865290632b4328.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+🎯 RESUMEN FINAL - SVM OPTIMIZADO CON LINEAR SVC
+======================================================================
+⏱️  Tiempo total ejecución: 804.57s
+🏆 Mejor implementación: Linear Svc
+📈 F1-Score optimizado: 0.6147 (61.47%)
+📊 Mejora vs base: -0.0750
+🎯 Validación Cruzada: 0.6134 ± 0.0044
+⚡ Velocidad vs SVC estándar: 9.50x más rápido
+
+📊 COMPARACIÓN DE IMPLEMENTACIONES:
+Modelo       F1-Score   CV F1      Tiempo(s)   
+---------------------------------------------
+Linear Svc   0.6146     0.6133     2.6279      
+Svc Linear   0.2650     0.3708     24.9622     
+
+📋 REPORTE CLASIFICACIÓN OPTIMIZADO:
               precision    recall  f1-score   support
 
-        Good       0.58      0.66      0.62      5349
-        Poor       0.74      0.65      0.69      8699
-    Standard       0.75      0.76      0.75     15952
+        Good       0.51      0.61      0.55      5349
+        Poor       0.65      0.54      0.59      8699
+    Standard       0.69      0.71      0.70     15952
 
-    accuracy                           0.71     30000
-   macro avg       0.69      0.69      0.69     30000
-weighted avg       0.72      0.71      0.71     30000
-</pre></div>
-</div>
-<img alt="_images/89a3843c385dd88f6c7173736ba0eda4f6bccbc00e70868649ca5771f5324923.png" src="_images/89a3843c385dd88f6c7173736ba0eda4f6bccbc00e70868649ca5771f5324923.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
-🎯 RESUMEN FINAL - MÁQUINA DE VECTORES DE SOPORTE BENCHMARK
-============================================================
-⏱️  Tiempo ejecución: 1641.74s
-⏱️  Tiempo ejecución: 1641.74s
-📈 f1-score (macro avg): 0.6897 (68.97%)
-🎯 Validación Cruzada: 0.6869 ± 0.0076
-💾 Resultados guardados: &#39;svm_benchmark_results.pkl&#39;
-============================================================
+    accuracy                           0.64     30000
+   macro avg       0.62      0.62      0.61     30000
+weighted avg       0.65      0.64      0.64     30000
+
+
+💾 Resultados optimizados guardados: &#39;svm_optimized_results.pkl&#39;
+======================================================================
 </pre></div>
 </div>
 </div>
 </div>
+<section id="svm-optimizado-linearsvc">
+<h3><strong>4.8 SVM Optimizado – LinearSVC</strong><a class="headerlink" href="#svm-optimizado-linearsvc" title="Link to this heading">#</a></h3>
+<section id="id34">
+<h4><strong>4.8.1 Descripción General</strong><a class="headerlink" href="#id34" title="Link to this heading">#</a></h4>
+<p>El modelo <strong>SVM Optimizado (LinearSVC)</strong> se implementó con el objetivo de evaluar la eficacia de los clasificadores lineales en el problema de predicción del puntaje crediticio.
+Se buscó un equilibrio entre <strong>velocidad de cómputo y capacidad predictiva</strong>, comparando dos variantes principales del algoritmo de Máquinas de Vectores de Soporte:</p>
+<ul class="simple">
+<li><p><strong>LinearSVC</strong> – implementación optimizada para grandes volúmenes de datos, utilizando el solucionador lineal de <em>liblinear</em>.</p></li>
+<li><p><strong>SVC con kernel lineal</strong> – versión estándar del algoritmo, incluida como referencia base.</p></li>
+</ul>
+<p>Ambos modelos fueron evaluados mediante métricas de desempeño, validación cruzada (5-fold) y tiempos de ejecución, para determinar cuál ofrecía la mejor relación entre rendimiento y eficiencia.</p>
+</section>
+<hr class="docutils" />
+<section id="comparacion-de-implementaciones">
+<h4><strong>4.8.2 Comparación de Implementaciones</strong><a class="headerlink" href="#comparacion-de-implementaciones" title="Link to this heading">#</a></h4>
+<p>La comparación directa entre <strong>LinearSVC</strong> y <strong>SVC lineal</strong> permitió observar una diferencia sustancial en velocidad y estabilidad del entrenamiento.
+Los resultados fueron los siguientes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Implementación</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>Tiempo (s)</p></th>
+<th class="head text-center"><p>CV F1-Score (Mean ± Std)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>LinearSVC</strong></p></td>
+<td class="text-center"><p><strong>0.6146</strong></p></td>
+<td class="text-center"><p><strong>2.63</strong></p></td>
+<td class="text-center"><p><strong>0.6134 ± 0.0022</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SVC Lineal</p></td>
+<td class="text-center"><p>0.2650</p></td>
+<td class="text-center"><p>24.96</p></td>
+<td class="text-center"><p>0.3708 ± 0.0400</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El modelo <strong>LinearSVC</strong> logró un desempeño <strong>9.5× más rápido</strong> que la versión estándar, con una mejora notable en consistencia durante la validación cruzada.</p>
+<div align="center">
+  <img src="258a16af-1b5a-48d6-89d9-61e118943132.png" width="95%">
+</div>
+</section>
+<hr class="docutils" />
+<section id="optimizacion-de-hiperparametros">
+<h4><strong>4.8.3 Optimización de Hiperparámetros</strong><a class="headerlink" href="#optimizacion-de-hiperparametros" title="Link to this heading">#</a></h4>
+<p>Se realizó una búsqueda en malla (<em>Grid Search</em>) para ajustar los parámetros más influyentes del modelo <strong>LinearSVC</strong>, priorizando eficiencia y convergencia estable.
+Los mejores valores encontrados fueron:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Parámetro</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>C</strong></p></td>
+<td class="text-center"><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>dual</strong></p></td>
+<td class="text-center"><p>False</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>max_iter</strong></p></td>
+<td class="text-center"><p>1000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El proceso de búsqueda se completó en <strong>13.18 s</strong>, confirmando que una penalización suave (<code class="docutils literal notranslate"><span class="pre">C=0.1</span></code>) mejoraba la estabilidad del margen y reducía sobreajuste.</p>
+</section>
+<hr class="docutils" />
+<section id="id35">
+<h4><strong>4.8.4 Desempeño del Modelo Optimizado</strong><a class="headerlink" href="#id35" title="Link to this heading">#</a></h4>
+<p>Con los hiperparámetros ajustados, el modelo final obtuvo los siguientes resultados globales:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Métrica</p></th>
+<th class="head text-center"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>0.6422</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Precision (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6166</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Recall (macro avg)</strong></p></td>
+<td class="text-center"><p>0.6194</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>F1-Score (macro avg)</strong></p></td>
+<td class="text-center"><p><strong>0.6147</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>CV F1-Score (mean ± 2σ)</strong></p></td>
+<td class="text-center"><p>0.6134 ± 0.0044</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Tiempo total ejecución</strong></p></td>
+<td class="text-center"><p>804.57 s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Aunque el modelo base (SVC estándar) obtuvo un F1 superior (≈0.69), el <strong>LinearSVC</strong> destacó por su velocidad y consistencia, evidenciando su idoneidad para grandes volúmenes de datos.</p>
+</section>
+<hr class="docutils" />
+<section id="id36">
+<h4><strong>4.8.5 Desempeño por Clase</strong><a class="headerlink" href="#id36" title="Link to this heading">#</a></h4>
+<p>El modelo optimizado mantuvo un rendimiento aceptable en las tres categorías, con mejor desempeño sobre la clase <em>Standard</em>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Clase</p></th>
+<th class="head text-center"><p>Precisión</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Good</p></td>
+<td class="text-center"><p>0.51</p></td>
+<td class="text-center"><p>0.61</p></td>
+<td class="text-center"><p>0.55</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Poor</p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>0.54</p></td>
+<td class="text-center"><p>0.59</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standard</p></td>
+<td class="text-center"><p><strong>0.69</strong></p></td>
+<td class="text-center"><p><strong>0.71</strong></p></td>
+<td class="text-center"><p><strong>0.70</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La matriz de confusión muestra que los principales errores se produjeron entre las clases <em>Good</em> y <em>Standard</em>, lo que sugiere cierta superposición lineal entre ambas categorías.</p>
+<div align="center">
+  <img src="4d844af0-f423-46b7-8dfb-a5728c7b3f49.png" width="75%">
+</div>
+</section>
+<hr class="docutils" />
+<section id="id37">
+<h4><strong>4.8.6 Comparación de Implementaciones</strong><a class="headerlink" href="#id37" title="Link to this heading">#</a></h4>
+<p>El siguiente resumen sintetiza las diferencias clave entre ambas variantes de SVM:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
+<th class="head text-center"><p>F1-Score</p></th>
+<th class="head text-center"><p>CV F1</p></th>
+<th class="head text-center"><p>Tiempo (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>LinearSVC</strong></p></td>
+<td class="text-center"><p><strong>0.6146</strong></p></td>
+<td class="text-center"><p><strong>0.6133</strong></p></td>
+<td class="text-center"><p><strong>2.63</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>SVC Lineal</p></td>
+<td class="text-center"><p>0.2650</p></td>
+<td class="text-center"><p>0.3708</p></td>
+<td class="text-center"><p>24.96</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El <strong>LinearSVC</strong> demostró ser el más adecuado para este tipo de datos tabulares con múltiples variables escaladas, destacando por su rendimiento computacional y facilidad de ajuste.</p>
+</section>
+<hr class="docutils" />
+<section id="id38">
+<h4><strong>4.8.7 Conclusión</strong><a class="headerlink" href="#id38" title="Link to this heading">#</a></h4>
+<p>El <strong>SVM Optimizado con LinearSVC</strong> representa una solución <strong>ligera, veloz y estable</strong> frente a otras alternativas más complejas como XGBoost o Random Forest.
+A pesar de un F1-Score inferior, su rapidez lo convierte en una opción viable para:</p>
+<ul class="simple">
+<li><p>Prototipado rápido de modelos lineales.</p></li>
+<li><p>Escenarios donde se requiere <strong>bajo costo computacional</strong>.</p></li>
+<li><p>Comparación base frente a clasificadores no lineales.</p></li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 
@@ -4502,6 +5841,15 @@ weighted avg       0.72      0.71      0.71     30000
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Metodos_de_Balanceo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4. Metodos de Balanceo</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -4518,8 +5866,8 @@ weighted avg       0.72      0.71      0.71     30000
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-proyecto">📋 Contexto del Proyecto</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-y-tecnicas-de-optimizacion-implementadas">🎯 Modelos y Técnicas de Optimización Implementadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-del-proyecto">Contexto del Proyecto</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-y-tecnicas-de-optimizacion-implementadas">Modelos y Técnicas de Optimización Implementadas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">1. <strong>K-Nearest Neighbors (KNN)</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-avanzada">2. <strong>Regresión Logística con Regularización Avanzada</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-escalable">3. <strong>Naive Bayes Escalable</strong></a></li>
@@ -4528,24 +5876,121 @@ weighted avg       0.72      0.71      0.71     30000
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-optimizado">6. <strong>Random Forest Optimizado</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beneficios-de-las-optimizaciones-implementadas">🔧 Beneficios de las Optimizaciones Implementadas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendimiento-computacional">⚡ <strong>Rendimiento Computacional</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escalabilidad">📈 <strong>Escalabilidad</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-modelos">🎯 <strong>Calidad de Modelos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eficiencia-de-recursos">💾 <strong>Eficiencia de Recursos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beneficios-de-las-optimizaciones-implementadas">Beneficios de las Optimizaciones Implementadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendimiento-computacional"><strong>Rendimiento Computacional</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escalabilidad"><strong>Escalabilidad</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calidad-de-modelos"><strong>Calidad de Modelos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eficiencia-de-recursos"><strong>Eficiencia de Recursos</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujo-del-pipeline">🏗️ Flujo del Pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">📊 Métricas de Evaluación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flujo-del-pipeline">Flujo del Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">Métricas de Evaluación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn-classifier">K-Nearest Neighbors (KNN) Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-knn"><strong>4.1 Optimización Computacional del Modelo KNN</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-general"><strong>4.1.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-globales"><strong>4.1.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-algoritmo"><strong>4.1.3 Selección del Mejor Algoritmo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-por-clase"><strong>4.1.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><strong>4.1.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-global"><strong>4.1.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>4.1.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-naive-bayes"><strong>4.2 Optimización Computacional del Modelo Naive Bayes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>4.2.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>4.2.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-metodo"><strong>4.2.3 Selección del Mejor Método</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>4.2.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>4.2.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4.2.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica-con-regularizacion-l1-y-l2">Regresión Logística (con regularización L1 y L2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-computacional-del-modelo-de-regresion-logistica"><strong>4.3 Optimización Computacional del Modelo de Regresión Logística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.3.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.3.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-mejor-modelo"><strong>4.3.3 Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-del-modelo-optimizado"><strong>4.3.4 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-coeficientes"><strong>4.3.5 Interpretación de Coeficientes</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>4.3.6 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>4.3.7 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>4.3.8 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>4.3.9 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-classification-modelo-benchmark"><strong>4.4 Ridge Classification – Modelo Benchmark</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>4.4.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>4.4.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>4.4.3 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>4.4.4 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>4.4.5 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>4.4.6 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision">Árbol de Decisión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision-modelo-benchmark"><strong>4.5 Árbol de Decisión – Modelo Benchmark</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><strong>4.5.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>4.5.2 Resultados Globales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>4.5.3 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"><strong>4.5.4 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importancia-de-caracteristicas"><strong>4.5.5 Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23"><strong>4.5.6 Evaluación Global</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id24"><strong>4.5.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-optimizado-tecnicas-avanzadas"><strong>4.6 Random Forest Optimizado – Técnicas Avanzadas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id25"><strong>4.6.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-comparativos-de-configuraciones"><strong>4.6.2 Resultados Comparativos de Configuraciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-global-del-modelo-optimizado"><strong>4.6.3 Evaluación Global del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"><strong>4.6.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"><strong>4.6.5 Matriz de Confusión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-importancia-de-caracteristicas"><strong>4.6.6 Análisis de Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-estabilidad"><strong>4.6.7 Análisis de Estabilidad</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-comparativa"><strong>4.6.8 Evaluación Comparativa</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id28"><strong>4.6.9 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-con-interpretabilidad-usando-lime">XGBoost (con interpretabilidad usando LIME)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-optimizado-gpu-y-early-stopping"><strong>4.7 XGBoost Optimizado – GPU y Early Stopping</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id29"><strong>4.7.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-configuraciones-cpu-vs-gpu"><strong>4.7.2 Comparación de Configuraciones: CPU vs GPU</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id30"><strong>4.7.3 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id31"><strong>4.7.4 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id32"><strong>4.7.5 Importancia de Características</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id33"><strong>4.7.6 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquina-de-soporte-vectorial">Máquina de Soporte Vectorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-optimizado-linearsvc"><strong>4.8 SVM Optimizado – LinearSVC</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id34"><strong>4.8.1 Descripción General</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-implementaciones"><strong>4.8.2 Comparación de Implementaciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizacion-de-hiperparametros"><strong>4.8.3 Optimización de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id35"><strong>4.8.4 Desempeño del Modelo Optimizado</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id36"><strong>4.8.5 Desempeño por Clase</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id37"><strong>4.8.6 Comparación de Implementaciones</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id38"><strong>4.8.7 Conclusión</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
