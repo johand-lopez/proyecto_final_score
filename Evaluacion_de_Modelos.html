@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Notebooks with MyST Markdown &#8212; My sample book</title>
+    <title>7. Evaluación de Modelos &#8212; My sample book</title>
   
   
   
@@ -57,9 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown-notebooks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Evaluacion_de_Modelos';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Conclusión Comparativa y Selección del Mejor Modelo" href="Conclusi%C3%B3n_Comparativa_y_Selecci%C3%B3n_del_Mejor_Modelo.html" />
+    <link rel="prev" title="6. Validación Avanzada, Tuning e Interpretabilidad" href="Tuning_Validacion_Interpretabilidad.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,13 +179,13 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="eda.html">2. Análisis Exploratorio de Datos (EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelado_Benchmark.html">3. Modelado Benchmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Metodos_de_Balanceo.html">4. Metodos de Balanceo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Optimizacion_Computacional.html">5. Optimización de Múltiples Modelos de ML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tuning_Validacion_Interpretabilidad.html">6. Validación Avanzada, Tuning e Interpretabilidad</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Evaluacion_de_Modelos.html">7. Evaluación de Modelos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Evaluación de Modelos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Conclusi%C3%B3n_Comparativa_y_Selecci%C3%B3n_del_Mejor_Modelo.html">8. Conclusión Comparativa y Selección del Mejor Modelo</a></li>
 </ul>
 
@@ -258,7 +258,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown-notebooks.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FEvaluacion_de_Modelos.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +288,7 @@
       
       
       
-      <li><a href="_sources/markdown-notebooks.md" target="_blank"
+      <li><a href="_sources/Evaluacion_de_Modelos.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +298,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -372,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notebooks with MyST Markdown</h1>
+    <h1>7. Evaluación de Modelos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -382,9 +382,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><strong>7.1 Matriz de Confusión</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-valores-auc"><strong>7.2 Curvas ROC y Valores AUC</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-metricas"><strong>7.3 Tabla Comparativa de Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justificacion-de-la-metrica-principal"><strong>7.4 Justificación de la Métrica Principal</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -396,45 +397,111 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notebooks-with-myst-markdown">
-<h1>Notebooks with MyST Markdown<a class="headerlink" href="#notebooks-with-myst-markdown" title="Link to this heading">#</a></h1>
-<p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.</p>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Link to this heading">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="evaluacion-de-modelos">
+<h1>7. Evaluación de Modelos<a class="headerlink" href="#evaluacion-de-modelos" title="Link to this heading">#</a></h1>
+<p>Tras el proceso de <strong>Validación Avanzada, Tuning e Interpretabilidad</strong>, se realizó una evaluación comparativa de los tres modelos optimizados —<strong>KNN</strong>, <strong>Random Forest</strong> y <strong>XGBoost</strong>— con el propósito de analizar su desempeño predictivo sobre el conjunto de prueba.
+Esta etapa buscó determinar la capacidad de generalización de los modelos a partir de métricas de clasificación, curvas ROC–AUC y análisis de errores, siguiendo las recomendaciones metodológicas establecidas.</p>
+<section id="matriz-de-confusion">
+<h2><strong>7.1 Matriz de Confusión</strong><a class="headerlink" href="#matriz-de-confusion" title="Link to this heading">#</a></h2>
+<p>Las matrices de confusión permitieron observar la distribución de aciertos y errores en las tres categorías (<code class="docutils literal notranslate"><span class="pre">Good</span></code>, <code class="docutils literal notranslate"><span class="pre">Poor</span></code>, <code class="docutils literal notranslate"><span class="pre">Standard</span></code>), reflejando la eficacia del modelo para identificar correctamente cada clase.
+En términos generales, los tres algoritmos presentaron <strong>altas tasas de acierto en la clase mayoritaria (<code class="docutils literal notranslate"><span class="pre">Standard</span></code>)</strong>, aunque con matices distintivos:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
+<th class="head text-left"><p>Clase con mayor precisión</p></th>
+<th class="head text-left"><p>Principales errores observados</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>KNN</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Standard</span></code></p></td>
+<td class="text-left"><p>Confusión leve entre <code class="docutils literal notranslate"><span class="pre">Good</span></code> y <code class="docutils literal notranslate"><span class="pre">Poor</span></code> debido a similitud vectorial.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Random Forest</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Standard</span></code></p></td>
+<td class="text-left"><p>Sobreclasificación moderada de <code class="docutils literal notranslate"><span class="pre">Good</span></code> y subestimación de <code class="docutils literal notranslate"><span class="pre">Poor</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>XGBoost</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Standard</span></code></p></td>
+<td class="text-left"><p>Reducción significativa de falsos positivos en <code class="docutils literal notranslate"><span class="pre">Poor</span></code> y mejor separación global.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-</div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
+<p>El modelo <strong>XGBoost</strong> demostró una matriz más equilibrada y consistente, reflejando un mejor ajuste general entre clases y reduciendo los errores de clasificación cruzada.</p>
 </section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Link to this heading">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="arabic simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
-</section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Link to this heading">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
+<section id="curvas-roc-y-valores-auc">
+<h2><strong>7.2 Curvas ROC y Valores AUC</strong><a class="headerlink" href="#curvas-roc-y-valores-auc" title="Link to this heading">#</a></h2>
+<p>Las curvas ROC multiclase se estimaron utilizando la estrategia <em>one-vs-rest</em>, obteniendo las siguientes áreas bajo la curva (AUC) promedio para cada modelo:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
+<th class="head text-center"><p>AUC Promedio</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>KNN</strong></p></td>
+<td class="text-center"><p>0.83</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Random Forest</strong></p></td>
+<td class="text-center"><p>0.85</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>XGBoost</strong></p></td>
+<td class="text-center"><p><strong>0.88</strong></p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>El <strong>XGBoost</strong> alcanzó el valor AUC más alto, lo que confirma su <strong>mayor capacidad discriminativa entre clases</strong> y un equilibrio más eficiente entre sensibilidad y especificidad.</p>
+</section>
+<section id="tabla-comparativa-de-metricas">
+<h2><strong>7.3 Tabla Comparativa de Métricas</strong><a class="headerlink" href="#tabla-comparativa-de-metricas" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
+<th class="head text-center"><p>Accuracy</p></th>
+<th class="head text-center"><p>Precision</p></th>
+<th class="head text-center"><p>Recall</p></th>
+<th class="head text-center"><p><strong>F1-score (Principal)</strong></p></th>
+<th class="head text-center"><p>AUC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>KNN Avanzado</strong></p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.76</p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.769</p></td>
+<td class="text-center"><p>0.83</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Random Forest Avanzado</strong></p></td>
+<td class="text-center"><p>0.77</p></td>
+<td class="text-center"><p>0.76</p></td>
+<td class="text-center"><p>0.76</p></td>
+<td class="text-center"><p>0.763</p></td>
+<td class="text-center"><p>0.85</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>XGBoost Avanzado</strong></p></td>
+<td class="text-center"><p><strong>0.78</strong></p></td>
+<td class="text-center"><p><strong>0.78</strong></p></td>
+<td class="text-center"><p><strong>0.77</strong></p></td>
+<td class="text-center"><p><strong>0.771</strong></p></td>
+<td class="text-center"><p><strong>0.88</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El modelo <strong>XGBoost Avanzado</strong> obtuvo el mejor rendimiento global en todas las métricas, destacándose por su <strong>mayor F1-score y AUC</strong>, superando levemente a los demás algoritmos en precisión y balance entre clases.</p>
+</section>
+<section id="justificacion-de-la-metrica-principal">
+<h2><strong>7.4 Justificación de la Métrica Principal</strong><a class="headerlink" href="#justificacion-de-la-metrica-principal" title="Link to this heading">#</a></h2>
+<p>La métrica principal seleccionada fue el <strong>F1-score (macro promedio)</strong> debido a que:</p>
+<ul class="simple">
+<li><p>Evalúa de manera <strong>equilibrada el desempeño en cada clase</strong>, evitando el sesgo hacia la categoría mayoritaria.</p></li>
+<li><p>Combina <strong>precisión</strong> (proporción de predicciones correctas) y <strong>recall</strong> (capacidad de detectar verdaderos positivos) en un solo indicador robusto.</p></li>
+<li><p>Resulta <strong>más apropiada para conjuntos de datos desbalanceados</strong>, como el de este estudio, en comparación con el accuracy.</p></li>
+</ul>
+<p>De este modo, el F1-score permitió una valoración justa y generalizable del rendimiento de cada modelo, siendo el criterio base para la <strong>selección del modelo óptimo</strong> en la siguiente fase.</p>
 </section>
 </section>
 
@@ -468,6 +535,24 @@ See the YAML at the top of this page for example.</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Tuning_Validacion_Interpretabilidad.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">6. Validación Avanzada, Tuning e Interpretabilidad</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Conclusi%C3%B3n_Comparativa_y_Selecci%C3%B3n_del_Mejor_Modelo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">8. Conclusión Comparativa y Selección del Mejor Modelo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -484,9 +569,10 @@ See the YAML at the top of this page for example.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriz-de-confusion"><strong>7.1 Matriz de Confusión</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-valores-auc"><strong>7.2 Curvas ROC y Valores AUC</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa-de-metricas"><strong>7.3 Tabla Comparativa de Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justificacion-de-la-metrica-principal"><strong>7.4 Justificación de la Métrica Principal</strong></a></li>
 </ul>
   </nav></div>
 

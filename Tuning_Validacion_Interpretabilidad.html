@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tuning_Validacion_Interpretabilidad';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Evaluación de Modelos" href="Evaluacion_de_Modelos.html" />
     <link rel="prev" title="5. Optimización de Múltiples Modelos de ML" href="Optimizacion_Computacional.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,6 +185,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Metodos_de_Balanceo.html">4. Metodos de Balanceo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Optimizacion_Computacional.html">5. Optimización de Múltiples Modelos de ML</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Validación Avanzada, Tuning e Interpretabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion_de_Modelos.html">7. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusi%C3%B3n_Comparativa_y_Selecci%C3%B3n_del_Mejor_Modelo.html">8. Conclusión Comparativa y Selección del Mejor Modelo</a></li>
 </ul>
 
     </div>
@@ -380,31 +383,31 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6. KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-de-hiperparametros"><strong>6.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada"><strong>6.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretabilidad-del-modelo"><strong>6.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo"><strong>6.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.1 KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-de-hiperparametros"><strong>6.1.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada"><strong>6.1.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretabilidad-del-modelo"><strong>6.1.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo"><strong>6.1.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>7. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>7.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>7.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>7.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>7.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.2. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>6.2.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>6.2.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>6.2.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>6.2.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost">XGBoost</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>8. XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>8.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>8.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>8.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>8.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.3 XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>6.3.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>6.3.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>6.3.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>6.3.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -965,10 +968,9 @@ weighted avg       0.78      0.78      0.78     30000
 </div>
 </div>
 <section id="knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad">
-<h3><strong>6. KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
+<h3><strong>6.1 KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
 <section id="tuning-de-hiperparametros">
-<h4><strong>6.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#tuning-de-hiperparametros" title="Link to this heading">#</a></h4>
+<h4><strong>6.1.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#tuning-de-hiperparametros" title="Link to this heading">#</a></h4>
 <p>El modelo <strong>KNN Avanzado Optimizado</strong> se desarrolló bajo un esquema de <em>tuning</em> integral empleando <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong> y técnicas de búsqueda avanzadas.
 Se implementaron dos estrategias complementarias:</p>
 <ul>
@@ -989,9 +991,8 @@ Se evaluaron configuraciones prometedoras basadas en conocimiento de dominio, al
 </ul>
 <p>La comparación entre ambas estrategias mostró que <strong>Randomized Search</strong> superó a la búsqueda manual tanto en desempeño como en estabilidad, justificando su selección como método de optimización principal.</p>
 </section>
-<hr class="docutils" />
 <section id="validacion-cruzada">
-<h4><strong>6.2 Validación Cruzada</strong><a class="headerlink" href="#validacion-cruzada" title="Link to this heading">#</a></h4>
+<h4><strong>6.1.2 Validación Cruzada</strong><a class="headerlink" href="#validacion-cruzada" title="Link to this heading">#</a></h4>
 <p>La validación se realizó mediante <strong>StratifiedKFold (3 folds)</strong> para garantizar equilibrio entre clases.
 Los resultados fueron los siguientes:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1019,9 +1020,8 @@ Los resultados fueron los siguientes:</p>
 <p>El modelo optimizado evidenció <strong>mínima varianza entre folds</strong> y ausencia de sobreajuste crítico.
 El análisis de diferencia media entre entrenamiento y validación (<strong>gap = 0.1976</strong>) indicó un grado controlado de ajuste, conservando buena generalización.</p>
 </section>
-<hr class="docutils" />
 <section id="interpretabilidad-del-modelo">
-<h4><strong>6.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#interpretabilidad-del-modelo" title="Link to this heading">#</a></h4>
+<h4><strong>6.1.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#interpretabilidad-del-modelo" title="Link to this heading">#</a></h4>
 <p>La interpretación del modelo se realizó mediante <strong>Permutation Importance</strong>, utilizando un muestreo de <strong>1000 observaciones</strong> y <strong>5 repeticiones</strong>.
 Las variables más influyentes fueron:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1061,9 +1061,8 @@ El uso de <em>Permutation Importance</em> permitió cuantificar la influencia de
   <img src="6929c862-80ae-4c32-b921-d090674188fc.png" width="95%">
 </div>
 </section>
-<hr class="docutils" />
 <section id="conclusion-comparativa-y-seleccion-del-mejor-modelo">
-<h4><strong>6.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo" title="Link to this heading">#</a></h4>
+<h4><strong>6.1.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
@@ -1111,7 +1110,6 @@ Asimismo, la incorporación de interpretabilidad mediante <em>Permutation Import
 <li><p>Sensibilidad a la escala y dimensionalidad de los datos, inherente al algoritmo KNN.</p></li>
 <li><p>Posible degradación del rendimiento ante grandes volúmenes de observaciones o ruido extremo.</p></li>
 </ul>
-<hr class="docutils" />
 <p>En conclusión, el <strong>KNN Avanzado Optimizado con Randomized Search y Permutation Importance</strong> se consolidó como un modelo equilibrado, interpretable y con sólida capacidad predictiva dentro del proceso comparativo global.</p>
 </section>
 </section>
@@ -1745,10 +1743,9 @@ weighted avg       0.78      0.78      0.78     30000
 </div>
 </div>
 <section id="random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad">
-<h3><strong>7. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
+<h3><strong>6.2. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
 <section id="id1">
-<h4><strong>7.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h4><strong>6.2.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>El modelo <strong>Random Forest Avanzado Optimizado</strong> implementó un proceso de <em>tuning</em> estructurado utilizando <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong> con dos métodos de búsqueda:</p>
 <ul>
 <li><p><strong>Randomized Search (principal):</strong>
@@ -1770,9 +1767,8 @@ Basada en combinaciones con fundamentos teóricos sobre el algoritmo, alcanzó u
 </ul>
 <p>La exploración aleatoria demostró una mejor cobertura del espacio de hiperparámetros, superando la búsqueda manual tanto en consistencia como en generalización.</p>
 </section>
-<hr class="docutils" />
 <section id="id2">
-<h4><strong>7.2 Validación Cruzada</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<h4><strong>6.2.2 Validación Cruzada</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>La evaluación se realizó mediante <strong>validación cruzada estratificada (5 folds)</strong>, asegurando representación balanceada de las tres clases.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1799,9 +1795,8 @@ Basada en combinaciones con fundamentos teóricos sobre el algoritmo, alcanzó u
 <p>El modelo optimizado evidenció <strong>una diferencia promedio train-test de 0.0824</strong>, reflejando <strong>bajo sobreajuste</strong> y una <strong>alta estabilidad inter-folds</strong>.
 Estos resultados confirman la robustez del modelo para clasificar perfiles crediticios con equilibrio entre precisión y recall.</p>
 </section>
-<hr class="docutils" />
 <section id="id3">
-<h4><strong>7.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<h4><strong>6.2.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <p>Se aplicaron dos estrategias de interpretabilidad:</p>
 <ol class="arabic">
 <li><p><strong>Gini Importance:</strong>
@@ -1857,9 +1852,8 @@ Las características más estables entre métodos de optimización fueron <code 
   <img src="bd23c6e1-2ad3-455c-bcaa-a6afdeb04383.png" width="95%">
 </div>
 </section>
-<hr class="docutils" />
 <section id="id4">
-<h4><strong>7.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<h4><strong>6.2.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
@@ -1907,7 +1901,6 @@ La combinación de <em>Permutation</em> y <em>Gini Importance</em> permitió for
 <li><p>Dependencia del tamaño de muestra y de la aleatoriedad del muestreo.</p></li>
 <li><p>Complejidad interpretativa al incrementar el número de árboles.</p></li>
 </ul>
-<hr class="docutils" />
 <p>En síntesis, el <strong>Random Forest Avanzado Optimizado con Randomized Search CV</strong> se consolidó como un modelo <strong>estable, interpretable y de alto rendimiento</strong>, confirmando su idoneidad como <strong>modelo principal del estudio comparativo</strong> dentro del proceso de selección final.</p>
 </section>
 </section>
@@ -2578,10 +2571,9 @@ weighted avg       0.78      0.78      0.78     30000
 </div>
 </div>
 <section id="xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad">
-<h3><strong>8. XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
-<hr class="docutils" />
+<h3><strong>6.3 XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong><a class="headerlink" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad" title="Link to this heading">#</a></h3>
 <section id="id5">
-<h4><strong>8.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<h4><strong>6.3.1 Tuning de Hiperparámetros</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <p>El modelo <strong>XGBoost Avanzado Optimizado</strong> se desarrolló aplicando una búsqueda sistemática de hiperparámetros mediante <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong>, combinando dos estrategias complementarias:</p>
 <ul>
 <li><p><strong>Randomized Search CV (principal):</strong>
@@ -2604,9 +2596,8 @@ Se exploraron cinco combinaciones fundamentadas en buenas prácticas del modelo,
 </ul>
 <p>La exploración aleatoria resultó superior al aprovechar la diversidad de combinaciones, optimizando tanto regularización como tasa de aprendizaje.</p>
 </section>
-<hr class="docutils" />
 <section id="id6">
-<h4><strong>8.2 Validación Cruzada</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<h4><strong>6.3.2 Validación Cruzada</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p>El proceso de validación se basó en <strong>5 particiones estratificadas</strong>, garantizando representatividad balanceada entre clases.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -2633,9 +2624,8 @@ Se exploraron cinco combinaciones fundamentadas en buenas prácticas del modelo,
 <p>El modelo optimizado presentó una <strong>diferencia promedio train-test de 0.0666</strong>, reflejando <strong>mínimo sobreajuste</strong> y <strong>alta estabilidad interfolds</strong>.
 El desempeño general del modelo fue consistente, con un <strong>promedio ponderado de 0.78 en precisión y recall</strong>, indicando una generalización sólida.</p>
 </section>
-<hr class="docutils" />
 <section id="id7">
-<h4><strong>8.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<h4><strong>6.3.3 Interpretabilidad del Modelo</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>La interpretabilidad se abordó desde una doble perspectiva:</p>
 <ol class="arabic">
 <li><p><strong>Gini Importance:</strong>
@@ -2691,9 +2681,8 @@ El 80% de la importancia acumulada se concentró en <strong>21 variables</strong
   <img src="d34c03a4-0105-477d-b677-5b356391dccf.png" width="95%">
 </div>
 </section>
-<hr class="docutils" />
 <section id="id8">
-<h4><strong>8.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<h4><strong>6.3.4 Conclusión Comparativa y Selección del Mejor Modelo</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Modelo</p></th>
@@ -2742,7 +2731,6 @@ Su interpretabilidad, basada en la concordancia entre <em>Gini</em> y <em>Permut
 <li><p>Sensibilidad a variaciones de <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> y <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>.</p></li>
 <li><p>Requiere ajuste fino en contextos de datos altamente correlacionados.</p></li>
 </ul>
-<hr class="docutils" />
 <p>En conclusión, el <strong>XGBoost Avanzado Optimizado</strong> representó la <strong>mejor alternativa integral</strong> del estudio, combinando <strong>eficiencia computacional</strong>, <strong>precisión robusta</strong> y <strong>explicabilidad</strong>.
 Su comportamiento consistente lo posiciona como el modelo <strong>más competitivo y generalizable</strong>, reafirmando su idoneidad para escenarios de evaluación de riesgo crediticio.</p>
 </section>
@@ -2789,6 +2777,15 @@ Su comportamiento consistente lo posiciona como el modelo <strong>más competiti
         <p class="prev-next-title">5. Optimización de Múltiples Modelos de ML</p>
       </div>
     </a>
+    <a class="right-next"
+       href="Evaluacion_de_Modelos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">7. Evaluación de Modelos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2806,31 +2803,31 @@ Su comportamiento consistente lo posiciona como el modelo <strong>más competiti
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6. KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-de-hiperparametros"><strong>6.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada"><strong>6.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretabilidad-del-modelo"><strong>6.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo"><strong>6.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.1 KNN Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tuning-de-hiperparametros"><strong>6.1.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada"><strong>6.1.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretabilidad-del-modelo"><strong>6.1.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-comparativa-y-seleccion-del-mejor-modelo"><strong>6.1.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>7. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>7.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>7.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>7.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>7.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.2. Random Forest Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>6.2.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>6.2.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>6.2.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>6.2.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost">XGBoost</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>8. XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>8.1 Tuning de Hiperparámetros</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>8.2 Validación Cruzada</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>8.3 Interpretabilidad del Modelo</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>8.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-avanzado-optimizado-validacion-tuning-e-interpretabilidad"><strong>6.3 XGBoost Avanzado Optimizado – Validación, Tuning e Interpretabilidad</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>6.3.1 Tuning de Hiperparámetros</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>6.3.2 Validación Cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>6.3.3 Interpretabilidad del Modelo</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>6.3.4 Conclusión Comparativa y Selección del Mejor Modelo</strong></a></li>
 </ul>
 </li>
 </ul>
