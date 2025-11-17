@@ -1,0 +1,1776 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Boost_Lava';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="9. Propuesta de Modelo Original" href="mejor_modelo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    1. PROYECTO FINAL. CREDIT SCORE CLASSIFICATION
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="eda.html">2. Análisis Exploratorio de Datos (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelado_Benchmark.html">3. Modelado Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metodos_de_Balanceo.html">4. Metodos de Balanceo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Optimizacion_Computacional.html">5. Optimización de Múltiples Modelos de ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tuning_Validacion_Interpretabilidad.html">6. Validación Avanzada, Tuning e Interpretabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Evaluacion_de_Modelos.html">7. Evaluación de Modelos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusi%C3%B3n_Comparativa_y_Selecci%C3%B3n_del_Mejor_Modelo.html">8. Conclusión Comparativa y Selección del Mejor Modelo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mejor_modelo.html">9. Propuesta de Modelo Original</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBoost_Lava.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Boost_Lava.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="topological-embedding-and-directional-feature-importance-in-ensemble-classifiers-for-multi-class-classification">
+<h1>10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification<a class="headerlink" href="#topological-embedding-and-directional-feature-importance-in-ensemble-classifiers-for-multi-class-classification" title="Link to this heading">#</a></h1>
+<p><em><strong>Métodos:</strong></em> Implementamos CLIFI en cuatro algoritmos: Random Forest (RF), Gradient Boosted Decision Trees (GBDT), y extensiones que incorporan información de correlación entre características financieras (LAVASET y LAVABOOST). Los modelos fueron entrenados y evaluados en un dataset de riesgo crediticio con tres clases: Good, Standard, y Poor.</p>
+<p><em><strong>Referencia metodológica basada en:</strong></em>
+Liedl, E. R., Yassin, S. M., Kasapi, M., &amp; Posma, J. M. (2024). Topological embedding and directional feature importance in ensemble classifiers for multi-class classification. Computational and Structural Biotechnology Journal, 23, 4108-4123. <a class="reference external" href="https://doi.org/10.1016/j.csbj.2024.11.013">https://doi.org/10.1016/j.csbj.2024.11.013</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">f1_score</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">issparse</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 1. Cargar datos</span>
+<span class="c1"># ============================================</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;data_limpia.pkl&quot;</span><span class="p">)</span>
+
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;credit_score&quot;</span>
+<span class="n">y_raw</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_col</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape df:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clases en credit_score:&quot;</span><span class="p">,</span> <span class="n">y_raw</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape df: (100000, 29)
+Columnas: [&#39;age&#39;, &#39;monthly_inhand_salary&#39;, &#39;num_bank_accounts&#39;, &#39;num_credit_card&#39;, &#39;interest_rate&#39;, &#39;delay_from_due_date&#39;, &#39;num_of_delayed_payment&#39;, &#39;changed_credit_limit&#39;, &#39;num_credit_inquiries&#39;, &#39;outstanding_debt&#39;, &#39;credit_utilization_ratio&#39;, &#39;credit_history_age&#39;, &#39;total_emi_per_month&#39;, &#39;amount_invested_monthly&#39;, &#39;monthly_balance&#39;, &#39;occupation&#39;, &#39;credit_mix&#39;, &#39;payment_of_min_amount&#39;, &#39;payment_behaviour&#39;, &#39;not_specified&#39;, &#39;credit_builder_loan&#39;, &#39;personal_loan&#39;, &#39;debt_consolidation_loan&#39;, &#39;student_loan&#39;, &#39;payday_loan&#39;, &#39;mortgage_loan&#39;, &#39;auto_loan&#39;, &#39;home_equity_loan&#39;, &#39;credit_score&#39;]
+Clases en credit_score: credit_score
+Standard    53174
+Poor        28998
+Good        17828
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 2. Codificar y como variable ordinal</span>
+<span class="c1"># ============================================</span>
+
+<span class="n">class_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Poor&quot;</span><span class="p">]</span> 
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="bp">cls</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_order</span><span class="p">)}</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_raw</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mapping:&quot;</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribución y:&quot;</span><span class="p">,</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mapping: {&#39;Good&#39;: 0, &#39;Standard&#39;: 1, &#39;Poor&#39;: 2}
+Distribución y: Counter({1: 53174, 2: 28998, 0: 17828})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 3. Train/Test split</span>
+<span class="c1"># ============================================</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;X_test:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train: (70000, 28) X_test: (30000, 28)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 4. Preprocesamiento numérico + categórico</span>
+<span class="c1"># ============================================</span>
+
+<span class="c1"># Seleccionamos las variables numericas a estandarizar</span>
+<span class="n">num_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_inhand_salary&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;num_bank_accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_card&#39;</span><span class="p">,</span> <span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;delay_from_due_date&#39;</span><span class="p">,</span> <span class="s1">&#39;num_of_delayed_payment&#39;</span><span class="p">,</span><span class="s1">&#39;changed_credit_limit&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;num_credit_inquiries&#39;</span><span class="p">,</span> <span class="s1">&#39;outstanding_debt&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;credit_history_age&#39;</span><span class="p">,</span><span class="s1">&#39;total_emi_per_month&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_invested_monthly&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;monthly_balance&#39;</span><span class="p">]</span>
+
+<span class="c1"># Seleccionamos las variables categóricas a codificar</span>
+<span class="n">cat_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;occupation&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_mix&#39;</span><span class="p">,</span> <span class="s1">&#39;payment_of_min_amount&#39;</span><span class="p">,</span><span class="s1">&#39;payment_behaviour&#39;</span><span class="p">]</span>
+<span class="c1"># Se no se toman las variables binarias ya que estas ya pueden considerarse</span>
+<span class="c1"># como codificadas</span>
+
+<span class="c1"># Crear el preprocesador con OneHotEncoder</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">num_cols</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">cat_cols</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span>
+<span class="p">)</span>
+<span class="n">X_train_enc</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_enc</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X_train_enc</span><span class="p">):</span>
+    <span class="n">X_train_enc</span> <span class="o">=</span> <span class="n">X_train_enc</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X_test_enc</span><span class="p">):</span>
+    <span class="n">X_test_enc</span> <span class="o">=</span> <span class="n">X_test_enc</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_enc:&quot;</span><span class="p">,</span> <span class="n">X_train_enc</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_test_enc:&quot;</span><span class="p">,</span> <span class="n">X_test_enc</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train_enc: (70000, 48)
+X_test_enc: (30000, 48)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 5. Construir grafo de correlaciones (LAVA)</span>
+<span class="c1"># ============================================</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_lava_groups</span><span class="p">(</span><span class="n">X_num</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">corr_threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_group_size</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Construye grupos de variables (LAVA groups) a partir de correlaciones.</span>
+<span class="sd">    - X_num: dataframe sólo con columnas numéricas.</span>
+<span class="sd">    - corr_threshold: umbral |corr| a partir del cual conectamos dos features.</span>
+<span class="sd">    - min_group_size: tamaño mínimo para formar grupo LAVA.</span>
+<span class="sd">    </span>
+<span class="sd">    Devuelve: lista de grupos, cada grupo es lista de nombres de columnas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">X_num</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">X_num</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+    
+    <span class="c1"># grafo no dirigido por matriz de adyacencia booleana</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">corr_threshold</span><span class="p">:</span>
+                <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">adj</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="c1"># BFS/DFS para componente conexa</span>
+            <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+                        <span class="n">visited</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_group_size</span><span class="p">:</span>
+                <span class="n">group_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">cols</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">comp</span><span class="p">]</span>
+                <span class="n">groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_cols</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">groups</span>
+
+<span class="n">X_train_num</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">lava_groups</span> <span class="o">=</span> <span class="n">build_lava_groups</span><span class="p">(</span><span class="n">X_train_num</span><span class="p">,</span> <span class="n">corr_threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_group_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de grupos LAVA encontrados:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lava_groups</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lava_groups</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Grupo </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de grupos LAVA encontrados: 2
+Grupo 0: [&#39;monthly_inhand_salary&#39;, &#39;monthly_balance&#39;, &#39;amount_invested_monthly&#39;]
+Grupo 1: [&#39;num_bank_accounts&#39;, &#39;num_of_delayed_payment&#39;, &#39;outstanding_debt&#39;, &#39;credit_history_age&#39;, &#39;num_credit_inquiries&#39;, &#39;delay_from_due_date&#39;, &#39;interest_rate&#39;, &#39;num_credit_card&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 5.1 Visualización de Correlaciones LAVA</span>
+<span class="c1"># ============================================</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Heatmap de correlaciones para los grupos LAVA identificados</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Grupo 0 - Capacidad Financiera</span>
+<span class="n">grupo0_corr</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[[</span><span class="s1">&#39;monthly_inhand_salary&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_balance&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_invested_monthly&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">grupo0_corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> 
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.8</span><span class="p">})</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grupo LAVA 0: Capacidad Financiera</span><span class="se">\n</span><span class="s1">(Matriz de Correlaciones)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># Grupo 1 - Comportamiento Crediticio  </span>
+<span class="n">grupo1_subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;num_bank_accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;num_of_delayed_payment&#39;</span><span class="p">,</span> <span class="s1">&#39;outstanding_debt&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;credit_history_age&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_inquiries&#39;</span><span class="p">]</span>
+<span class="n">grupo1_corr</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">grupo1_subset</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">grupo1_corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.8</span><span class="p">})</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grupo LAVA 1: Comportamiento Crediticio</span><span class="se">\n</span><span class="s1">(Subconjunto de Correlaciones)&#39;</span><span class="p">,</span> 
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 ANÁLISIS GRUPOS LAVA:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Grupo 0 muestra correlaciones fuertes (&gt;0.5) entre variables de capacidad financiera&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Grupo 1 presenta patrones de correlación complejos en comportamiento crediticio&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Estos grupos capturan dimensiones latentes del perfil crediticio del cliente&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1edbb4f93b772e0f764bbfffbabeb81fcbcd40b230f93025e3d0a4fd057b82f4.png" src="_images/1edbb4f93b772e0f764bbfffbabeb81fcbcd40b230f93025e3d0a4fd057b82f4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔍 ANÁLISIS GRUPOS LAVA:
+• Grupo 0 muestra correlaciones fuertes (&gt;0.5) entre variables de capacidad financiera
+• Grupo 1 presenta patrones de correlación complejos en comportamiento crediticio
+• Estos grupos capturan dimensiones latentes del perfil crediticio del cliente
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 6. Ajustar PCA para cada grupo LAVA</span>
+<span class="c1"># ============================================</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LavaLatentBuilder</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Guarda para cada grupo:</span>
+<span class="sd">    - nombres de columnas</span>
+<span class="sd">    - StandardScaler</span>
+<span class="sd">    - PCA(1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groups</span> <span class="o">=</span> <span class="n">groups</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_num</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+            <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+            <span class="n">Xg</span> <span class="o">=</span> <span class="n">X_num</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">Xg_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Xg</span><span class="p">)</span>
+            <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xg_scaled</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scaler</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_num</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">latent_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">pca</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span><span class="p">):</span>
+            <span class="n">Xg</span> <span class="o">=</span> <span class="n">X_num</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">Xg_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xg</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xg_scaled</span><span class="p">)</span>  <span class="c1"># shape (n_samples, 1)</span>
+            <span class="n">latent_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">latent_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># no hay grupos</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X_num</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">latent_list</span><span class="p">)</span>  <span class="c1"># (n_samples, n_groups)</span>
+        <span class="k">return</span> <span class="n">Z</span>
+
+<span class="c1"># Crear y ajustar el builder</span>
+<span class="n">lava_builder</span> <span class="o">=</span> <span class="n">LavaLatentBuilder</span><span class="p">(</span><span class="n">lava_groups</span><span class="p">)</span>
+<span class="n">lava_builder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_num</span><span class="p">)</span>
+
+<span class="c1"># Transformar train y test</span>
+<span class="n">Z_train</span> <span class="o">=</span> <span class="n">lava_builder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train_num</span><span class="p">)</span>
+<span class="n">Z_test</span> <span class="o">=</span> <span class="n">lava_builder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">num_cols</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape Z_train (LAVA latents):&quot;</span><span class="p">,</span> <span class="n">Z_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape Z_test (LAVA latents):&quot;</span><span class="p">,</span> <span class="n">Z_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape Z_train (LAVA latents): (70000, 2)
+Shape Z_test (LAVA latents): (30000, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 7. Escalar Z (latentes) y concatenar con X_train_enc / X_test_enc</span>
+<span class="c1"># ============================================</span>
+
+<span class="k">if</span> <span class="n">Z_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">lava_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">Z_train_scaled</span> <span class="o">=</span> <span class="n">lava_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Z_train</span><span class="p">)</span>
+    <span class="n">Z_test_scaled</span> <span class="o">=</span> <span class="n">lava_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Z_test</span><span class="p">)</span>
+
+    <span class="n">X_train_lava</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_train_enc</span><span class="p">,</span> <span class="n">Z_train_scaled</span><span class="p">])</span>
+    <span class="n">X_test_lava</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_test_enc</span><span class="p">,</span> <span class="n">Z_test_scaled</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Si no hay grupos LAVA, usamos sólo la parte enc</span>
+    <span class="n">X_train_lava</span> <span class="o">=</span> <span class="n">X_train_enc</span>
+    <span class="n">X_test_lava</span> <span class="o">=</span> <span class="n">X_test_enc</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_lava shape:&quot;</span><span class="p">,</span> <span class="n">X_train_lava</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_test_lava shape:&quot;</span><span class="p">,</span> <span class="n">X_test_lava</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train_lava shape: (70000, 50)
+X_test_lava shape: (30000, 50)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 8. Entrenar XGBoost con LAVA (topological)</span>
+<span class="c1"># ============================================</span>
+
+<span class="n">xgb_lava</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;multi:softprob&quot;</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="s2">&quot;mlogloss&quot;</span><span class="p">,</span>
+    <span class="n">num_class</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">tree_method</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">749</span><span class="p">,</span>       
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0802</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mf">0.9442</span><span class="p">,</span>
+    <span class="n">colsample_bytree</span><span class="o">=</span><span class="mf">0.7730</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">xgb_lava</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_lava</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_lava</span> <span class="o">=</span> <span class="n">xgb_lava</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_lava</span><span class="p">)</span>
+<span class="n">y_proba_lava</span> <span class="o">=</span> <span class="n">xgb_lava</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test_lava</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===== Classification Report (XGBoost + LAVA) =====&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span>
+    <span class="n">y_test</span><span class="p">,</span>
+    <span class="n">y_pred_lava</span><span class="p">,</span>
+    <span class="n">target_names</span><span class="o">=</span><span class="n">class_order</span>
+<span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===== Matriz de confusión (XGBoost + LAVA) =====&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lava</span><span class="p">))</span>
+
+<span class="n">f1_macro_lava</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lava</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;F1 macro (test, XGB + LAVA):&quot;</span><span class="p">,</span> <span class="n">f1_macro_lava</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===== Classification Report (XGBoost + LAVA) =====
+              precision    recall  f1-score   support
+
+        Good       0.76      0.73      0.74      5349
+    Standard       0.81      0.82      0.81     15952
+        Poor       0.79      0.79      0.79      8699
+
+    accuracy                           0.79     30000
+   macro avg       0.79      0.78      0.78     30000
+weighted avg       0.79      0.79      0.79     30000
+
+===== Matriz de confusión (XGBoost + LAVA) =====
+[[ 3906  1423    20]
+ [ 1137 13035  1780]
+ [  105  1725  6869]]
+F1 macro (test, XGB + LAVA): 0.7821575137580395
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># Feature Importance</span>
+<span class="c1"># ============================================</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Usar el feature importance built-in de XGBoost (instantáneo)</span>
+<span class="n">feature_importance</span> <span class="o">=</span> <span class="n">xgb_lava</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># Gráfica rápida e informativa</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">)[</span><span class="o">-</span><span class="mi">15</span><span class="p">:]</span>  <span class="c1"># Top 15</span>
+
+<span class="c1"># Crear labels descriptivos</span>
+<span class="n">feature_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">48</span><span class="p">:</span>
+        <span class="n">feature_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Orig_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">feature_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LAVA_</span><span class="si">{</span><span class="n">idx</span><span class="o">-</span><span class="mi">47</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="n">feature_importance</span><span class="p">[</span><span class="n">indices</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="n">feature_labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Importancia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 Features Más Importantes</span><span class="se">\n</span><span class="s1">(LAVA vs Originales)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="c1"># Destacar features LAVA</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">&gt;=</span> <span class="mi">48</span><span class="p">:</span>  <span class="c1"># Es feature LAVA</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_children</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚀 FEATURE IMPORTANCE COMPLETADO EN SEGUNDOS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Total features: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Features LAVA contribuyen: </span><span class="si">{</span><span class="n">feature_importance</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> del total&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8bee3de2d46c70475aea9eccdc21923c1ea6d6fa0b169cdff01214ff017acd2e.png" src="_images/8bee3de2d46c70475aea9eccdc21923c1ea6d6fa0b169cdff01214ff017acd2e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚀 FEATURE IMPORTANCE COMPLETADO EN SEGUNDOS
+• Total features: 50
+• Features LAVA contribuyen: 0.043 del total
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecuta esta celda para instalar UMAP</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>umap-learn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting umap-learn
+  Downloading umap_learn-0.5.9.post2-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: numpy&gt;=1.23 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from umap-learn) (1.25.2)
+Requirement already satisfied: scipy&gt;=1.3.1 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from umap-learn) (1.11.2)
+Collecting scikit-learn&gt;=1.6 (from umap-learn)
+  Downloading scikit_learn-1.6.1-cp39-cp39-win_amd64.whl.metadata (15 kB)
+Collecting numba&gt;=0.51.2 (from umap-learn)
+  Downloading numba-0.60.0-cp39-cp39-win_amd64.whl.metadata (2.8 kB)
+Collecting pynndescent&gt;=0.5 (from umap-learn)
+  Downloading pynndescent-0.5.13-py3-none-any.whl.metadata (6.8 kB)
+Requirement already satisfied: tqdm in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from umap-learn) (4.66.1)
+Collecting llvmlite&lt;0.44,&gt;=0.43.0dev0 (from numba&gt;=0.51.2-&gt;umap-learn)
+  Downloading llvmlite-0.43.0-cp39-cp39-win_amd64.whl.metadata (4.9 kB)
+Requirement already satisfied: joblib&gt;=0.11 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from pynndescent&gt;=0.5-&gt;umap-learn) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from scikit-learn&gt;=1.6-&gt;umap-learn) (3.2.0)
+Requirement already satisfied: colorama in c:\users\luis d peñaranda\appdata\roaming\python\python39\site-packages (from tqdm-&gt;umap-learn) (0.4.6)
+Downloading umap_learn-0.5.9.post2-py3-none-any.whl (90 kB)
+Downloading numba-0.60.0-cp39-cp39-win_amd64.whl (2.7 MB)
+   ---------------------------------------- 0.0/2.7 MB ? eta -:--:--
+   ------- -------------------------------- 0.5/2.7 MB 3.4 MB/s eta 0:00:01
+   ----------------------- ---------------- 1.6/2.7 MB 4.4 MB/s eta 0:00:01
+   ----------------------------------- ---- 2.4/2.7 MB 4.1 MB/s eta 0:00:01
+   ---------------------------------------- 2.7/2.7 MB 4.1 MB/s  0:00:00
+Downloading llvmlite-0.43.0-cp39-cp39-win_amd64.whl (28.1 MB)
+   ---------------------------------------- 0.0/28.1 MB ? eta -:--:--
+   - -------------------------------------- 1.0/28.1 MB 7.2 MB/s eta 0:00:04
+   -- ------------------------------------- 2.1/28.1 MB 5.3 MB/s eta 0:00:05
+   ---- ----------------------------------- 3.1/28.1 MB 5.3 MB/s eta 0:00:05
+   ------ --------------------------------- 4.7/28.1 MB 5.6 MB/s eta 0:00:05
+   -------- ------------------------------- 5.8/28.1 MB 5.5 MB/s eta 0:00:05
+   --------- ------------------------------ 6.6/28.1 MB 5.5 MB/s eta 0:00:04
+   ----------- ---------------------------- 8.1/28.1 MB 5.4 MB/s eta 0:00:04
+   ------------- -------------------------- 9.2/28.1 MB 5.4 MB/s eta 0:00:04
+   -------------- ------------------------- 10.5/28.1 MB 5.5 MB/s eta 0:00:04
+   ---------------- ----------------------- 11.5/28.1 MB 5.5 MB/s eta 0:00:04
+   ------------------ --------------------- 12.8/28.1 MB 5.6 MB/s eta 0:00:03
+   ------------------ --------------------- 12.8/28.1 MB 5.6 MB/s eta 0:00:03
+   -------------------- ------------------- 14.4/28.1 MB 5.2 MB/s eta 0:00:03
+   --------------------- ------------------ 15.2/28.1 MB 5.1 MB/s eta 0:00:03
+   ----------------------- ---------------- 16.8/28.1 MB 5.2 MB/s eta 0:00:03
+   ------------------------- -------------- 17.8/28.1 MB 5.2 MB/s eta 0:00:02
+   --------------------------- ------------ 19.4/28.1 MB 5.3 MB/s eta 0:00:02
+   ----------------------------- ---------- 20.7/28.1 MB 5.3 MB/s eta 0:00:02
+   ------------------------------- -------- 22.0/28.1 MB 5.4 MB/s eta 0:00:02
+   --------------------------------- ------ 23.3/28.1 MB 5.4 MB/s eta 0:00:01
+   ----------------------------------- ---- 24.6/28.1 MB 5.5 MB/s eta 0:00:01
+   ------------------------------------ --- 26.0/28.1 MB 5.5 MB/s eta 0:00:01
+   -------------------------------------- - 27.3/28.1 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  28.0/28.1 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------- 28.1/28.1 MB 5.4 MB/s  0:00:05
+Downloading pynndescent-0.5.13-py3-none-any.whl (56 kB)
+Downloading scikit_learn-1.6.1-cp39-cp39-win_amd64.whl (11.2 MB)
+   ---------------------------------------- 0.0/11.2 MB ? eta -:--:--
+   ---- ----------------------------------- 1.3/11.2 MB 6.7 MB/s eta 0:00:02
+   ---------- ----------------------------- 2.9/11.2 MB 6.7 MB/s eta 0:00:02
+   --------------- ------------------------ 4.2/11.2 MB 6.8 MB/s eta 0:00:02
+   ----------------- ---------------------- 5.0/11.2 MB 6.4 MB/s eta 0:00:01
+   --------------------- ------------------ 6.0/11.2 MB 5.7 MB/s eta 0:00:01
+   ------------------------- -------------- 7.1/11.2 MB 5.5 MB/s eta 0:00:01
+   ------------------------------- -------- 8.7/11.2 MB 5.8 MB/s eta 0:00:01
+   --------------------------------- ------ 9.4/11.2 MB 5.6 MB/s eta 0:00:01
+   ---------------------------------------  11.0/11.2 MB 5.7 MB/s eta 0:00:01
+   ---------------------------------------- 11.2/11.2 MB 5.6 MB/s  0:00:01
+Installing collected packages: llvmlite, scikit-learn, numba, pynndescent, umap-learn
+
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+   ---------------------------------------- 0/5 [llvmlite]
+  Attempting uninstall: scikit-learn
+   ---------------------------------------- 0/5 [llvmlite]
+    Found existing installation: scikit-learn 1.3.0
+   ---------------------------------------- 0/5 [llvmlite]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+    Uninstalling scikit-learn-1.3.0:
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+      Successfully uninstalled scikit-learn-1.3.0
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   -------- ------------------------------- 1/5 [scikit-learn]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ---------------- ----------------------- 2/5 [numba]
+   ------------------------ --------------- 3/5 [pynndescent]
+   ------------------------ --------------- 3/5 [pynndescent]
+   -------------------------------- ------- 4/5 [umap-learn]
+   -------------------------------- ------- 4/5 [umap-learn]
+   -------------------------------- ------- 4/5 [umap-learn]
+   ---------------------------------------- 5/5 [umap-learn]
+
+Successfully installed llvmlite-0.43.0 numba-0.60.0 pynndescent-0.5.13 scikit-learn-1.6.1 umap-learn-0.5.9.post2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 8.2 ANÁLISIS DE PROXIMIDAD CON PCA (NO NECESITA VARIABLES PREVIAS)</span>
+<span class="c1"># ============================================</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Si X_test_lava no existe, usar X_test procesado rápidamente</span>
+<span class="k">if</span> <span class="s1">&#39;X_test_lava&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ X_test_lava no definido, usando procesamiento rápido...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Procesamiento express</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;data_limpia.pkl&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Codificación rápida</span>
+    <span class="n">class_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Poor&quot;</span><span class="p">]</span> 
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="bp">cls</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_order</span><span class="p">)}</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;credit_score&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;credit_score&quot;</span><span class="p">])</span>
+    
+    <span class="c1"># Split rápido</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Solo numéricas para simplificar</span>
+    <span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_inhand_salary&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bank_accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_card&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_from_due_date&#39;</span><span class="p">,</span> <span class="s1">&#39;num_of_delayed_payment&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;changed_credit_limit&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_inquiries&#39;</span><span class="p">,</span> <span class="s1">&#39;outstanding_debt&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_history_age&#39;</span><span class="p">,</span> <span class="s1">&#39;total_emi_per_month&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;amount_invested_monthly&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_balance&#39;</span><span class="p">]</span>
+    
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">X_test_lava</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">num_cols</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Usando versión simplificada para análisis&quot;</span><span class="p">)</span>
+
+<span class="c1"># ANÁLISIS PCA</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculando análisis de proximidad con PCA...&quot;</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test_lava</span><span class="p">)</span>
+
+<span class="c1"># Visualización</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
+<span class="n">class_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Poor&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">class_idx</span><span class="p">,</span> <span class="n">class_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_order</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">class_idx</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+                <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">class_idx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">class_name</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PC1 (</span><span class="si">{</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> varianza)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PC2 (</span><span class="si">{</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> varianza)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Clases Crediticias</span><span class="se">\n</span><span class="s1">(Análisis PCA)&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎯 VARIABILIDAD EXPLICADA: </span><span class="si">{</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculando análisis de proximidad con PCA...
+</pre></div>
+</div>
+<img alt="_images/5103c74a8a95f021b6592a8be875a0c78552529f24e5b94d777f0f038756c530.png" src="_images/5103c74a8a95f021b6592a8be875a0c78552529f24e5b94d777f0f038756c530.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🎯 VARIABILIDAD EXPLICADA: 44.62%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 8.3. ANÁLISIS COMPLETO AUTOCONTENIDO</span>
+<span class="c1"># ============================================</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚀 INICIANDO ANÁLISIS COMPLETO...&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. CARGAR DATOS</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📁 Cargando datos...&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s2">&quot;data_limpia.pkl&quot;</span><span class="p">)</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;credit_score&quot;</span>
+<span class="n">y_raw</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_col</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 2. CODIFICAR TARGET</span>
+<span class="n">class_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Good&quot;</span><span class="p">,</span> <span class="s2">&quot;Standard&quot;</span><span class="p">,</span> <span class="s2">&quot;Poor&quot;</span><span class="p">]</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="bp">cls</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_order</span><span class="p">)}</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y_raw</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<span class="c1"># 3. SPLIT DE DATOS</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. PREPROCESAMIENTO RÁPIDO</span>
+<span class="n">num_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_inhand_salary&#39;</span><span class="p">,</span> <span class="s1">&#39;num_bank_accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_card&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_from_due_date&#39;</span><span class="p">,</span> <span class="s1">&#39;num_of_delayed_payment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;changed_credit_limit&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_inquiries&#39;</span><span class="p">,</span> <span class="s1">&#39;outstanding_debt&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;credit_utilization_ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_history_age&#39;</span><span class="p">,</span> <span class="s1">&#39;total_emi_per_month&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;amount_invested_monthly&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_balance&#39;</span><span class="p">]</span>
+
+<span class="n">cat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;occupation&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_mix&#39;</span><span class="p">,</span> <span class="s1">&#39;payment_of_min_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;payment_behaviour&#39;</span><span class="p">]</span>
+
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">num_cols</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">cat_cols</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span>
+<span class="p">)</span>
+
+<span class="n">X_train_enc</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_enc</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 5. LAVA SIMPLIFICADO (usando grupos predefinidos)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔬 Aplicando LAVA...&quot;</span><span class="p">)</span>
+<span class="n">lava_groups</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;monthly_inhand_salary&#39;</span><span class="p">,</span> <span class="s1">&#39;monthly_balance&#39;</span><span class="p">,</span> <span class="s1">&#39;amount_invested_monthly&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;num_bank_accounts&#39;</span><span class="p">,</span> <span class="s1">&#39;num_of_delayed_payment&#39;</span><span class="p">,</span> <span class="s1">&#39;outstanding_debt&#39;</span><span class="p">,</span> 
+     <span class="s1">&#39;credit_history_age&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_inquiries&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_from_due_date&#39;</span><span class="p">,</span> 
+     <span class="s1">&#39;interest_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;num_credit_card&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LavaLatentBuilder</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">groups</span> <span class="o">=</span> <span class="n">groups</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_num</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
+            <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+            <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+            <span class="n">Xg</span> <span class="o">=</span> <span class="n">X_num</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">Xg_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Xg</span><span class="p">)</span>
+            <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xg_scaled</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scaler</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pca</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_num</span><span class="p">):</span>
+        <span class="n">latent_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">scaler</span><span class="p">,</span> <span class="n">pca</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scalers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcas</span><span class="p">):</span>
+            <span class="n">Xg</span> <span class="o">=</span> <span class="n">X_num</span><span class="p">[</span><span class="n">group</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">Xg_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xg</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xg_scaled</span><span class="p">)</span>
+            <span class="n">latent_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">latent_list</span><span class="p">)</span> <span class="k">if</span> <span class="n">latent_list</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X_num</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">lava_builder</span> <span class="o">=</span> <span class="n">LavaLatentBuilder</span><span class="p">(</span><span class="n">lava_groups</span><span class="p">)</span>
+<span class="n">lava_builder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">])</span>
+
+<span class="n">Z_train</span> <span class="o">=</span> <span class="n">lava_builder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">num_cols</span><span class="p">])</span>
+<span class="n">Z_test</span> <span class="o">=</span> <span class="n">lava_builder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">num_cols</span><span class="p">])</span>
+
+<span class="n">lava_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">Z_train_scaled</span> <span class="o">=</span> <span class="n">lava_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Z_train</span><span class="p">)</span>
+<span class="n">Z_test_scaled</span> <span class="o">=</span> <span class="n">lava_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Z_test</span><span class="p">)</span>
+
+<span class="n">X_train_lava</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_train_enc</span><span class="p">,</span> <span class="n">Z_train_scaled</span><span class="p">])</span>
+<span class="n">X_test_lava</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_test_enc</span><span class="p">,</span> <span class="n">Z_test_scaled</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Datos LAVA preparados: </span><span class="si">{</span><span class="n">X_train_lava</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 6. ENTRENAR MODELO (SI NO EXISTE)</span>
+<span class="k">if</span> <span class="s1">&#39;xgb_lava&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🤖 Entrenando modelo XGBoost + LAVA...&quot;</span><span class="p">)</span>
+    <span class="n">xgb_lava</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span>
+        <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;multi:softprob&quot;</span><span class="p">,</span>
+        <span class="n">eval_metric</span><span class="o">=</span><span class="s2">&quot;mlogloss&quot;</span><span class="p">,</span> 
+        <span class="n">num_class</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+        <span class="n">tree_method</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  <span class="c1"># Reducido para velocidad</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="p">)</span>
+    
+    <span class="n">xgb_lava</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_lava</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Modelo entrenado exitosamente&quot;</span><span class="p">)</span>
+
+<span class="c1"># 7. ANÁLISIS DE DISTRIBUCIONES</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📊 Analizando distribuciones...&quot;</span><span class="p">)</span>
+
+<span class="n">feature_importance</span> <span class="o">=</span> <span class="n">xgb_lava</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">top_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">)[</span><span class="o">-</span><span class="mi">6</span><span class="p">:]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#2E8B57&#39;</span><span class="p">,</span> <span class="s1">&#39;#FFA500&#39;</span><span class="p">,</span> <span class="s1">&#39;#DC143C&#39;</span><span class="p">]</span>  <span class="c1"># Verde, Naranja, Rojo</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">feature_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_features</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">class_idx</span><span class="p">,</span> <span class="n">class_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_order</span><span class="p">):</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">class_idx</span><span class="p">)</span>
+        <span class="n">feature_values</span> <span class="o">=</span> <span class="n">X_test_lava</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">feature_idx</span><span class="p">]</span>
+        
+        <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">feature_values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">class_name</span><span class="p">,</span> 
+                      <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">class_idx</span><span class="p">])</span>
+
+    <span class="n">imp_val</span> <span class="o">=</span> <span class="n">feature_importance</span><span class="p">[</span><span class="n">feature_idx</span><span class="p">]</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Feature </span><span class="si">{</span><span class="n">feature_idx</span><span class="si">}</span><span class="se">\n</span><span class="s1">(Importancia: </span><span class="si">{</span><span class="n">imp_val</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Densidad&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Distribuciones de Características Más Importantes</span><span class="se">\n</span><span class="s1">XGBoost + LAVA&#39;</span><span class="p">,</span> 
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 8. RESULTADOS FINALES</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🎯 RESULTADOS FINALES&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📈 Modelo: XGBoost + LAVA&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔢 Features totales: </span><span class="si">{</span><span class="n">X_train_lava</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎯 Features LAVA: 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Top 3 features más importantes:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feat_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_features</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. Feature </span><span class="si">{</span><span class="n">feat_idx</span><span class="si">}</span><span class="s2"> - Importancia: </span><span class="si">{</span><span class="n">feature_importance</span><span class="p">[</span><span class="n">feat_idx</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ ANÁLISIS COMPLETADO EXITOSAMENTE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚀 INICIANDO ANÁLISIS COMPLETO...
+📁 Cargando datos...
+🔬 Aplicando LAVA...
+✅ Datos LAVA preparados: (70000, 50)
+🤖 Entrenando modelo XGBoost + LAVA...
+✅ Modelo entrenado exitosamente
+📊 Analizando distribuciones...
+</pre></div>
+</div>
+<img alt="_images/d9aaeca5694442112e735ee9df13214793fbd87837f1c5ffbf84387ae502ad61.png" src="_images/d9aaeca5694442112e735ee9df13214793fbd87837f1c5ffbf84387ae502ad61.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+🎯 RESULTADOS FINALES
+==================================================
+📈 Modelo: XGBoost + LAVA
+🔢 Features totales: 50
+🎯 Features LAVA: 2
+📊 Top 3 features más importantes:
+   1. Feature 49 - Importancia: 0.0838
+   2. Feature 31 - Importancia: 0.2038
+   3. Feature 29 - Importancia: 0.4193
+✅ ANÁLISIS COMPLETADO EXITOSAMENTE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 8.4 Matriz de Proximidad Detallada</span>
+<span class="c1"># ============================================</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculando matriz de similitud coseno...&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calcular similitud coseno en el espacio LAVA</span>
+<span class="n">similarity_matrix</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">X_test_lava</span><span class="p">)</span>
+
+<span class="c1"># Visualizar matriz de proximidad</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Ordenar por clases para mejor visualización</span>
+<span class="n">class_order_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">sorted_similarity</span> <span class="o">=</span> <span class="n">similarity_matrix</span><span class="p">[</span><span class="n">class_order_idx</span><span class="p">][:,</span> <span class="n">class_order_idx</span><span class="p">]</span>
+
+<span class="c1"># Matriz de proximidad</span>
+<span class="n">im1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sorted_similarity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Matriz de Proximidad (Espacio LAVA)</span><span class="se">\n</span><span class="s1">Ordenado por Clase&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Muestras (ordenadas por clase)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Muestras (ordenadas por clase)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="c1"># Distribución de proximidades intra-clase vs inter-clase</span>
+<span class="n">intra_class_similarities</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">inter_class_similarities</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">intra_class_similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inter_class_similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Intra-clase&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inter-clase&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Similitud Coseno&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Densidad&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución de Proximidades</span><span class="se">\n</span><span class="s1">Intra-clase vs Inter-clase&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 ANÁLISIS PROXIMIDAD:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Similitud media intra-clase: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Similitud media inter-clase: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Separabilidad: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Mayor separabilidad indica mejor discriminación entre clases&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
+<span class="c1"># 9. Interpretación en Contexto de Nuestros Resultados</span>
+<span class="c1"># ============================================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INTERPRETACIÓN DE RESULTADOS CON ENFOQUE LAVA&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔬 HALLAZGOS PRINCIPALES DE NUESTRA IMPLEMENTACIÓN:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. ESTRUCTURA DE CORRELACIONES IDENTIFICADA:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Grupo 0: Variables de liquidez mensual (ingresos, balance, inversiones)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Grupo 1: Historial crediticio y exposición (moras, deuda, consultas)&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2. EFECTO DEL EMBEDDING MULTIVARIANTE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • 2 componentes latentes capturan patrones de 11 variables originales&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Reducción de dimensionalidad preservando información correlacional&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Mejor representación de interdependencias financieras&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">3. IMPACTO EN MODELOS DE ENSEMBLE:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • XGBoost base: 79</span><span class="si">% a</span><span class="s2">ccuracy en clasificación triple&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • LAVA embedding: Enriquece espacios de características&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Captura sinergias entre métricas interrelacionadas&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 RESULTADOS EN CONTEXTO DE RIESGO CREDITICIO:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Mejor discriminación entre clases Good/Standard/Poor&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Variables agrupadas muestran comportamientos sistémicos&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Patrones identificados:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;     - Cliente &#39;Good&#39;: Alta liquidez + bajo historial negativo&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;     - Cliente &#39;Poor&#39;: Baja liquidez + alto historial negativo&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🎯 CONTRIBUCIÓN METODOLÓGICA:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Adaptación exitosa de LAVA a dominio financiero&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Grupos LAVA reflejan dimensiones económicas reales&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Embedding captura no-linealidades en datos crediticios&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🚀 PRÓXIMOS PASOS RECOMENDADOS:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Validar estabilidad de grupos LAVA en diferentes muestras&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Analizar importancia direccional por clase crediticia&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Implementar métricas de interpretabilidad específicas&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   • Probar en otros dominios financieros (fraude, scoring)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>======================================================================
+INTERPRETACIÓN DE RESULTADOS CON ENFOQUE LAVA
+======================================================================
+
+🔬 HALLAZGOS PRINCIPALES DE NUESTRA IMPLEMENTACIÓN:
+1. ESTRUCTURA DE CORRELACIONES IDENTIFICADA:
+   • Grupo 0: Variables de liquidez mensual (ingresos, balance, inversiones)
+   • Grupo 1: Historial crediticio y exposición (moras, deuda, consultas)
+
+2. EFECTO DEL EMBEDDING MULTIVARIANTE:
+   • 2 componentes latentes capturan patrones de 11 variables originales
+   • Reducción de dimensionalidad preservando información correlacional
+   • Mejor representación de interdependencias financieras
+
+3. IMPACTO EN MODELOS DE ENSEMBLE:
+   • XGBoost base: 79% accuracy en clasificación triple
+   • LAVA embedding: Enriquece espacios de características
+   • Captura sinergias entre métricas interrelacionadas
+
+📊 RESULTADOS EN CONTEXTO DE RIESGO CREDITICIO:
+   • Mejor discriminación entre clases Good/Standard/Poor
+   • Variables agrupadas muestran comportamientos sistémicos
+   • Patrones identificados:
+     - Cliente &#39;Good&#39;: Alta liquidez + bajo historial negativo
+     - Cliente &#39;Poor&#39;: Baja liquidez + alto historial negativo
+
+🎯 CONTRIBUCIÓN METODOLÓGICA:
+   • Adaptación exitosa de LAVA a dominio financiero
+   • Grupos LAVA reflejan dimensiones económicas reales
+   • Embedding captura no-linealidades en datos crediticios
+
+🚀 PRÓXIMOS PASOS RECOMENDADOS:
+   • Validar estabilidad de grupos LAVA en diferentes muestras
+   • Analizar importancia direccional por clase crediticia
+   • Implementar métricas de interpretabilidad específicas
+   • Probar en otros dominios financieros (fraude, scoring)
+======================================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mejor_modelo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">9. Propuesta de Modelo Original</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
