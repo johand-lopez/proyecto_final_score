@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -387,9 +387,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="topological-embedding-and-directional-feature-importance-in-ensemble-classifiers-for-multi-class-classification">
 <h1>10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification<a class="headerlink" href="#topological-embedding-and-directional-feature-importance-in-ensemble-classifiers-for-multi-class-classification" title="Link to this heading">#</a></h1>
-<p><em><strong>Métodos:</strong></em> Implementamos CLIFI en cuatro algoritmos: Random Forest (RF), Gradient Boosted Decision Trees (GBDT), y extensiones que incorporan información de correlación entre características financieras (LAVASET y LAVABOOST). Los modelos fueron entrenados y evaluados en un dataset de riesgo crediticio con tres clases: Good, Standard, y Poor.</p>
-<p><em><strong>Referencia metodológica basada en:</strong></em>
-Liedl, E. R., Yassin, S. M., Kasapi, M., &amp; Posma, J. M. (2024). Topological embedding and directional feature importance in ensemble classifiers for multi-class classification. Computational and Structural Biotechnology Journal, 23, 4108-4123. <a class="reference external" href="https://doi.org/10.1016/j.csbj.2024.11.013">https://doi.org/10.1016/j.csbj.2024.11.013</a></p>
+<p><em><strong>Métodos:</strong></em> Implementamos un enfoque basado en LAVA (Local Correlated Feature Aggregation) para crear características latentes. Estas nuevas características, que capturan información de correlación multivariante, se generaron aplicando PCA sobre los grupos de variables correlacionadas (LAVA groups). Posteriormente, se entrenó un modelo de Gradient Boosted Decision Trees (XGBoost) utilizando el conjunto de datos original aumentado con estas características latentes. Los modelos fueron entrenados y evaluados en un dataset de riesgo crediticio con tres clases: Good, Standard, y Poor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1526,64 +1524,6 @@ Successfully installed llvmlite-0.43.0 numba-0.60.0 pynndescent-0.5.13 scikit-le
    2. Feature 31 - Importancia: 0.2038
    3. Feature 29 - Importancia: 0.4193
 ✅ ANÁLISIS COMPLETADO EXITOSAMENTE
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================</span>
-<span class="c1"># 8.4 Matriz de Proximidad Detallada</span>
-<span class="c1"># ============================================</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculando matriz de similitud coseno...&quot;</span><span class="p">)</span>
-
-<span class="c1"># Calcular similitud coseno en el espacio LAVA</span>
-<span class="n">similarity_matrix</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">X_test_lava</span><span class="p">)</span>
-
-<span class="c1"># Visualizar matriz de proximidad</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="c1"># Ordenar por clases para mejor visualización</span>
-<span class="n">class_order_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
-<span class="n">sorted_similarity</span> <span class="o">=</span> <span class="n">similarity_matrix</span><span class="p">[</span><span class="n">class_order_idx</span><span class="p">][:,</span> <span class="n">class_order_idx</span><span class="p">]</span>
-
-<span class="c1"># Matriz de proximidad</span>
-<span class="n">im1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sorted_similarity</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Matriz de Proximidad (Espacio LAVA)</span><span class="se">\n</span><span class="s1">Ordenado por Clase&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Muestras (ordenadas por clase)&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Muestras (ordenadas por clase)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-
-<span class="c1"># Distribución de proximidades intra-clase vs inter-clase</span>
-<span class="n">intra_class_similarities</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">inter_class_similarities</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">y_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-            <span class="n">intra_class_similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">inter_class_similarities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">similarity_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
-
-<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Intra-clase&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inter-clase&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Similitud Coseno&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Densidad&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribución de Proximidades</span><span class="se">\n</span><span class="s1">Intra-clase vs Inter-clase&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 ANÁLISIS PROXIMIDAD:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Similitud media intra-clase: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Similitud media inter-clase: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;• Separabilidad: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">intra_class_similarities</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">inter_class_similarities</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;• Mayor separabilidad indica mejor discriminación entre clases&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

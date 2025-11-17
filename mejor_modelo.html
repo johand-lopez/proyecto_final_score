@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -384,7 +384,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hafl-boosting-highly-adaptive-focal-loss-boosting">HAFL-Boosting (Highly Adaptive Focal Loss + Boosting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)</a></li>
 </ul>
             </nav>
         </div>
@@ -398,17 +398,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="propuesta-de-modelo-original">
 <h1>9. Propuesta de Modelo Original<a class="headerlink" href="#propuesta-de-modelo-original" title="Link to this heading">#</a></h1>
-<section id="hafl-boosting-highly-adaptive-focal-loss-boosting">
-<h2>HAFL-Boosting (Highly Adaptive Focal Loss + Boosting)<a class="headerlink" href="#hafl-boosting-highly-adaptive-focal-loss-boosting" title="Link to this heading">#</a></h2>
-<p><strong>Ventajas para nuestro problema:</strong></p>
+<section id="lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">
+<h2>LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)<a class="headerlink" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas" title="Link to this heading">#</a></h2>
+<p><strong>Ventajas de la implementación:</strong></p>
 <ul class="simple">
-<li><p>Diseñado específicamente para datos multi-clase desbalanceados.</p></li>
-<li><p>Introduce <em>Highly Adaptive Focal Loss</em> que aumenta la atención del modelo a las clases minoritarias.</p></li>
-<li><p>Compatible con los modelos que dieron mejores scores (XGBoost y Random Forest)</p></li>
+<li><p><strong>Reduce la multicolinealidad:</strong> Agrupa variables financieras (como <code class="docutils literal notranslate"><span class="pre">monthly_inhand_salary</span></code> y <code class="docutils literal notranslate"><span class="pre">monthly_balance</span></code>) que están altamente correlacionadas.</p></li>
+<li><p><strong>Captura información estructural:</strong> En lugar de analizar 11 variables numéricas por separado, el modelo recibe 2 <em>features</em> latentes que resumen patrones complejos (p. ej., “Capacidad Financiera” y “Comportamiento Crediticio”).</p></li>
+<li><p><strong>Compatible con GBDT:</strong> Se integra directamente con XGBoost al aumentar el conjunto de datos de entrenamiento.</p></li>
 </ul>
-<p><strong>Aplicación directa:</strong> Sustituir la función de pérdida actual por HAFL o implementarla dentro de un custom objective en XGBoost.</p>
-<p><strong>Por qué destaca:</strong> mejora F1 y <em>recall</em> en clases minoritarias sin sacrificar interpretabilidad ni velocidad.</p>
-<p><a class="reference external" href="https://www-webofscience-com.ezproxy.uninorte.edu.co/wos/alldb/full-record/WOS:000935466800002">Fuente Web of Science</a></p>
+<p><strong>Aplicación directa:</strong></p>
+<ul class="simple">
+<li><p>Se identificaron 2 “Grupos LAVA” de variables altamente correlacionadas usando la matriz de correlación.</p></li>
+<li><p>Se aplicó <strong>PCA (n=1)</strong> a cada grupo para crear 2 nuevas <em>features</em> latentes.</p></li>
+<li><p>Se entrenó un modelo <strong>XGBoost</strong> estándar usando el dataset original <em>aumentado</em> con estas 2 <em>features</em> LAVA.</p></li>
+</ul>
+<p><strong>Por qué destaca:</strong> Mejora la representación de los datos al capturar las interdependencias entre las variables, permitiendo al XGBoost identificar patrones más robustos (Resultado: 79% de <em>accuracy</em> en la clasificación de tres clases).</p>
+<p><em><strong>Referencia metodológica basada en:</strong></em>
+Liedl, E. R., Yassin, S. M., Kasapi, M., &amp; Posma, J. M. (2024). Topological embedding and directional feature importance in ensemble classifiers for multi-class classification. Computational and Structural Biotechnology Journal, 23, 4108-4123. <a class="reference external" href="https://doi.org/10.1016/j.csbj.2024.11.013">https://doi.org/10.1016/j.csbj.2024.11.013</a></p>
 </section>
 </section>
 
@@ -476,7 +482,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hafl-boosting-highly-adaptive-focal-loss-boosting">HAFL-Boosting (Highly Adaptive Focal Loss + Boosting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)</a></li>
 </ul>
   </nav></div>
 
