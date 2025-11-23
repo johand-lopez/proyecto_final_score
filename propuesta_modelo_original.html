@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,7 +57,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'mejor_modelo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'propuesta_modelo_original';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10. Topological embedding and directional feature importance in ensemble classifiers for multi-class classification." href="Boost_Lava.html" />
@@ -260,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmejor_modelo.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpropuesta_modelo_original.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -290,7 +290,7 @@
       
       
       
-      <li><a href="_sources/mejor_modelo.ipynb" target="_blank"
+      <li><a href="_sources/propuesta_modelo_original.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +384,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-agregacion-local-de-caracteristicas-correlacionadas-stacking">LAVA-Embedding (Agregación Local de Características Correlacionadas) + Stacking</a></li>
 </ul>
             </nav>
         </div>
@@ -398,21 +398,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="propuesta-de-modelo-original">
 <h1>9. Propuesta de Modelo Original<a class="headerlink" href="#propuesta-de-modelo-original" title="Link to this heading">#</a></h1>
-<section id="lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">
-<h2>LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)<a class="headerlink" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas" title="Link to this heading">#</a></h2>
+<section id="lava-embedding-agregacion-local-de-caracteristicas-correlacionadas-stacking">
+<h2>LAVA-Embedding (Agregación Local de Características Correlacionadas) + Stacking<a class="headerlink" href="#lava-embedding-agregacion-local-de-caracteristicas-correlacionadas-stacking" title="Link to this heading">#</a></h2>
 <p><strong>Ventajas de la implementación:</strong></p>
 <ul class="simple">
 <li><p><strong>Reduce la multicolinealidad:</strong> Agrupa variables financieras (como <code class="docutils literal notranslate"><span class="pre">monthly_inhand_salary</span></code> y <code class="docutils literal notranslate"><span class="pre">monthly_balance</span></code>) que están altamente correlacionadas.</p></li>
-<li><p><strong>Captura información estructural:</strong> En lugar de analizar 11 variables numéricas por separado, el modelo recibe 2 <em>features</em> latentes que resumen patrones complejos (p. ej., “Capacidad Financiera” y “Comportamiento Crediticio”).</p></li>
-<li><p><strong>Compatible con GBDT:</strong> Se integra directamente con XGBoost al aumentar el conjunto de datos de entrenamiento.</p></li>
+<li><p><strong>Captura información estructural:</strong> Captura información de 11 variables altamente correlacionadas y luego el modelo recibe 2 nuevas <em>features</em> latentes que resumen patrones complejos (p. ej., “Capacidad Financiera” y “Comportamiento Crediticio”).</p></li>
+<li><p><strong>Compatible con emsamble stacking:</strong> Se integra directamente con un ensamble stacking de los modelos que mejor resolvieron la tarea de clasificación para nuestro caso: <code class="docutils literal notranslate"><span class="pre">k-NN</span></code>, <code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">Forest</span></code> y <code class="docutils literal notranslate"><span class="pre">XGBoost</span></code>; y luego usa <code class="docutils literal notranslate"><span class="pre">XGBoost</span></code> como meta-modelo para las predicciones finales.</p></li>
 </ul>
 <p><strong>Aplicación directa:</strong></p>
 <ul class="simple">
 <li><p>Se identificaron 2 “Grupos LAVA” de variables altamente correlacionadas usando la matriz de correlación.</p></li>
 <li><p>Se aplicó <strong>PCA (n=1)</strong> a cada grupo para crear 2 nuevas <em>features</em> latentes.</p></li>
-<li><p>Se entrenó un modelo <strong>XGBoost</strong> estándar usando el dataset original <em>aumentado</em> con estas 2 <em>features</em> LAVA.</p></li>
+<li><p>Se entrenó un modelo de ensamble <strong>stacking</strong> que recibe como entrada el dataset original <em>aumentado</em> con estas 2 <em>features</em> LAVA.</p></li>
 </ul>
-<p><strong>Por qué destaca:</strong> Mejora la representación de los datos al capturar las interdependencias entre las variables, permitiendo al XGBoost identificar patrones más robustos (Resultado: 0.7821 de <em>F1 Score Macro</em> en la clasificación de tres clases).</p>
+<p><strong>Por qué destaca:</strong> Mejora la representación de los datos al capturar las interdependencias entre las variables, permitiendo al ensamble stacking identificar patrones más robustos (Resultado: 0.804 de <em>F1 Score Macro avg</em> en la clasificación de tres clases).</p>
 <p><em><strong>Referencia metodológica basada en:</strong></em>
 Liedl, E. R., Yassin, S. M., Kasapi, M., &amp; Posma, J. M. (2024). Topological embedding and directional feature importance in ensemble classifiers for multi-class classification. Computational and Structural Biotechnology Journal, 23, 4108-4123. <a class="reference external" href="https://doi.org/10.1016/j.csbj.2024.11.013">https://doi.org/10.1016/j.csbj.2024.11.013</a></p>
 </section>
@@ -482,7 +482,7 @@ Liedl, E. R., Yassin, S. M., Kasapi, M., &amp; Posma, J. M. (2024). Topological 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-xgboost-agregacion-local-de-caracteristicas-correlacionadas">LAVA-Embedding + XGBoost (Agregación Local de Características Correlacionadas)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lava-embedding-agregacion-local-de-caracteristicas-correlacionadas-stacking">LAVA-Embedding (Agregación Local de Características Correlacionadas) + Stacking</a></li>
 </ul>
   </nav></div>
 
